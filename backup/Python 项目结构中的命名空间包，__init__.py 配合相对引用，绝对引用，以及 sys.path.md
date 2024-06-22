@@ -3,21 +3,21 @@
 项目结构如下：
 
 ```
-myproject
+myproject/
 ├── src/
 │   ├── namespace_package/
 │   │   ├── package1/
 │   │   │   └── module1.py
 │   │   └── package2/
 │   │       └── module2.py
-│   ├── regular_package/
-│   │   ├── __init__.py
-│   │   ├── package1/
-│   │   │   ├── __init__.py
-│   │   │   └── module1.py
-│   │   └── package2/
-│   │       ├── __init__.py
-│   │       └── module2.py
+│   └── regular_package/
+│       ├── __init__.py
+│       ├── package1/
+│       │   ├── __init__.py
+│       │   └── module1.py
+│       └── package2/
+│           ├── __init__.py
+│           └── module2.py
 └── tests/
     └── test_module1.py
 ```
