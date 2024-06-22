@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/65646535?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="在Python项目中，src目录通常是放置源代码的地方。">
+<meta property="og:title" content="Python 项目结构中的命名空间包，__init__.py 配合相对引用，绝对引用，以及 sys.path">
+<meta property="og:description" content="在Python项目中，src目录通常是放置源代码的地方。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://H1DDENADM1N.github.io/post/Python%20-xiang-mu-jie-gou-zhong-de-ming-ming-kong-jian-bao-%EF%BC%8C__init__.py%20-pei-he-xiang-dui-yin-yong-%EF%BC%8C-jue-dui-yin-yong-%EF%BC%8C-yi-ji-%20sys.path.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/65646535?v=4">
+<title>Python 项目结构中的命名空间包，__init__.py 配合相对引用，绝对引用，以及 sys.path</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Python 项目结构中的命名空间包，__init__.py 配合相对引用，绝对引用，以及 sys.path</h1>
+<div class="title-right">
+    <a href="https://H1DDENADM1N.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/H1DDENADM1N/H1DDENADM1N.github.io/issues/2" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p>在Python项目中，src目录通常是放置源代码的地方。在这个目录中，您可能会使用命名空间包、<strong>init</strong>.py文件配合相对引用或绝对引用来组织和管理您的代码。以下是一个示例，说明这些概念是如何在src目录中结合使用的：</p>
+<p>项目结构如下：</p>
+<pre class="notranslate"><code class="notranslate">myproject
+├── src/
+│   ├── namespace_package/
+│   │   ├── package1/
+│   │   │   └── module1.py
+│   │   └── package2/
+│   │       └── module2.py
+│   ├── regular_package/
+│   │   ├── __init__.py
+│   │   ├── package1/
+│   │   │   ├── __init__.py
+│   │   │   └── module1.py
+│   │   └── package2/
+│   │       ├── __init__.py
+│   │       └── module2.py
+└── tests/
+    └── test_module1.py
+</code></pre>
+<h2>命名空间包</h2>
+<p>命名空间包允许您将相关的包组织在同一个命名空间下，而不需要它们在同一个目录中。</p>
+<h3>优势</h3>
+<ul>
+<li>避免命名冲突：命名空间包允许您在全局命名空间中创建一个独特的区域，从而避免模块名冲突。</li>
+<li>代码组织：有助于将相关的包组织在一起，即使它们分布在不同的目录中。</li>
+<li>可扩展性：允许第三方开发者贡献代码到命名空间，而不会影响其他包。</li>
+</ul>
+<h3>劣势</h3>
+<ul>
+<li>复杂性：对于小型项目或初学者来说，命名空间可能会增加不必要的复杂性。</li>
+<li>工具兼容性：一些旧的工具和库可能不支持没有__init__.py文件的包。</li>
+</ul>
+<h3>示例</h3>
+<p><code class="notranslate">namespace_package/module2</code> 引用 <code class="notranslate">namespace_package/module1</code> 时，可以用以下方式：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># namespace_package/package2/module2.py</span>
+<span class="pl-k">from</span> <span class="pl-s1">namespace_package</span>.<span class="pl-s1">package1</span> <span class="pl-k">import</span> <span class="pl-s1">module1</span></pre></div>
+<h2><strong>init</strong>.py 配合 相对引用</h2>
+<h3><strong>init</strong>.py</h3>
+<p><code class="notranslate">__init__.py</code> 文件用于初始化包（如导入子模块、设置变量、定义包级别的属性和方法等），它可以是一个空文件，也可以包含初始化代码或元数据。</p>
+<h3>优势</h3>
+<ul>
+<li>包初始化：执行包级别的初始化代码，如配置设置、资源加载等。</li>
+<li>明确性：清楚地标识一个目录是一个Python包。</li>
+<li>可移植性：相对引用不依赖于项目的根目录，使得代码更加可移植。</li>
+</ul>
+<h3>劣势</h3>
+<ul>
+<li>冗余：在Python 3.3+中，命名空间包不需要__init__.py文件，因此它变成了一个可选的文件。</li>
+<li>限制性：不能从主模块中使用相对引用。</li>
+<li>潜在的混淆：对于复杂的代码库，相对路径可能会变得难以管理。</li>
+</ul>
+<h3>示例</h3>
+<h4>导入子模块</h4>
+<p>如果包中有子模块，则可以将它们导入到 <code class="notranslate">__init__.py</code> 文件中，并使用<strong>相对引用</strong>导入。</p>
+<p><code class="notranslate">regular_package/module2</code> 引用 <code class="notranslate">regular_package/module1</code> 时，可以用以下方式：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package2/module2.py</span>
+<span class="pl-k">from</span> ..<span class="pl-s1">package1</span> <span class="pl-k">import</span> <span class="pl-s1">module1</span></pre></div>
+<h4>设置变量</h4>
+<p>定义元数据变量和包级别的变量，这些变量可以在包中的所有模块中使用。</p>
+<p>元数据变量是用来描述模块或包的属性的变量。它们通常用于存储关于模块或包的信息，如作者、版本、许可证等。这些变量通常不会在代码中直接访问，它们更多是用于文档和工具的元信息。</p>
+<p>包级别的变量是在包的顶层定义的变量，它们可以在包内的所有模块中共享和访问。这些变量通常用于存储包的全局状态或配置设置。包级别的变量可以是任何类型的数据，如字符串、列表、字典、函数、类等。</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package1/__init__.py</span>
+<span class="pl-c"># 元数据变量</span>
+<span class="pl-s1">__author__</span> <span class="pl-c1">=</span> <span class="pl-s">"Author"</span>  <span class="pl-c"># 项目作者</span>
+<span class="pl-c"># __email__ = "email@example.com"  # 项目作者邮箱</span>
+<span class="pl-s1">__version__</span> <span class="pl-c1">=</span> <span class="pl-s">"0.1.0"</span>  <span class="pl-c"># 包版本</span>
+<span class="pl-s1">__license__</span> <span class="pl-c1">=</span> <span class="pl-s">"GPLv3"</span>  <span class="pl-c"># "MIT", "BSD", "Apache", "GPLv3"</span>
+<span class="pl-c"># __maintainer__ = "Maintainer"  # 项目维护者</span>
+<span class="pl-c"># __status__ = "Development"  # "Prototype", "Development", "Production"</span>
+
+<span class="pl-c"># 包级别的变量</span>
+<span class="pl-s1">global_config</span> <span class="pl-c1">=</span> {
+    <span class="pl-s">"debug"</span>: <span class="pl-c1">True</span>,
+    <span class="pl-s">"log_level"</span>: <span class="pl-s">"INFO"</span>,  <span class="pl-c"># INFO, DEBUG, ERROR, WARNING, CRITICAL</span>
+}</pre></div>
+<p>在其他模块中，您可以这样访问这个变量：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package1/module1.py</span>
+<span class="pl-k">from</span> . <span class="pl-k">import</span> <span class="pl-s1">global_config</span>
+
+<span class="pl-k">def</span> <span class="pl-en">do_something</span>():
+    <span class="pl-k">if</span> <span class="pl-s1">global_config</span>[<span class="pl-s">"debug"</span>]:
+        <span class="pl-en">print</span>(<span class="pl-s">"Debug mode is on"</span>)</pre></div>
+<h4>定义包级别的属性和方法</h4>
+<p>定义包级别的属性和方法，这些属性和方法可以在包中的所有模块中使用。</p>
+<p>包级别的属性和方法可以帮助您组织和管理包中的代码，并提供包的公共接口。</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package1/__init__.py</span>
+<span class="pl-k">class</span> <span class="pl-v">PackageClass</span>:
+    <span class="pl-k">def</span> <span class="pl-en">__init__</span>(<span class="pl-s1">self</span>, <span class="pl-s1">arg1</span>, <span class="pl-s1">arg2</span>):
+        <span class="pl-s1">self</span>.<span class="pl-s1">arg1</span> <span class="pl-c1">=</span> <span class="pl-s1">arg1</span>
+        <span class="pl-s1">self</span>.<span class="pl-s1">arg2</span> <span class="pl-c1">=</span> <span class="pl-s1">arg2</span>
+
+    <span class="pl-k">def</span> <span class="pl-en">do_something</span>(<span class="pl-s1">self</span>):
+        <span class="pl-en">print</span>(<span class="pl-s">f"arg1: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">self</span>.<span class="pl-s1">arg1</span><span class="pl-kos">}</span></span>, arg2: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">self</span>.<span class="pl-s1">arg2</span><span class="pl-kos">}</span></span>"</span>)
+
+<span class="pl-k">def</span> <span class="pl-en">package_function</span>():
+    <span class="pl-en">print</span>(<span class="pl-s">"Package function called"</span>)</pre></div>
+<p>在其他模块中，您可以这样访问这个类：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package1/module1.py</span>
+<span class="pl-k">from</span> . <span class="pl-k">import</span> <span class="pl-v">PackageClass</span>, <span class="pl-s1">package_function</span>
+
+<span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-v">PackageClass</span>(<span class="pl-s">"value1"</span>, <span class="pl-s">"value2"</span>)
+<span class="pl-s1">obj</span>.<span class="pl-en">do_something</span>()
+
+<span class="pl-en">setattr</span>(<span class="pl-s1">obj</span>, <span class="pl-s">"new_attr"</span>, <span class="pl-s">"new_value"</span>)
+<span class="pl-en">getattr</span>(<span class="pl-s1">obj</span>, <span class="pl-s">"new_attr"</span>)  <span class="pl-c"># "new_value"</span>
+<span class="pl-en">getattr</span>(<span class="pl-s1">obj</span>, <span class="pl-s">"non_existent_attr"</span>, <span class="pl-s">"default_value"</span>)  <span class="pl-c"># "default_value"</span>
+
+
+<span class="pl-en">package_function</span>()</pre></div>
+<h2>绝对引用</h2>
+<p>绝对引用是指使用完整的包路径来导入模块或包。</p>
+<h3>优势</h3>
+<ul>
+<li>明确性：清楚地指定了模块或包的完整路径。</li>
+<li>一致性：在大型项目中，绝对引用可以提供一致的导入方式。</li>
+</ul>
+<h3>劣势</h3>
+<ul>
+<li>依赖性：依赖于项目的根目录结构，当项目结构发生变化时，可能需要更新导入路径。</li>
+<li>维护：在项目规模扩大时，维护所有绝对路径可能会变得困难。</li>
+</ul>
+<h3>示例</h3>
+<p><code class="notranslate">regular_package/module2</code> 引用 <code class="notranslate">regular_package/module1</code> 和 <code class="notranslate">namespace_package/module1</code>时，可以用以下方式：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package2/module2.py</span>
+<span class="pl-k">from</span> <span class="pl-s1">src</span>.<span class="pl-s1">regular_package</span>.<span class="pl-s1">package1</span> <span class="pl-k">import</span> <span class="pl-s1">module1</span> <span class="pl-k">as</span> <span class="pl-s1">regular_module1</span>
+<span class="pl-k">from</span> <span class="pl-s1">src</span>.<span class="pl-s1">namespace_package</span>.<span class="pl-s1">package1</span> <span class="pl-k">import</span> <span class="pl-s1">module1</span> <span class="pl-k">as</span> <span class="pl-s1">namespace_module1</span></pre></div>
+<p>你可能还见过这样的写法：</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package2/module2.py</span>
+<span class="pl-k">from</span> <span class="pl-s1">regular_package</span>.<span class="pl-s1">package1</span> <span class="pl-k">import</span> <span class="pl-s1">module1</span> <span class="pl-k">as</span> <span class="pl-s1">regular_module1</span>
+<span class="pl-k">from</span> <span class="pl-s1">namespace_package</span>.<span class="pl-s1">package1</span> <span class="pl-k">import</span> <span class="pl-s1">module1</span> <span class="pl-k">as</span> <span class="pl-s1">namespace_module1</span></pre></div>
+<p>在Python中，导入语句通常需要指定导入的模块或包的完整路径，除非导入的模块或包已经在系统的模块搜索路径（sys.path）中。</p>
+<p><code class="notranslate">from src.namespace_package.package1 import module1</code> 这条语句指定了从<code class="notranslate">src</code>目录下的<code class="notranslate">namespace_package</code>包中的<code class="notranslate">package1</code>子包导入<code class="notranslate">module1</code>模块。</p>
+<p>如果您尝试使用 <code class="notranslate">from namespace_package.package1 import module1</code> 而不包含 <code class="notranslate">src</code>，那么Python解释器将会在sys.path中搜索 <code class="notranslate">namespace_package</code>，而不是从 <code class="notranslate">src/namespace_package</code> 开始。</p>
+<p>这可能会导致以下几种情况：</p>
+<ol>
+<li><strong>成功导入</strong>：如果 <code class="notranslate">src</code> 目录或其上级目录在sys.path中，并且没有名为 <code class="notranslate">namespace_package</code> 的冲突包，那么这条简化的导入语句可能成功。但是，这种做法依赖于外部环境，并且可能导致代码在不同的环境中表现不一致。</li>
+<li><strong>导入错误</strong>：如果sys.path中没有包含正确的路径，或者有其他名为 <code class="notranslate">namespace_package</code> 的包，那么Python可能会导入错误的模块，导致 <code class="notranslate">ImportError</code> 或其他更难以诊断的错误。</li>
+</ol>
+<p>为了确保代码的可移植性和一致性，建议使用完整的路径来导入模块，尤其是在较大的项目中，或者在项目结构可能被其他包或环境变量影响的情况下。这样做可以避免潜在的导入问题，并确保模块的来源是清晰和明确的。</p>
+<p>因此，除非您有充分的理由相信 <code class="notranslate">namespace_package</code> 会在sys.path中正确地解析，否则建议使用完整的导入路径 <code class="notranslate">from src.namespace_package.package1 import module1</code>。</p>
+<h2>sys.path</h2>
+<p><code class="notranslate">sys.path</code> 是一个列表，它包含Python解释器搜索模块的路径。</p>
+<p>当导入一个模块时，Python解释器会搜索<code class="notranslate">sys.path</code>列表中的路径，并在这些路径中寻找模块。</p>
+<p>如果模块的导入路径不是以<code class="notranslate">src</code>开头，则可以将其添加到<code class="notranslate">sys.path</code>列表中，以便Python解释器可以找到它。</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">sys</span>
+<span class="pl-en">print</span>(<span class="pl-s1">sys</span>.<span class="pl-s1">path</span>)</pre></div>
+<h3>src 会自动加入到sys.path?</h3>
+<p>如果您是在IDE中工作，比如<code class="notranslate">PyCharm</code>或<code class="notranslate">VSCode</code>，或是在一个特定的项目环境中运行代码，比如使用<code class="notranslate">virtualenv</code>或<code class="notranslate">conda</code>环境，那么<code class="notranslate">src</code>目录可能会被自动加入到<code class="notranslate">sys.path</code>中，尤其是如果您使用了一些自动化的工具或框架，它们可能会配置<code class="notranslate">sys.path</code>以包含项目的源代码目录。</p>
+<h3>手动添加src到sys.path</h3>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">from</span> <span class="pl-s1">pathlib</span> <span class="pl-k">import</span> <span class="pl-v">Path</span>
+<span class="pl-k">import</span> <span class="pl-s1">sys</span>
+
+<span class="pl-c"># 获取当前工作目录</span>
+<span class="pl-s1">current_dir</span> <span class="pl-c1">=</span> <span class="pl-v">Path</span>.<span class="pl-en">cwd</span>()
+<span class="pl-c"># 获取src目录的路径</span>
+<span class="pl-s1">src_dir</span> <span class="pl-c1">=</span> <span class="pl-s1">current_dir</span> <span class="pl-c1">/</span> <span class="pl-s">'src'</span>
+<span class="pl-c"># 将src目录添加到sys.path中</span>
+<span class="pl-s1">sys</span>.<span class="pl-s1">path</span>.<span class="pl-en">append</span>(<span class="pl-en">str</span>(<span class="pl-s1">src_dir</span>))
+<span class="pl-c"># 现在可以导入src目录下的模块</span>
+<span class="pl-k">from</span> <span class="pl-s1">module</span> <span class="pl-k">import</span> <span class="pl-s1">my_function</span></pre></div></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://H1DDENADM1N.github.io"> Blog </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","H1DDENADM1N/H1DDENADM1N.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
