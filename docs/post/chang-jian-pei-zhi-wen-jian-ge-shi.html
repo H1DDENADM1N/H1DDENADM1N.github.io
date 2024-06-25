@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="//cdn.staticfile.net/Primer/21.0.7/primer.css" rel="stylesheet" />
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/65646535?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="<details>
+<summary><h2 style='opacity: 0.5;'>.py</h2></summary>
+
+直接使用python存储配置信息，通常使用**字典**数据类型。">
+<meta property="og:title" content="常见配置文件格式">
+<meta property="og:description" content="<details>
+<summary><h2 style='opacity: 0.5;'>.py</h2></summary>
+
+直接使用python存储配置信息，通常使用**字典**数据类型。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://H1DDENADM1N.github.io/post/chang-jian-pei-zhi-wen-jian-ge-shi.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/65646535?v=4">
+<title>常见配置文件格式</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">常见配置文件格式</h1>
+<div class="title-right">
+    <a href="https://H1DDENADM1N.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/H1DDENADM1N/H1DDENADM1N.github.io/issues/4" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><details>
+<summary><h2>.py</h2></summary>
+<p>直接使用python存储配置信息，通常使用<strong>字典</strong>数据类型。</p>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># python</span>
+{
+    <span class="pl-s">'id'</span>: <span class="pl-c1">1</span>,
+    <span class="pl-s">'name'</span>: <span class="pl-s">"Jason"</span>,
+    <span class="pl-s">'human'</span>: <span class="pl-c1">True</span>,
+    <span class="pl-s">'hobbies'</span>: [
+        <span class="pl-s">'eating'</span>,
+        <span class="pl-s">'playing'</span>,
+    ],
+    <span class="pl-s">'features'</span>: {
+        <span class="pl-s">'assets'</span>: <span class="pl-c1">None</span>,
+        <span class="pl-s">'weight'</span>: <span class="pl-c1">60</span>,
+    },
+}</pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"id"</span>: <span class="pl-c1">1</span>,
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"human"</span>: <span class="pl-c1">true</span>,
+    <span class="pl-ent">"hobbies"</span>: [
+        <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-ent">"features"</span>: {
+        <span class="pl-ent">"assets"</span>: <span class="pl-c1">null</span>,
+        <span class="pl-ent">"weight"</span>: <span class="pl-c1">60</span>
+    }
+}</pre></div>
+</details>
+<details>
+<summary><h2>.ini</h2></summary>
+<h3>INI</h3>
+<p>INI（Initialization File）是Windows系统中最常见的配置文件格式，它使用<strong>键值对</strong>的形式存储配置信息。通常只支持字符串类型，虽然一些解析器可能支持其他类型，但这不是标准的INI格式。不支持复杂的数据结构，扩展性较差，不适合表示复杂或层次深的数据。</p>
+<h4>INI语法细节</h4>
+<p>INI文件由节（sections）、键（keys）和值（values）组成。节由方括号包围的节名表示，键和值成对出现，用等号或冒号分隔。</p>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[Profile]</span>
+<span class="pl-k">name</span>=Jason
+<span class="pl-k">age</span>=18
+<span class="pl-k">hobbies</span>=eating,playing</pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: {
+        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+        <span class="pl-ent">"hobbies"</span>: <span class="pl-s"><span class="pl-pds">"</span>eating,playing<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+</details>
+<details>
+<summary><h2>.json</h2></summary>
+<h3>JSON</h3>
+<p>JSON(JavaScript Object Notation) 一种<strong>人类可读的文本数据格式</strong>。它源于 JavaScript、标准开放、独立于具体编程语言、常用于数据交换。</p>
+<h4>JSON标准中一共定义了六种值类型</h4>
+<table role="table">
+<thead>
+<tr>
+<th>数据类型（Type）</th>
+<th>示例（Example）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数组（Array）</td>
+<td>[值1, 值2, 值3, ...]</td>
+</tr>
+<tr>
+<td>布尔值（Boolean）</td>
+<td>true, false, null</td>
+</tr>
+<tr>
+<td>数值（Number）</td>
+<td>100, 3.14, -20</td>
+</tr>
+<tr>
+<td>对象（Object）</td>
+<td>{字符串: 值, 字符串: 值, ...}</td>
+</tr>
+<tr>
+<td>字符串（String）</td>
+<td>"一定要用双引号包裹"</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-c">// javascript</span>
+<span class="pl-kos">{</span>
+    <span class="pl-c1">id</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span>
+    <span class="pl-c1">name</span>: <span class="pl-s">"Jason"</span><span class="pl-kos">,</span>
+    <span class="pl-c1">human</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+    <span class="pl-c1">hobbies</span>: <span class="pl-kos">[</span>
+        <span class="pl-s">'eating'</span><span class="pl-kos">,</span>
+        <span class="pl-s">'playing'</span><span class="pl-kos">,</span>
+    <span class="pl-kos">]</span><span class="pl-kos">,</span>
+    <span class="pl-c1">features</span>: <span class="pl-kos">{</span>
+        <span class="pl-c1">assets</span>: <span class="pl-c1">null</span><span class="pl-kos">,</span>
+        <span class="pl-c1">weight</span>: <span class="pl-c1">60</span><span class="pl-kos">,</span>
+    <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span></pre></div>
+<p>通过将其中的所有单引号换为<strong>双引号</strong>，将对象中的键名改为由双引号包裹的同名字符串，再将对象与数组中最后出现的<strong>多余逗号</strong>去掉，我们便可以得到与其相对应的JSON数据。</p>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"id"</span>: <span class="pl-c1">1</span>,
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"human"</span>: <span class="pl-c1">true</span>,
+    <span class="pl-ent">"hobbies"</span>: [
+        <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-ent">"features"</span>: {
+        <span class="pl-ent">"assets"</span>: <span class="pl-c1">null</span>,
+        <span class="pl-ent">"weight"</span>: <span class="pl-c1">60</span>
+    }
+}</pre></div>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># python</span>
+{
+    <span class="pl-s">'id'</span>: <span class="pl-c1">1</span>,
+    <span class="pl-s">'name'</span>: <span class="pl-s">"Jason"</span>,
+    <span class="pl-s">'human'</span>: <span class="pl-c1">True</span>,
+    <span class="pl-s">'hobbies'</span>: [
+        <span class="pl-s">'eating'</span>,
+        <span class="pl-s">'playing'</span>,
+    ],
+    <span class="pl-s">'features'</span>: {
+        <span class="pl-s">'assets'</span>: <span class="pl-c1">None</span>,
+        <span class="pl-s">'weight'</span>: <span class="pl-c1">60</span>,
+    },
+}</pre></div>
+<h4>Python字典与JSON格式的主要区别</h4>
+<ol>
+<li>字符串键：在JSON中，对象（类似于Python的字典）的键必须是字符串。虽然在Python 3.6+中，字典会保留插入的顺序，但在Python 3.6之前，字典是无序的，而在JSON中，对象的键总是被认为是<strong>有序</strong>的。</li>
+<li>字符串引号：在JSON中，字符串必须使用<strong>双引号</strong>（"）包裹。在Python中，你可以使用单引号（'）、双引号（"）或三引号（'''或"""）。</li>
+<li>数据类型：JSON支持的数据类型包括字符串、数字（整数和浮点数）、布尔值（true/false）、数组（类似于Python的列表）、对象（类似于Python的字典）和null。Python字典的值可以是任何数据类型，包括字符串、数字、列表、字典、元组、集合等。对于布尔值和空值类型，JSON使用<strong>true</strong>/<strong>false</strong>/<strong>null</strong>，而Python的True/False/None。</li>
+<li>注释：Python字典允许在源代码中添加注释，而JSON<strong>不支持注释</strong>。</li>
+<li>尾随逗号：在Python中，字典的键值对可以有一个尾随逗号，而在标准的JSON中，尾随逗号是<strong>不允许</strong>的（尽管在某些实现中可能被宽容处理）。JSON 5是一个JSON的扩展，它允许尾随逗号。</li>
+<li>复杂对象：Python字典可以包含任何Python对象，包括函数、类实例等。而JSON只能表示简单的数据结构。</li>
+</ol>
+<h4>JSON 5</h4>
+<details>
+<summary><h4>JSON 5</h4></summary>
+<p>JSON 5是一个JSON的扩展，它增加了对一些JavaScript对象字面量特性的支持，例如<strong>注释</strong>、尾随逗号、单引号字符串等。这使得JSON 5更容易阅读和编写，同时也更易于与JavaScript对象字面量互相转换。</p>
+<p>尽管JSON 5提供了更多的灵活性和便利性，但它并不是一个官方的ECMAScript标准，因此在某些环境下可能不被支持。</p>
+<div class="highlight highlight-source-js"><pre class="notranslate"><span class="pl-kos">{</span>
+  <span class="pl-c">// json5</span>
+  <span class="pl-c1">id</span>: <span class="pl-c1">1</span><span class="pl-kos">,</span> <span class="pl-c">// 属性名没有双引号，尾随逗号</span>
+  <span class="pl-c1">name</span>: <span class="pl-s">"Jason"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">human</span>: <span class="pl-c1">true</span><span class="pl-kos">,</span>
+  <span class="pl-c1">hobbies</span>: <span class="pl-kos">[</span>
+    <span class="pl-s">'eating'</span><span class="pl-kos">,</span>
+    <span class="pl-s">'playing'</span><span class="pl-kos">,</span> <span class="pl-c">// 数组尾部的尾随逗号</span>
+  <span class="pl-kos">]</span><span class="pl-kos">,</span>
+  <span class="pl-c1">features</span>: <span class="pl-kos">{</span>
+    <span class="pl-c1">assets</span>: <span class="pl-c1">null</span><span class="pl-kos">,</span> <span class="pl-c">// 对象尾部的尾随逗号</span>
+    <span class="pl-c1">weight</span>: <span class="pl-c1">60</span><span class="pl-kos">,</span>
+  <span class="pl-kos">}</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span></pre></div>
+</details>
+</details>
+<details>
+<summary><h2>.yaml</h2></summary>
+<h3>YAML</h3>
+<p>YAML（<del>Yet Another Markup Language</del> / YAML Ain't Markup Language）不再是一种标记语言，而是一种<strong>人类可读的数据序列化语言</strong>，它常用于配置文件，可被多种编程语言解析。YAML的定位与JSON相近，但具有自己的特色。</p>
+<h4>YAML语法细节</h4>
+<h5>字符串（String）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-s">Jason</span>
+<span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>Jason<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span></pre></div>
+<h5>列表（List）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate">- <span class="pl-s">Jason</span>
+- <span class="pl-c1">18</span>
+
+<span class="pl-s">[Jason, 18,]</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">[
+    <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-c1">18</span>
+]</pre></div>
+<h5>关联数组（Associative Array）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+<span class="pl-ent">age</span>: <span class="pl-c1">18</span>
+
+<span class="pl-s">{name: Jason, age: 18,}</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>
+}</pre></div>
+<h5>缩进结构（Indentation）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">Profile</span>:
+    <span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+    <span class="pl-ent">age</span>: <span class="pl-c1">18</span>
+    <span class="pl-ent">hobbies</span>:
+        - <span class="pl-s">eating</span>
+        - <span class="pl-s">playing</span>
+
+<span class="pl-ent">Profile</span>:
+<span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+<span class="pl-ent">age</span>: <span class="pl-c1">18</span>
+<span class="pl-ent">hobbies</span>:
+    - <span class="pl-s">eating</span>
+    - <span class="pl-s">playing</span>
+
+<span class="pl-ent">Profile</span>:
+  <span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+  <span class="pl-ent">age</span>: <span class="pl-c1">18</span>
+<span class="pl-ent">hobbies</span>:
+    - <span class="pl-s">- eating</span>
+      - <span class="pl-s">playing</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: {
+        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+        <span class="pl-ent">"hobbies"</span>: [
+            <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>
+        ]
+    }
+}
+
+{
+    <span class="pl-ent">"Profile"</span>: <span class="pl-c1">null</span>,
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+    <span class="pl-ent">"hobbies"</span>: [
+        <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>
+    ]
+}
+
+{
+    <span class="pl-ent">"Profile"</span>: {
+        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>
+    },
+    <span class="pl-ent">"hobbies"</span>: [
+        [
+            <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>
+        ]
+    ]
+} </pre></div>
+<h5>注释（Comment）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">Profile</span>: <span class="pl-c"><span class="pl-c">#</span> 这是一条注释</span>
+    <span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+    <span class="pl-ent">age</span>: <span class="pl-c1">18</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: {
+        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>
+    }
+}</pre></div>
+<h5>区块字符（Block Character）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">Profile</span>:
+    <span class="pl-s">I'm Jason,</span>
+    <span class="pl-s">in Shanghai.</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: <span class="pl-s"><span class="pl-pds">"</span>I'm Jason, in Shanghai.<span class="pl-pds">"</span></span>
+}</pre></div>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 保留换行</span>
+<span class="pl-ent">Profile</span>: <span class="pl-s">|</span>
+<span class="pl-s">    I'm Jason,</span>
+<span class="pl-s">    in Shanghai.</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: <span class="pl-s"><span class="pl-pds">"</span>I'm Jason,<span class="pl-cce">\n</span>in Shanghai.<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>
+}</pre></div>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 折叠换行</span>
+<span class="pl-ent">Profile</span>: <span class="pl-s">&gt;</span>
+<span class="pl-s">    I'm Jason,</span>
+<span class="pl-s">    in Shanghai.</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: <span class="pl-s"><span class="pl-pds">"</span>I'm Jason, in Shanghai.<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>
+}</pre></div>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 去掉末尾换行符</span>
+<span class="pl-ent">Profile</span>: <span class="pl-s">|-</span>
+<span class="pl-s">    I'm Jason,</span>
+<span class="pl-s">    in Shanghai.</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: <span class="pl-s"><span class="pl-pds">"</span>I'm Jason,<span class="pl-cce">\n</span>in Shanghai.<span class="pl-pds">"</span></span>
+}</pre></div>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 保留末尾换行符</span>
+<span class="pl-ent">Profile</span>: <span class="pl-s">&gt;+</span>
+<span class="pl-s">    I'm Jason,</span>
+<span class="pl-s">    in Shanghai.</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"Profile"</span>: <span class="pl-s"><span class="pl-pds">"</span>I'm Jason, in Shanghai.<span class="pl-cce">\n\n</span><span class="pl-pds">"</span></span>
+}</pre></div>
+<h5>锚点与引用（Anchor &amp; Reference）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+<span class="pl-ent">age</span>: <span class="pl-s">name</span>
+<span class="pl-ent">addr</span>: <span class="pl-s">&amp;addr Shanghai</span>
+<span class="pl-ent">ship-to</span>: <span class="pl-s">*addr</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"age"</span>: <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>
+    <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"ship-to"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+}</pre></div>
+<h5>标签（Tag）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+<span class="pl-ent">age</span>: <span class="pl-c1">18</span>
+<span class="pl-ent">money</span>: <span class="pl-s">!!str null</span></pre></div>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 全局标签</span>
+<span class="pl-s">!! str</span>
+<span class="pl-s">!&lt;tag:yaml.org,2002:str&gt;</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 本地标签</span>
+<span class="pl-s">！str</span>
+<span class="pl-s">！&lt;!str&gt;</span>
+
+<span class="pl-c"><span class="pl-c">#</span> 控制标签解析行为</span>
+<span class="pl-s">%TAG ! tag:yaml.org,2002:</span>
+---
+<span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+<span class="pl-ent">age</span>: <span class="pl-c1">18</span>
+<span class="pl-ent">money</span>: <span class="pl-s">!str null</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+    <span class="pl-ent">"money"</span>: <span class="pl-s"><span class="pl-pds">"</span>null<span class="pl-pds">"</span></span>
+}</pre></div>
+<h5>文档（Doc）</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-s">%TAG ! tag:yaml.org,2002:</span>
+--- <span class="pl-c"><span class="pl-c">#</span> 文档开始</span>
+<span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+<span class="pl-ent">age</span>: <span class="pl-c1">18</span>
+<span class="pl-ent">money</span>: <span class="pl-s">!str null</span>
+... <span class="pl-c"><span class="pl-c">#</span> 文档结束</span>
+--- <span class="pl-c"><span class="pl-c">#</span> 另一个文档开始</span>
+<span class="pl-ent">name</span>: <span class="pl-s">Alice</span>
+<span class="pl-ent">age</span>: <span class="pl-c1">24</span>
+<span class="pl-ent">money</span>: <span class="pl-c1">1000</span>
+... <span class="pl-c"><span class="pl-c">#</span> 另一个文档结束</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+    <span class="pl-ent">"money"</span>: <span class="pl-s"><span class="pl-pds">"</span>null<span class="pl-pds">"</span></span>
+}
+{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"age"</span>: <span class="pl-c1">24</span>,
+    <span class="pl-ent">"money"</span>: <span class="pl-c1">1000</span>
+}</pre></div>
+<h4>YAML支持</h4>
+<table role="table">
+<thead>
+<tr>
+<th>语言</th>
+<th>库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C/C++</td>
+<td>LibYAML</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>go-yaml</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>jvyaml / JYAML</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>eemeli/yaml</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>PyYAML</td>
+</tr>
+<tr>
+<td>Objective-C</td>
+<td>Cocoa-Syck</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>YamlDotNet</td>
+</tr>
+</tbody>
+</table>
+<h4>YAML 比较 JSON 的优势</h4>
+<h5>更方便的文本内联</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-s">html： &gt;-</span>
+  <span class="pl-s">&lt;p class="tag"&gt;</span>
+    <span class="pl-s">Jason</span>
+  <span class="pl-s">&lt;/p&gt;</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"html"</span>: <span class="pl-s"><span class="pl-pds">"</span>&lt;p class=<span class="pl-cce">\"</span>tag<span class="pl-cce">\"</span>&gt;<span class="pl-cce">\n</span>    Jason<span class="pl-cce">\n</span>  &lt;/p&gt;<span class="pl-pds">"</span></span>
+}</pre></div>
+<h5>更易读的数据关系</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">addr</span>: <span class="pl-s">&amp;addr Shanghai</span>
+<span class="pl-ent">ship-to</span>: <span class="pl-s">*addr</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"ship-to"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+}</pre></div>
+<h4>YAML 比较 JSON 的劣势</h4>
+<h5>复杂语法结构</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-s">%TAG !yaml! tag:yaml.org,2002:</span>
+---
+<span class="pl-ent">omap</span>: <span class="pl-s">!yaml!omap</span>
+  - <span class="pl-ent">name</span>: <span class="pl-s">Jason</span>
+  - <span class="pl-ent">humal</span>: <span class="pl-s">!!bool true</span>
+  - <span class="pl-ent">date</span>: <span class="pl-c1">2024-09-10</span>
+  - <span class="pl-s">? money</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"omap"</span>: [
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"humal"</span>: <span class="pl-c1">true</span>
+        },
+        {
+            <span class="pl-ent">"date"</span>: <span class="pl-s"><span class="pl-pds">"</span>2024-09-10T00:00:00.000Z<span class="pl-pds">"</span></span>
+        },
+        {
+            <span class="pl-ent">"money"</span>: <span class="pl-c1">null</span>
+        }
+    ]
+}</pre></div>
+<h5>容易形成RCE漏洞</h5>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-s">!!python/object/apply:subprocess.Popen</span>
+- <span class="pl-s">- echo</span>
+  - <span class="pl-s"><span class="pl-pds">"</span>You have been hacked :)<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># PyYAML</span>
+<span class="pl-k">from</span> <span class="pl-s1">yaml</span> <span class="pl-k">import</span> <span class="pl-s1">load</span>, <span class="pl-v">Loader</span>
+<span class="pl-c"># ...</span>
+<span class="pl-s1">result</span> <span class="pl-c1">=</span> <span class="pl-en">load</span>(
+    <span class="pl-s1">request</span>.<span class="pl-s1">from</span>[<span class="pl-s">'file'</span>],
+    <span class="pl-v">Loader</span><span class="pl-c1">=</span><span class="pl-v">Loader</span>
+)
+<span class="pl-en">print</span>(<span class="pl-s1">result</span>)</pre></div>
+</details>
+<details>
+<summary><h2>.toml</h2></summary>
+<h3>TOML</h3>
+<p>TOML（Tom's Obvious, Minimal Language）是Tom Preston-Werner在2013年发明的一种<strong>语义明确、配置最小化</strong>语言，旨在成为一个小规模、易于使用的语义化配置文件格式，它被设计为可以无二义性地转换为一个<strong>哈希表</strong>。</p>
+<h4>语法细节</h4>
+<h5>键值对（Key/Value Pair）</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+<span class="pl-smi">age</span> = <span class="pl-c1">18</span>
+  <span class="pl-smi">addr</span> = <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 缩进不影响</span>
+<span class="pl-smi">profile.age</span> = <span class="pl-c1">18</span> <span class="pl-c"><span class="pl-c">#</span> 点表示嵌套</span>
+<span class="pl-smi">profile.addr</span> = <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+<span class="pl-smi">about.pets.cats</span> = <span class="pl-s"><span class="pl-pds">"</span>Pipi<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> profile = "Jason" # 错误，键名不能重复</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+    <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"profile"</span>: {
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+        <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"about"</span>: {
+        <span class="pl-ent">"pets"</span>: {
+            <span class="pl-ent">"cats"</span>: <span class="pl-s"><span class="pl-pds">"</span>Pipi<span class="pl-pds">"</span></span>
+        }
+    }
+}</pre></div>
+<h5>字符串（String）</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+<span class="pl-smi">name2</span> = <span class="pl-s"><span class="pl-pds">"""</span>Jason</span>
+<span class="pl-s">Yu</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-smi">name3</span> = <span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-s">Jason \</span>
+<span class="pl-s">Yu\</span>
+<span class="pl-s"><span class="pl-pds">"""</span></span>
+<span class="pl-smi">name4</span> = <span class="pl-s"><span class="pl-pds">'</span>Jason\nYu<span class="pl-pds">'</span></span>
+<span class="pl-smi">name5</span> = <span class="pl-s"><span class="pl-pds">'''</span></span>
+<span class="pl-s">Jason</span>
+<span class="pl-s">Yu</span>
+<span class="pl-s"><span class="pl-pds">'''</span></span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"name2"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-cce">\n</span>Yu<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"name3"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason Yu<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"name4"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-cce">\\</span>nYu<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"name5"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-cce">\n</span>Yu<span class="pl-cce">\n</span><span class="pl-pds">"</span></span>
+}</pre></div>
+<h5>数组（Array）</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">hobbies</span> = [
+    <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>,
+]
+<span class="pl-smi">hobbies2</span> = [
+    [
+        <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>,
+    ]
+]</pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"hobbies"</span>: [
+        <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-ent">"hobbies2"</span>: [
+        [
+            <span class="pl-s"><span class="pl-pds">"</span>eating<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>playing<span class="pl-pds">"</span></span>
+        ]
+    ]
+}</pre></div>
+<h5>表（Table）</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">profile.age</span> = <span class="pl-c1">18</span>
+<span class="pl-smi">profile.addr</span> = <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+<span class="pl-smi">profile.jobs.EfficLab</span> = <span class="pl-c1">true</span>
+<span class="pl-smi">about.pets.cats</span> = <span class="pl-s"><span class="pl-pds">"</span>Pipi<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-toml"><pre class="notranslate">[<span class="pl-en">profile</span>]
+<span class="pl-smi">age</span> = <span class="pl-c1">18</span>
+<span class="pl-smi">addr</span> = <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+<span class="pl-smi">jobs</span> = { <span class="pl-smi">EfficLab</span> = <span class="pl-c1">true</span> } <span class="pl-c"><span class="pl-c">#</span> 内联表 只能写在一行</span>
+[<span class="pl-en">about</span>.<span class="pl-en">pets</span>]
+<span class="pl-smi">cats</span> = <span class="pl-s"><span class="pl-pds">"</span>Pipi<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> [about.pets] # 错误，表名与键名都不能重复定义</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"profile"</span>: {
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+        <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"jobs"</span>: {
+            <span class="pl-ent">"EfficLab"</span>: <span class="pl-c1">true</span>
+        }
+    },
+    <span class="pl-ent">"about"</span>: {
+        <span class="pl-ent">"pets"</span>: {
+            <span class="pl-ent">"cats"</span>: <span class="pl-s"><span class="pl-pds">"</span>Pipi<span class="pl-pds">"</span></span>
+        }
+    }
+}</pre></div>
+<h5>表数组（Array of Tables）</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate">[[<span class="pl-en">profile</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+<span class="pl-smi">age</span> = <span class="pl-c1">18</span>
+[[<span class="pl-en">profile</span>]] <span class="pl-c"><span class="pl-c">#</span> 不同与表 表数组可以重复定义</span>
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>
+<span class="pl-smi">age</span> = <span class="pl-c1">20</span></pre></div>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">profile</span> = [
+    { <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>, <span class="pl-smi">age</span> = <span class="pl-c1">18</span> },
+    { <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>, <span class="pl-smi">age</span> = <span class="pl-c1">20</span> }
+]</pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"profile"</span>: [
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>
+        },
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"age"</span>: <span class="pl-c1">20</span>
+        }
+    ]
+}</pre></div>
+<h5>注释（Comment）</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 单行注释</span>
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 这是一个注释</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+}</pre></div>
+<h4>使用限制</h4>
+<h5>顶层表数据无法后置</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+[<span class="pl-en">profile</span>]
+<span class="pl-smi">age</span> = <span class="pl-c1">18</span>
+<span class="pl-smi">addr</span> = <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"profile"</span>: {
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+        <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+<div class="highlight highlight-source-toml"><pre class="notranslate">[<span class="pl-en">profile</span>]
+<span class="pl-smi">age</span> = <span class="pl-c1">18</span>
+<span class="pl-smi">addr</span> = <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 会被归类到 profile 表</span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"profile"</span>: {
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+        <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
+<h5>内联表无法换行</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate"><span class="pl-smi">profile</span> = [
+    { <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>, <span class="pl-smi">age</span> = <span class="pl-c1">18</span> },
+    { <span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>, <span class="pl-smi">age</span> = <span class="pl-c1">20</span> },
+]</pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"profile"</span>: [
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Jason<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>
+        },
+        {
+            <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Alice<span class="pl-pds">"</span></span>,
+            <span class="pl-ent">"age"</span>: <span class="pl-c1">20</span>
+        }
+    ]
+}</pre></div>
+<h5>可读性依赖于写法</h5>
+<div class="highlight highlight-source-toml"><pre class="notranslate">[<span class="pl-en">profile</span>]
+<span class="pl-smi">age</span> = <span class="pl-c1">18</span>
+<span class="pl-smi">addr</span> = <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>
+<span class="pl-smi">name.surname</span> = <span class="pl-s"><span class="pl-pds">"</span>Yu<span class="pl-pds">"</span></span>
+[[<span class="pl-en">pets</span>.<span class="pl-en">cat</span>]]
+<span class="pl-smi">name</span> = <span class="pl-s"><span class="pl-pds">"</span>Pipi<span class="pl-pds">"</span></span>
+[<span class="pl-en">about</span>]
+<span class="pl-smi">job</span> = <span class="pl-s"><span class="pl-pds">"</span>EfficLab<span class="pl-pds">"</span></span>
+[<span class="pl-en">pets</span>.<span class="pl-en">cat</span>.<span class="pl-en">children</span>]
+[<span class="pl-en">about</span>.<span class="pl-en">desc</span>]
+<span class="pl-smi">skill</span> = <span class="pl-s"><span class="pl-pds">"</span>CS<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-json"><pre class="notranslate">{
+    <span class="pl-ent">"profile"</span>: {
+        <span class="pl-ent">"age"</span>: <span class="pl-c1">18</span>,
+        <span class="pl-ent">"addr"</span>: <span class="pl-s"><span class="pl-pds">"</span>Shanghai<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"name"</span>: {
+            <span class="pl-ent">"surname"</span>: <span class="pl-s"><span class="pl-pds">"</span>Yu<span class="pl-pds">"</span></span>
+        }
+    },
+    <span class="pl-ent">"pets"</span>: {
+        <span class="pl-ent">"cat"</span>: [
+            {
+                <span class="pl-ent">"name"</span>: <span class="pl-s"><span class="pl-pds">"</span>Pipi<span class="pl-pds">"</span></span>,
+                <span class="pl-ent">"children"</span>: {}
+            }
+        ]
+    },
+    <span class="pl-ent">"about"</span>: {
+        <span class="pl-ent">"job"</span>: <span class="pl-s"><span class="pl-pds">"</span>EfficLab<span class="pl-pds">"</span></span>,
+        <span class="pl-ent">"desc"</span>: {
+            <span class="pl-ent">"skill"</span>: <span class="pl-s"><span class="pl-pds">"</span>CS<span class="pl-pds">"</span></span>
+        }
+    }
+}</pre></div>
+</details></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+</div>
+    <div id="footer">Copyright © <span id="year"></span><a href="https://H1DDENADM1N.github.io"> Blog </a>
+<p>
+<span id="runday"></span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a>
+</p>
+
+<script>
+if(""!=""){
+    var now=new Date();
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("year").innerHTML=now.getFullYear();
+    if(""!=""){document.getElementById("runday").innerHTML=" • "+"网站运行"+diffDay+"天"+" • ";}
+    else{document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";}
+}
+</script>
+</div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n\n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","H1DDENADM1N/H1DDENADM1N.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+</script>
+
+
+</html>
