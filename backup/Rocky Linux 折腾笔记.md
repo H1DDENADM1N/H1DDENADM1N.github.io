@@ -1,3 +1,5 @@
+# Rocky Linux Notes
+
 <details>
 <summary><h2">👶基础环境</h2></summary>
 
@@ -810,6 +812,8 @@ sudo seahub-setup
 ```bash
 sudo systemctl start seafile
 sudo systemctl enable seafile
+```
+
 ### ☁️Alist ~~smb ftp~~
 
 [Alist](https://alist.nn.ci/zh/guide/install/docker.html)是一个支持多种存储的文件列表程序，使用 Gin 和 Solidjs。

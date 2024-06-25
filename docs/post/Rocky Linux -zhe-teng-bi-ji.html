@@ -9,7 +9,9 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="<details>
+<meta name="description" content="# Rocky Linux Notes
+
+<details>
 <summary><h2'>👶基础环境</h2></summary>
 
 ### 🧰 使能 sudo
@@ -205,7 +207,9 @@ gnome-tweaks
 
 在 gnome-tweaks 中启用 “Window Title Buttons” 选项。">
 <meta property="og:title" content="Rocky Linux 折腾笔记">
-<meta property="og:description" content="<details>
+<meta property="og:description" content="# Rocky Linux Notes
+
+<details>
 <summary><h2'>👶基础环境</h2></summary>
 
 ### 🧰 使能 sudo
@@ -458,7 +462,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><details>
+<div class="markdown-body" id="postBody"><h1>Rocky Linux Notes</h1>
+<details>
 <summary>👶基础环境</summary>
 <h3>🧰 使能 sudo</h3>
 <h4>执行</h4>
@@ -895,18 +900,14 @@ lazyteam/lazydocker</pre></div>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo seahub-setup</pre></div>
 <h4>验证</h4>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl start seafile
-sudo systemctl <span class="pl-c1">enable</span> seafile
-<span class="pl-c"><span class="pl-c">#</span>## ☁️Alist ~~smb ftp~~</span>
+sudo systemctl <span class="pl-c1">enable</span> seafile</pre></div>
+<h3>☁️Alist <del>smb ftp</del></h3>
+<p><a href="https://alist.nn.ci/zh/guide/install/docker.html" rel="nofollow">Alist</a>是一个支持多种存储的文件列表程序，使用 Gin 和 Solidjs。</p>
+<h4>安装</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name=<span class="pl-s"><span class="pl-pds">"</span>alist<span class="pl-pds">"</span></span> xhofe/alist:latest <span class="pl-c"><span class="pl-c">#</span> 安装 Alist</span>
+sudo docker <span class="pl-c1">exec</span> -it alist ./alist admin <span class="pl-c1">set</span> 🔑ALISTPASSWORD🔑 <span class="pl-c"><span class="pl-c">#</span> 设置 Alist 密码</span>
 
-[Alist](https://alist.nn.ci/zh/guide/install/docker.html)是一个支持多种存储的文件列表程序，使用 Gin 和 Solidjs。
-
-<span class="pl-c"><span class="pl-c">#</span>### 安装</span>
-
-<span class="pl-s"><span class="pl-pds">`</span><span class="pl-pds">`</span><span class="pl-pds">`</span>bash</span>
-<span class="pl-s">sudo docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name=<span class="pl-s"><span class="pl-pds">"</span>alist<span class="pl-pds">"</span></span> xhofe/alist:latest <span class="pl-c"><span class="pl-c">#</span> 安装 Alist</span></span>
-<span class="pl-s"><span class="pl-c">sudo docker exec -it alist ./alist admin set 🔑ALISTPASSWORD🔑 # 设置 Alist 密码</span></span>
-<span class="pl-s"><span class="pl-c"></span></span>
-<span class="pl-s"><span class="pl-c">sudo mkdir /etc/alist/alist-share # 创建共享目录</span></span></pre></div>
+sudo mkdir /etc/alist/alist-share <span class="pl-c"><span class="pl-c">#</span> 创建共享目录</span></pre></div>
 <h4>远程访问 Alist</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:5244</p>
 </details>
