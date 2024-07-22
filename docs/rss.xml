@@ -1,5 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog</title><link>https://H1DDENADM1N.github.io</link><description>https://H1DDENADM1N.github.io</description><copyright>Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/65646535?v=4</url><title>avatar</title><link>https://H1DDENADM1N.github.io</link></image><lastBuildDate>Fri, 12 Jul 2024 01:55:49 +0000</lastBuildDate><managingEditor>Blog</managingEditor><ttl>60</ttl><webMaster>Blog</webMaster><item><title>Python 四舍五入</title><link>https://H1DDENADM1N.github.io/post/Python%20-si-she-wu-ru.html</link><description>分享已知的五种四舍五入方法；真正解决四舍五入不准确的问题&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog</title><link>https://H1DDENADM1N.github.io</link><description>https://H1DDENADM1N.github.io</description><copyright>Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/65646535?v=4</url><title>avatar</title><link>https://H1DDENADM1N.github.io</link></image><lastBuildDate>Mon, 22 Jul 2024 17:17:50 +0000</lastBuildDate><managingEditor>Blog</managingEditor><ttl>60</ttl><webMaster>Blog</webMaster><item><title>简述 enum.Enum、dataclasses.dataclass(frozen=True)、pydantic.BaseModel 使用场景区别，并举例说明</title><link>https://H1DDENADM1N.github.io/post/jian-shu-%20enum.Enum%E3%80%81dataclasses.dataclass%28frozen%3DTrue%29%E3%80%81pydantic.BaseModel%20-shi-yong-chang-jing-qu-bie-%EF%BC%8C-bing-ju-li-shuo-ming.html</link><description>```python&#13;
+import datetime&#13;
+from dataclasses import dataclass&#13;
+from datetime import datetime&#13;
+from enum import Enum&#13;
+&#13;
+from pydantic import BaseModel&#13;
+&#13;
+&#13;
+# enum.Enum&#13;
+# 使用场景：&#13;
+#     当你需要定义一组具有唯一性的命名常量时，例如状态码、选项值或具有特定意义的符号。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/jian-shu-%20enum.Enum%E3%80%81dataclasses.dataclass%28frozen%3DTrue%29%E3%80%81pydantic.BaseModel%20-shi-yong-chang-jing-qu-bie-%EF%BC%8C-bing-ju-li-shuo-ming.html</guid><pubDate>Mon, 22 Jul 2024 17:16:07 +0000</pubDate></item><item><title>Python 四舍五入</title><link>https://H1DDENADM1N.github.io/post/Python%20-si-she-wu-ru.html</link><description>分享已知的五种四舍五入方法；真正解决四舍五入不准确的问题&#13;
 &#13;
 ## 四舍五入方法一&#13;
 &#13;
