@@ -172,11 +172,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package1/__init__.py</span>
 <span class="pl-k">class</span> <span class="pl-v">PackageClass</span>:
     <span class="pl-k">def</span> <span class="pl-en">__init__</span>(<span class="pl-s1">self</span>, <span class="pl-s1">arg1</span>, <span class="pl-s1">arg2</span>):
-        <span class="pl-s1">self</span>.<span class="pl-s1">arg1</span> <span class="pl-c1">=</span> <span class="pl-s1">arg1</span>
-        <span class="pl-s1">self</span>.<span class="pl-s1">arg2</span> <span class="pl-c1">=</span> <span class="pl-s1">arg2</span>
+        <span class="pl-s1">self</span>.<span class="pl-c1">arg1</span> <span class="pl-c1">=</span> <span class="pl-s1">arg1</span>
+        <span class="pl-s1">self</span>.<span class="pl-c1">arg2</span> <span class="pl-c1">=</span> <span class="pl-s1">arg2</span>
 
     <span class="pl-k">def</span> <span class="pl-en">do_something</span>(<span class="pl-s1">self</span>):
-        <span class="pl-en">print</span>(<span class="pl-s">f"arg1: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">self</span>.<span class="pl-s1">arg1</span><span class="pl-kos">}</span></span>, arg2: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">self</span>.<span class="pl-s1">arg2</span><span class="pl-kos">}</span></span>"</span>)
+        <span class="pl-en">print</span>(<span class="pl-s">f"arg1: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">self</span>.<span class="pl-c1">arg1</span><span class="pl-kos">}</span></span>, arg2: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">self</span>.<span class="pl-c1">arg2</span><span class="pl-kos">}</span></span>"</span>)
 
 <span class="pl-k">def</span> <span class="pl-en">package_function</span>():
     <span class="pl-en">print</span>(<span class="pl-s">"Package function called"</span>)</pre></div>
@@ -184,8 +184,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-c"># regular_package/package1/module1.py</span>
 <span class="pl-k">from</span> . <span class="pl-k">import</span> <span class="pl-v">PackageClass</span>, <span class="pl-s1">package_function</span>
 
-<span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-v">PackageClass</span>(<span class="pl-s">"value1"</span>, <span class="pl-s">"value2"</span>)
-<span class="pl-s1">obj</span>.<span class="pl-en">do_something</span>()
+<span class="pl-s1">obj</span> <span class="pl-c1">=</span> <span class="pl-en">PackageClass</span>(<span class="pl-s">"value1"</span>, <span class="pl-s">"value2"</span>)
+<span class="pl-s1">obj</span>.<span class="pl-c1">do_something</span>()
 
 <span class="pl-en">setattr</span>(<span class="pl-s1">obj</span>, <span class="pl-s">"new_attr"</span>, <span class="pl-s">"new_value"</span>)
 <span class="pl-en">getattr</span>(<span class="pl-s1">obj</span>, <span class="pl-s">"new_attr"</span>)  <span class="pl-c"># "new_value"</span>
@@ -229,7 +229,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>当导入一个模块时，Python解释器会搜索<code class="notranslate">sys.path</code>列表中的路径，并在这些路径中寻找模块。</p>
 <p>如果模块的导入路径不是以<code class="notranslate">src</code>开头，则可以将其添加到<code class="notranslate">sys.path</code>列表中，以便Python解释器可以找到它。</p>
 <div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">import</span> <span class="pl-s1">sys</span>
-<span class="pl-en">print</span>(<span class="pl-s1">sys</span>.<span class="pl-s1">path</span>)</pre></div>
+<span class="pl-en">print</span>(<span class="pl-s1">sys</span>.<span class="pl-c1">path</span>)</pre></div>
 <h3>src 会自动加入到sys.path?</h3>
 <p>如果您是在IDE中工作，比如<code class="notranslate">PyCharm</code>或<code class="notranslate">VSCode</code>，或是在一个特定的项目环境中运行代码，比如使用<code class="notranslate">virtualenv</code>或<code class="notranslate">conda</code>环境，那么<code class="notranslate">src</code>目录可能会被自动加入到<code class="notranslate">sys.path</code>中，尤其是如果您使用了一些自动化的工具或框架，它们可能会配置<code class="notranslate">sys.path</code>以包含项目的源代码目录。</p>
 <h3>手动添加src到sys.path</h3>
@@ -237,11 +237,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-k">import</span> <span class="pl-s1">sys</span>
 
 <span class="pl-c"># 获取当前工作目录</span>
-<span class="pl-s1">current_dir</span> <span class="pl-c1">=</span> <span class="pl-v">Path</span>.<span class="pl-en">cwd</span>()
+<span class="pl-s1">current_dir</span> <span class="pl-c1">=</span> <span class="pl-v">Path</span>.<span class="pl-c1">cwd</span>()
 <span class="pl-c"># 获取src目录的路径</span>
 <span class="pl-s1">src_dir</span> <span class="pl-c1">=</span> <span class="pl-s1">current_dir</span> <span class="pl-c1">/</span> <span class="pl-s">'src'</span>
 <span class="pl-c"># 将src目录添加到sys.path中</span>
-<span class="pl-s1">sys</span>.<span class="pl-s1">path</span>.<span class="pl-en">append</span>(<span class="pl-en">str</span>(<span class="pl-s1">src_dir</span>))
+<span class="pl-s1">sys</span>.<span class="pl-c1">path</span>.<span class="pl-c1">append</span>(<span class="pl-en">str</span>(<span class="pl-s1">src_dir</span>))
 <span class="pl-c"># 现在可以导入src目录下的模块</span>
 <span class="pl-k">from</span> <span class="pl-s1">module</span> <span class="pl-k">import</span> <span class="pl-s1">my_function</span></pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>

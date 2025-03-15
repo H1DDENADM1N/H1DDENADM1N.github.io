@@ -347,7 +347,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p>分享已知的五种四舍五入方法；真正解决四舍五入不准确的问题</p>
 <h2>四舍五入方法一</h2>
-<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法一</span>(<span class="pl-s1">float_num</span>: <span class="pl-s1">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-s1">float</span>:
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法一</span>(<span class="pl-s1">float_num</span>: <span class="pl-smi">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-smi">float</span>:
     <span class="pl-s">"""</span>
 <span class="pl-s">    四舍五入_法一: 不准确，例1.035 ❌</span>
 <span class="pl-s">    :param float_num: 待四舍五入的浮点数</span>
@@ -357,7 +357,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <span class="pl-s1">multiplier</span> <span class="pl-c1">=</span> <span class="pl-c1">10</span><span class="pl-c1">**</span><span class="pl-s1">ndigits</span>
     <span class="pl-k">return</span> <span class="pl-en">int</span>(<span class="pl-s1">float_num</span> <span class="pl-c1">*</span> <span class="pl-s1">multiplier</span> <span class="pl-c1">+</span> <span class="pl-c1">0.5</span>) <span class="pl-c1">/</span> <span class="pl-s1">multiplier</span></pre></div>
 <h2>四舍五入方法二</h2>
-<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法二</span>(<span class="pl-s1">float_num</span>: <span class="pl-s1">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-s1">float</span>:
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法二</span>(<span class="pl-s1">float_num</span>: <span class="pl-smi">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-smi">float</span>:
     <span class="pl-s">"""</span>
 <span class="pl-s">    四舍五入_法二: 不准确，例1.035 ❌</span>
 <span class="pl-s">    :param float_num: 待四舍五入的浮点数</span>
@@ -366,7 +366,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-s">    """</span>
     <span class="pl-k">return</span> <span class="pl-en">round</span>(<span class="pl-s1">float_num</span>, <span class="pl-s1">ndigits</span>)</pre></div>
 <h2>四舍五入方法三</h2>
-<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法三</span>(<span class="pl-s1">float_num</span>: <span class="pl-s1">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-s1">float</span>:
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法三</span>(<span class="pl-s1">float_num</span>: <span class="pl-smi">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-smi">float</span>:
     <span class="pl-s">"""</span>
 <span class="pl-s">    四舍五入_法三: 不准确，例1.035 ❌</span>
 <span class="pl-s">    :param float_num: 待四舍五入的浮点数</span>
@@ -375,7 +375,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-s">    """</span>
     <span class="pl-k">return</span> <span class="pl-s">f"<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">float_num</span>:.{<span class="pl-s1">ndigits</span>}f<span class="pl-kos">}</span></span>"</span></pre></div>
 <h2>四舍五入方法四</h2>
-<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法四</span>(<span class="pl-s1">float_num</span>: <span class="pl-s1">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-s1">float</span>:
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法四</span>(<span class="pl-s1">float_num</span>: <span class="pl-smi">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-smi">float</span>:
     <span class="pl-s">"""</span>
 <span class="pl-s">    四舍五入_法四: 准确 ✅</span>
 <span class="pl-s">    :param float_num: 待四舍五入的浮点数</span>
@@ -384,10 +384,10 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-s">    """</span>
     <span class="pl-k">import</span> <span class="pl-s1">decimal</span>
 
-    <span class="pl-s1">decimal</span>.<span class="pl-en">getcontext</span>().<span class="pl-s1">rounding</span> <span class="pl-c1">=</span> <span class="pl-s1">decimal</span>.<span class="pl-v">ROUND_HALF_UP</span>
-    <span class="pl-k">return</span> <span class="pl-en">round</span>(<span class="pl-s1">decimal</span>.<span class="pl-v">Decimal</span>(<span class="pl-en">str</span>(<span class="pl-s1">float_num</span>)), <span class="pl-s1">ndigits</span>)</pre></div>
+    <span class="pl-s1">decimal</span>.<span class="pl-c1">getcontext</span>().<span class="pl-c1">rounding</span> <span class="pl-c1">=</span> <span class="pl-s1">decimal</span>.<span class="pl-c1">ROUND_HALF_UP</span>
+    <span class="pl-k">return</span> <span class="pl-en">round</span>(<span class="pl-s1">decimal</span>.<span class="pl-c1">Decimal</span>(<span class="pl-en">str</span>(<span class="pl-s1">float_num</span>)), <span class="pl-s1">ndigits</span>)</pre></div>
 <h2>四舍五入方法五</h2>
-<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法五</span>(<span class="pl-s1">float_num</span>: <span class="pl-s1">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-s1">float</span>:
+<div class="highlight highlight-source-python"><pre class="notranslate"><span class="pl-k">def</span> <span class="pl-en">四舍五入_法五</span>(<span class="pl-s1">float_num</span>: <span class="pl-smi">float</span>, <span class="pl-s1">ndigits</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>) <span class="pl-c1">-&gt;</span> <span class="pl-smi">float</span>:
     <span class="pl-s">"""</span>
 <span class="pl-s">    四舍五入_法五: 准确 ✅</span>
 <span class="pl-s">    :param float_num: 待四舍五入的浮点数</span>
@@ -396,9 +396,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-s">    """</span>
     <span class="pl-k">import</span> <span class="pl-s1">decimal</span>
 
-    <span class="pl-s1">quantize_exp</span> <span class="pl-c1">=</span> <span class="pl-s1">decimal</span>.<span class="pl-v">Decimal</span>((<span class="pl-c1">0</span>, (<span class="pl-c1">1</span>,), <span class="pl-c1">-</span><span class="pl-s1">ndigits</span>))
-    <span class="pl-k">return</span> <span class="pl-s1">decimal</span>.<span class="pl-v">Decimal</span>(<span class="pl-en">str</span>(<span class="pl-s1">float_num</span>)).<span class="pl-en">quantize</span>(
-        <span class="pl-s1">quantize_exp</span>, <span class="pl-s1">rounding</span><span class="pl-c1">=</span><span class="pl-s1">decimal</span>.<span class="pl-v">ROUND_HALF_UP</span>
+    <span class="pl-s1">quantize_exp</span> <span class="pl-c1">=</span> <span class="pl-s1">decimal</span>.<span class="pl-c1">Decimal</span>((<span class="pl-c1">0</span>, (<span class="pl-c1">1</span>,), <span class="pl-c1">-</span><span class="pl-s1">ndigits</span>))
+    <span class="pl-k">return</span> <span class="pl-s1">decimal</span>.<span class="pl-c1">Decimal</span>(<span class="pl-en">str</span>(<span class="pl-s1">float_num</span>)).<span class="pl-c1">quantize</span>(
+        <span class="pl-s1">quantize_exp</span>, <span class="pl-s1">rounding</span><span class="pl-c1">=</span><span class="pl-s1">decimal</span>.<span class="pl-c1">ROUND_HALF_UP</span>
     )</pre></div>
 <hr>
 <h2>四舍五入测试一</h2>

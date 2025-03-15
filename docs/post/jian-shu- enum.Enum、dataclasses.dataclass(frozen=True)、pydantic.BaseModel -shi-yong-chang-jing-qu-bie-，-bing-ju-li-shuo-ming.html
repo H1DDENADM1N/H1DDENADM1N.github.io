@@ -118,19 +118,19 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c">#     当你需要定义一组具有唯一性的命名常量时，例如状态码、选项值或具有特定意义的符号。</span>
 <span class="pl-c">#     用于表示一组互斥的选项或类型。</span>
 <span class="pl-k">class</span> <span class="pl-v">StatusCode</span>(<span class="pl-v">Enum</span>):
-    <span class="pl-v">SUCCESS</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">200</span>
-    <span class="pl-v">NOT_FOUND</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">404</span>
-    <span class="pl-v">SERVER_ERROR</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">500</span>
+    <span class="pl-c1">SUCCESS</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">200</span>
+    <span class="pl-c1">NOT_FOUND</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">404</span>
+    <span class="pl-c1">SERVER_ERROR</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">500</span>
 
 
 <span class="pl-c"># 使用</span>
-<span class="pl-en">print</span>(<span class="pl-v">StatusCode</span>.<span class="pl-v">SUCCESS</span>.<span class="pl-s1">name</span>)  <span class="pl-c"># SUCCESS</span>
-<span class="pl-en">print</span>(<span class="pl-v">StatusCode</span>.<span class="pl-v">SUCCESS</span>.<span class="pl-s1">value</span>)  <span class="pl-c"># 200</span>
+<span class="pl-en">print</span>(<span class="pl-v">StatusCode</span>.<span class="pl-c1">SUCCESS</span>.<span class="pl-c1">name</span>)  <span class="pl-c"># SUCCESS</span>
+<span class="pl-en">print</span>(<span class="pl-v">StatusCode</span>.<span class="pl-c1">SUCCESS</span>.<span class="pl-c1">value</span>)  <span class="pl-c"># 200</span>
 <span class="pl-c"># StatusCode.SUCCESS = 2333  # AttributeError: cannot reassign member 'SUCCESS'</span>
 
-<span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-v">StatusCode</span>.<span class="pl-v">SUCCESS</span>
-<span class="pl-en">print</span>(<span class="pl-s1">status</span>.<span class="pl-s1">name</span>)  <span class="pl-c"># SUCCESS</span>
-<span class="pl-en">print</span>(<span class="pl-s1">status</span>.<span class="pl-s1">value</span>)  <span class="pl-c"># 200</span>
+<span class="pl-s1">status</span> <span class="pl-c1">=</span> <span class="pl-v">StatusCode</span>.<span class="pl-c1">SUCCESS</span>
+<span class="pl-en">print</span>(<span class="pl-s1">status</span>.<span class="pl-c1">name</span>)  <span class="pl-c"># SUCCESS</span>
+<span class="pl-en">print</span>(<span class="pl-s1">status</span>.<span class="pl-c1">value</span>)  <span class="pl-c"># 200</span>
 
 <span class="pl-c"># status.value = 2333  # AttributeError: &lt;enum 'Enum'&gt; cannot set attribute 'value'</span>
 <span class="pl-c"># print(status.value)</span>
@@ -142,33 +142,33 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c">#     用于定义记录或实体，其中数据在创建后不应被修改。</span>
 <span class="pl-en">@<span class="pl-en">dataclass</span>(<span class="pl-s1">frozen</span><span class="pl-c1">=</span><span class="pl-c1">True</span>)</span>
 <span class="pl-k">class</span> <span class="pl-v">Point</span>:
-    <span class="pl-s1">x</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
-    <span class="pl-s1">y</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+    <span class="pl-s1">x</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+    <span class="pl-s1">y</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
 
 
 <span class="pl-c"># 使用</span>
-<span class="pl-en">print</span>(<span class="pl-v">Point</span>.<span class="pl-s1">x</span>)  <span class="pl-c"># 0</span>
-<span class="pl-en">print</span>(<span class="pl-v">Point</span>.<span class="pl-s1">y</span>)  <span class="pl-c"># 0</span>
-<span class="pl-v">Point</span>.<span class="pl-s1">x</span> <span class="pl-c1">=</span> (
+<span class="pl-en">print</span>(<span class="pl-v">Point</span>.<span class="pl-c1">x</span>)  <span class="pl-c"># 0</span>
+<span class="pl-en">print</span>(<span class="pl-v">Point</span>.<span class="pl-c1">y</span>)  <span class="pl-c"># 0</span>
+<span class="pl-v">Point</span>.<span class="pl-c1">x</span> <span class="pl-c1">=</span> (
     <span class="pl-c1">2333</span>  <span class="pl-c"># 这里你试图修改类字段，这是可以的，因为类字段是静态的，不会影响实例的状态。</span>
 )
-<span class="pl-en">print</span>(<span class="pl-v">Point</span>.<span class="pl-s1">x</span>)  <span class="pl-c"># 2333</span>
+<span class="pl-en">print</span>(<span class="pl-v">Point</span>.<span class="pl-c1">x</span>)  <span class="pl-c"># 2333</span>
 
-<span class="pl-s1">p1</span> <span class="pl-c1">=</span> <span class="pl-v">Point</span>()
-<span class="pl-en">print</span>(<span class="pl-s1">p1</span>.<span class="pl-s1">x</span>)  <span class="pl-c"># 0 因为实例字段没有创建副本，所以它们是静态的</span>
-<span class="pl-en">print</span>(<span class="pl-s1">p1</span>.<span class="pl-s1">y</span>)  <span class="pl-c"># 0</span>
+<span class="pl-s1">p1</span> <span class="pl-c1">=</span> <span class="pl-en">Point</span>()
+<span class="pl-en">print</span>(<span class="pl-s1">p1</span>.<span class="pl-c1">x</span>)  <span class="pl-c"># 0 因为实例字段没有创建副本，所以它们是静态的</span>
+<span class="pl-en">print</span>(<span class="pl-s1">p1</span>.<span class="pl-c1">y</span>)  <span class="pl-c"># 0</span>
 
-<span class="pl-s1">p2</span> <span class="pl-c1">=</span> <span class="pl-v">Point</span>(<span class="pl-s1">x</span><span class="pl-c1">=</span><span class="pl-c1">1</span>, <span class="pl-s1">y</span><span class="pl-c1">=</span><span class="pl-c1">2</span>)
-<span class="pl-en">print</span>(<span class="pl-s1">p2</span>.<span class="pl-s1">x</span>)  <span class="pl-c"># 1</span>
-<span class="pl-en">print</span>(<span class="pl-s1">p2</span>.<span class="pl-s1">y</span>)  <span class="pl-c"># 2</span>
+<span class="pl-s1">p2</span> <span class="pl-c1">=</span> <span class="pl-en">Point</span>(<span class="pl-s1">x</span><span class="pl-c1">=</span><span class="pl-c1">1</span>, <span class="pl-s1">y</span><span class="pl-c1">=</span><span class="pl-c1">2</span>)
+<span class="pl-en">print</span>(<span class="pl-s1">p2</span>.<span class="pl-c1">x</span>)  <span class="pl-c"># 1</span>
+<span class="pl-en">print</span>(<span class="pl-s1">p2</span>.<span class="pl-c1">y</span>)  <span class="pl-c"># 2</span>
 <span class="pl-c"># p2.x = 3  # dataclasses.FrozenInstanceError: cannot assign to field 'x'</span>
 <span class="pl-c"># print(p2.x)</span>
 
-<span class="pl-s1">p3</span> <span class="pl-c1">=</span> <span class="pl-v">Point</span>(
+<span class="pl-s1">p3</span> <span class="pl-c1">=</span> <span class="pl-en">Point</span>(
     <span class="pl-s1">x</span><span class="pl-c1">=</span><span class="pl-s">"not a number"</span>, <span class="pl-s1">y</span><span class="pl-c1">=</span><span class="pl-s">"not a number"</span>
 )  <span class="pl-c"># dataclass 没有动态类型检查，所以这里不会报错</span>
-<span class="pl-en">print</span>(<span class="pl-s1">p3</span>.<span class="pl-s1">x</span>)  <span class="pl-c"># not a number</span>
-<span class="pl-en">print</span>(<span class="pl-s1">p3</span>.<span class="pl-s1">y</span>)  <span class="pl-c"># not a number</span>
+<span class="pl-en">print</span>(<span class="pl-s1">p3</span>.<span class="pl-c1">x</span>)  <span class="pl-c"># not a number</span>
+<span class="pl-en">print</span>(<span class="pl-s1">p3</span>.<span class="pl-c1">y</span>)  <span class="pl-c"># not a number</span>
 
 <span class="pl-c"># pydantic.BaseModel</span>
 <span class="pl-c"># 使用场景：</span>
@@ -177,8 +177,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 
 <span class="pl-k">class</span> <span class="pl-v">User</span>(<span class="pl-v">BaseModel</span>, <span class="pl-s1">frozen</span><span class="pl-c1">=</span><span class="pl-c1">True</span>):
-    <span class="pl-s1">name</span>: <span class="pl-s1">str</span> <span class="pl-c1">=</span> <span class="pl-s">"name"</span>
-    <span class="pl-s1">age</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+    <span class="pl-s1">name</span>: <span class="pl-smi">str</span> <span class="pl-c1">=</span> <span class="pl-s">"name"</span>
+    <span class="pl-s1">age</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
 
 
 <span class="pl-c"># 使用</span>
@@ -186,9 +186,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c"># print(User.age)  # raise AttributeError(item)</span>
 
 
-<span class="pl-s1">user</span> <span class="pl-c1">=</span> <span class="pl-v">User</span>(<span class="pl-s1">name</span><span class="pl-c1">=</span><span class="pl-s">"Alice"</span>, <span class="pl-s1">age</span><span class="pl-c1">=</span><span class="pl-c1">30</span>)
-<span class="pl-en">print</span>(<span class="pl-s1">user</span>.<span class="pl-s1">name</span>)
-<span class="pl-en">print</span>(<span class="pl-s1">user</span>.<span class="pl-s1">age</span>)
+<span class="pl-s1">user</span> <span class="pl-c1">=</span> <span class="pl-en">User</span>(<span class="pl-s1">name</span><span class="pl-c1">=</span><span class="pl-s">"Alice"</span>, <span class="pl-s1">age</span><span class="pl-c1">=</span><span class="pl-c1">30</span>)
+<span class="pl-en">print</span>(<span class="pl-s1">user</span>.<span class="pl-c1">name</span>)
+<span class="pl-en">print</span>(<span class="pl-s1">user</span>.<span class="pl-c1">age</span>)
 
 <span class="pl-c"># 尝试修改age字段，这将引发异常，因为模型是不可变的</span>
 <span class="pl-c"># user.age = "thirty"  # raise pydantic_core.ValidationError.from_exception_data(self.__class__.__name__, [error])  pydantic_core._pydantic_core.ValidationError: 1 validation error for User age</span>
@@ -208,35 +208,35 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
 
 <span class="pl-c"># 使用enum.Enum定义文章状态</span>
-<span class="pl-k">class</span> <span class="pl-v">ArticleStatus</span>(<span class="pl-s1">enum</span>.<span class="pl-v">Enum</span>):
-    <span class="pl-v">DRAFT</span> <span class="pl-c1">=</span> <span class="pl-s">"draft"</span>
-    <span class="pl-v">PUBLISHED</span> <span class="pl-c1">=</span> <span class="pl-s">"published"</span>
-    <span class="pl-v">ARCHIVED</span> <span class="pl-c1">=</span> <span class="pl-s">"archived"</span>
+<span class="pl-k">class</span> <span class="pl-v">ArticleStatus</span>(<span class="pl-s1">enum</span>.<span class="pl-c1">Enum</span>):
+    <span class="pl-c1">DRAFT</span> <span class="pl-c1">=</span> <span class="pl-s">"draft"</span>
+    <span class="pl-c1">PUBLISHED</span> <span class="pl-c1">=</span> <span class="pl-s">"published"</span>
+    <span class="pl-c1">ARCHIVED</span> <span class="pl-c1">=</span> <span class="pl-s">"archived"</span>
 
 
 <span class="pl-c"># 使用pydantic.BaseModel定义文章元数据</span>
 <span class="pl-k">class</span> <span class="pl-v">ArticleMetadata</span>(<span class="pl-v">BaseModel</span>):
-    <span class="pl-s1">title</span>: <span class="pl-s1">str</span> <span class="pl-c1">=</span> <span class="pl-s">"title"</span>
-    <span class="pl-s1">content</span>: <span class="pl-s1">str</span> <span class="pl-c1">=</span> <span class="pl-s">"content"</span>
-    <span class="pl-s1">author</span>: <span class="pl-s1">str</span> <span class="pl-c1">=</span> <span class="pl-s">"author"</span>
-    <span class="pl-s1">status</span>: <span class="pl-v">ArticleStatus</span> <span class="pl-c1">=</span> <span class="pl-v">ArticleStatus</span>.<span class="pl-v">DRAFT</span>
+    <span class="pl-s1">title</span>: <span class="pl-smi">str</span> <span class="pl-c1">=</span> <span class="pl-s">"title"</span>
+    <span class="pl-s1">content</span>: <span class="pl-smi">str</span> <span class="pl-c1">=</span> <span class="pl-s">"content"</span>
+    <span class="pl-s1">author</span>: <span class="pl-smi">str</span> <span class="pl-c1">=</span> <span class="pl-s">"author"</span>
+    <span class="pl-s1">status</span>: <span class="pl-smi">ArticleStatus</span> <span class="pl-c1">=</span> <span class="pl-v">ArticleStatus</span>.<span class="pl-c1">DRAFT</span>
 
 
 <span class="pl-c"># 使用dataclasses.dataclass定义文章</span>
 <span class="pl-en">@<span class="pl-en">dataclass</span>(<span class="pl-s1">frozen</span><span class="pl-c1">=</span><span class="pl-c1">True</span>)</span>
 <span class="pl-k">class</span> <span class="pl-v">Article</span>:
-    <span class="pl-s1">id</span>: <span class="pl-s1">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
-    <span class="pl-s1">metadata</span>: <span class="pl-v">ArticleMetadata</span> <span class="pl-c1">=</span> <span class="pl-en">field</span>(<span class="pl-s1">default_factory</span><span class="pl-c1">=</span><span class="pl-k">lambda</span>: <span class="pl-v">ArticleMetadata</span>())
-    <span class="pl-s1">create_datetime</span>: <span class="pl-s1">datetime</span> <span class="pl-c1">=</span> <span class="pl-s1">datetime</span>.<span class="pl-en">now</span>()
+    <span class="pl-s1">id</span>: <span class="pl-smi">int</span> <span class="pl-c1">=</span> <span class="pl-c1">0</span>
+    <span class="pl-s1">metadata</span>: <span class="pl-smi">ArticleMetadata</span> <span class="pl-c1">=</span> <span class="pl-en">field</span>(<span class="pl-s1">default_factory</span><span class="pl-c1">=</span><span class="pl-k">lambda</span>: <span class="pl-en">ArticleMetadata</span>())
+    <span class="pl-s1">create_datetime</span>: <span class="pl-smi">datetime</span> <span class="pl-c1">=</span> <span class="pl-s1">datetime</span>.<span class="pl-c1">now</span>()
 
 
 <span class="pl-c"># 使用</span>
 <span class="pl-c"># 创建文章元数据实例</span>
-<span class="pl-s1">metadata</span> <span class="pl-c1">=</span> <span class="pl-v">ArticleMetadata</span>(
+<span class="pl-s1">metadata</span> <span class="pl-c1">=</span> <span class="pl-en">ArticleMetadata</span>(
     <span class="pl-s1">title</span><span class="pl-c1">=</span><span class="pl-s">"Python学习笔记"</span>,
     <span class="pl-s1">content</span><span class="pl-c1">=</span><span class="pl-s">"笔记内容"</span>,
     <span class="pl-s1">author</span><span class="pl-c1">=</span><span class="pl-s">"user0"</span>,
-    <span class="pl-s1">status</span><span class="pl-c1">=</span><span class="pl-v">ArticleStatus</span>.<span class="pl-v">PUBLISHED</span>,
+    <span class="pl-s1">status</span><span class="pl-c1">=</span><span class="pl-v">ArticleStatus</span>.<span class="pl-c1">PUBLISHED</span>,
 )
 
 <span class="pl-c"># metadata2 = ArticleMetadata(</span>
@@ -247,24 +247,24 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c"># )  # 🤢 pydantic_core._pydantic_core.ValidationError: 1 validation error for ArticleMetadata</span>
 
 <span class="pl-c"># 创建文章实例</span>
-<span class="pl-s1">article</span> <span class="pl-c1">=</span> <span class="pl-v">Article</span>(<span class="pl-s1">id</span><span class="pl-c1">=</span><span class="pl-c1">1</span>, <span class="pl-s1">metadata</span><span class="pl-c1">=</span><span class="pl-s1">metadata</span>)
+<span class="pl-s1">article</span> <span class="pl-c1">=</span> <span class="pl-en">Article</span>(<span class="pl-s1">id</span><span class="pl-c1">=</span><span class="pl-c1">1</span>, <span class="pl-s1">metadata</span><span class="pl-c1">=</span><span class="pl-s1">metadata</span>)
 
 <span class="pl-c"># 打印文章信息</span>
-<span class="pl-en">print</span>(<span class="pl-s">f"Article ID: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">id</span><span class="pl-kos">}</span></span>"</span>)
-<span class="pl-en">print</span>(<span class="pl-s">f"Article Title: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">title</span><span class="pl-kos">}</span></span>"</span>)
-<span class="pl-en">print</span>(<span class="pl-s">f"Article Content: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">content</span><span class="pl-kos">}</span></span>"</span>)
-<span class="pl-en">print</span>(<span class="pl-s">f"Article Author: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">author</span><span class="pl-kos">}</span></span>"</span>)
-<span class="pl-en">print</span>(<span class="pl-s">f"Article Status: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">status</span>.<span class="pl-s1">value</span><span class="pl-kos">}</span></span>"</span>)
-<span class="pl-en">print</span>(<span class="pl-s">f"Article Create Time: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">create_datetime</span><span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Article ID: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">id</span><span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Article Title: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">title</span><span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Article Content: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">content</span><span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Article Author: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">author</span><span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Article Status: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">status</span>.<span class="pl-c1">value</span><span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Article Create Time: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">create_datetime</span><span class="pl-kos">}</span></span>"</span>)
 
 <span class="pl-c"># article.id = 2333  # 🤢 dataclasses.FrozenInstanceError: cannot assign to field 'id'</span>
-<span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">title</span> <span class="pl-c1">=</span> <span class="pl-s">"JAVA学习笔记"</span>  <span class="pl-c"># 这里可以修改，因为BaseModel未设置frozen=True</span>
-<span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">content</span> <span class="pl-c1">=</span> (
+<span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">title</span> <span class="pl-c1">=</span> <span class="pl-s">"JAVA学习笔记"</span>  <span class="pl-c"># 这里可以修改，因为BaseModel未设置frozen=True</span>
+<span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">content</span> <span class="pl-c1">=</span> (
     <span class="pl-s">"笔记内容笔记内容笔记内容"</span>  <span class="pl-c"># 这里可以修改，因为BaseModel未设置frozen=True</span>
 )
-<span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">author</span> <span class="pl-c1">=</span> <span class="pl-s">"user1"</span>  <span class="pl-c"># 这里可以修改，因为BaseModel未设置frozen=True</span>
-<span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">status</span> <span class="pl-c1">=</span> (
-    <span class="pl-v">ArticleStatus</span>.<span class="pl-v">ARCHIVED</span>
+<span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">author</span> <span class="pl-c1">=</span> <span class="pl-s">"user1"</span>  <span class="pl-c"># 这里可以修改，因为BaseModel未设置frozen=True</span>
+<span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">status</span> <span class="pl-c1">=</span> (
+    <span class="pl-v">ArticleStatus</span>.<span class="pl-c1">ARCHIVED</span>
 )  <span class="pl-c"># 这里可以修改，因为BaseModel未设置frozen=True</span>
 <span class="pl-c"># article.metadata.status.value = "archived"  # 🤢 raise AttributeError(AttributeError: &lt;enum 'Enum'&gt; cannot set attribute 'value'</span>
 <span class="pl-c"># article.create_datetime = datetime(</span>
@@ -272,20 +272,20 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-c"># )  # 🤢 dataclasses.FrozenInstanceError: cannot assign to field 'create_datetime'</span>
 
 <span class="pl-c"># 打印文章信息</span>
-<span class="pl-en">print</span>(<span class="pl-s">f"Article ID (frozen dataclass, 不能修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">id</span><span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Article ID (frozen dataclass, 不能修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">id</span><span class="pl-kos">}</span></span>"</span>)
 <span class="pl-en">print</span>(
-    <span class="pl-s">f"Article Title (pydantic.BaseModel 未设置frozen=True, 可以修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">title</span><span class="pl-kos">}</span></span>"</span>
+    <span class="pl-s">f"Article Title (pydantic.BaseModel 未设置frozen=True, 可以修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">title</span><span class="pl-kos">}</span></span>"</span>
 )
 <span class="pl-en">print</span>(
-    <span class="pl-s">f"Article Content (pydantic.BaseModel 未设置frozen=True, 可以修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">content</span><span class="pl-kos">}</span></span>"</span>
+    <span class="pl-s">f"Article Content (pydantic.BaseModel 未设置frozen=True, 可以修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">content</span><span class="pl-kos">}</span></span>"</span>
 )
 <span class="pl-en">print</span>(
-    <span class="pl-s">f"Article Author (pydantic.BaseModel 未设置frozen=True, 可以修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">author</span><span class="pl-kos">}</span></span>"</span>
+    <span class="pl-s">f"Article Author (pydantic.BaseModel 未设置frozen=True, 可以修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">author</span><span class="pl-kos">}</span></span>"</span>
 )
 <span class="pl-en">print</span>(
-    <span class="pl-s">f"Article Status (enum.Enum status.value不能修改, 但是status可以改变): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">metadata</span>.<span class="pl-s1">status</span>.<span class="pl-s1">value</span><span class="pl-kos">}</span></span>"</span>
+    <span class="pl-s">f"Article Status (enum.Enum status.value不能修改, 但是status可以改变): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">metadata</span>.<span class="pl-c1">status</span>.<span class="pl-c1">value</span><span class="pl-kos">}</span></span>"</span>
 )
-<span class="pl-en">print</span>(<span class="pl-s">f"Article Create Time (frozen dataclass, 不能修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-s1">create_datetime</span><span class="pl-kos">}</span></span>"</span>)</pre></div></div>
+<span class="pl-en">print</span>(<span class="pl-s">f"Article Create Time (frozen dataclass, 不能修改): <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">article</span>.<span class="pl-c1">create_datetime</span><span class="pl-kos">}</span></span>"</span>)</pre></div></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
