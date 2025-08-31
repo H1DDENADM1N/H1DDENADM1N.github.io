@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/65646535?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 🏋️ 健身黑话词典
+
+---
+
+## 🎯 训练目标
+
+| 英文缩写                   | 英文全称                     | 中文      | 中文解释                          |
+| ---------------------- | ------------------------ | ------- | ----------------------------- |
+| Hypertrophy            | Hypertrophy              | 肌肥大     | 通过阻力训练使肌纤维横截面积增大，表现为肌肉围度和体积增加 |
+| Strength               | Strength                 | 力量      | 肌肉或神经-肌肉系统在单次收缩中能够输出的最大力量     |
+| Endurance              | Muscular Endurance       | 肌肉耐力    | 肌肉在长时间或多次数收缩中维持力量输出的能力        |
+| Power                  | Power = Force × Velocity | 爆发力     | 单位时间内产生最大力量的能力，结合了力量和速度       |
+| Flexibility / Mobility | Flexibility / Mobility   | 灵活度/活动度 | 关节可活动的最大范围及对动作的控制能力           |
+| Cardio                 | Cardiovascular Fitness   | 心肺功能    | 心脏、肺和循环系统高效供氧与支持运动的能力         |
+
+---
+
+## 🔧 训练技术 & 要领
+
+| 英文缩写       | 英文全称                          | 中文      | 中文解释                         |
+| ---------- | ----------------------------- | ------- | ---------------------------- |
+| Concentric | Concentric Contraction        | 向心收缩    | 肌肉缩短同时产生张力的收缩方式，如举起杠铃        |
+| Eccentric  | Eccentric Contraction         | 离心收缩    | 肌肉被拉长同时产生张力的收缩方式，如放下杠铃       |
+| Isometric  | Isometric Contraction         | 等长收缩    | 肌肉产生张力但长度不变，如平板支撑或静力推墙       |
+| ROM        | Range of Motion               | 动作幅度    | 从起始到结束的关节和肌肉运动范围             |
+| TUT        | Time Under Tension            | 受力时间    | 肌肉在一组动作中持续受张力的时间，是刺激肥大的关键变量  |
+| RM         | Repetition Maximum            | 最大重复次数  | 在保证标准动作的情况下，某重量下可完成的最大次数     |
+| RPE        | Rate of Perceived Exertion    | 主观用力程度  | 用主观评分（1-10）衡量训练强度，10表示极限     |
+| RIR        | Reps In Reserve               | 剩余可完成次数 | 当前组结束后理论上还能多完成的次数，帮助调节强度     |
+| DOMS       | Delayed Onset Muscle Soreness | 延迟性肌肉酸痛 | 训练后24-72小时出现的酸胀与酸痛，由微损伤和炎症引起 |
+| Failure    | Failure                       | 力竭      | 在保持正确动作前提下，无法完成下一次重复         |
+
+---
+
+## 🔄 训练方法 & 特殊组法
+
+| 英文缩写        | 英文全称                             | 中文      | 中文解释                           |
+| ----------- | -------------------------------- | ------- | ------------------------------ |
+| SS          | Superset                         | 超级组     | 两个动作连续完成，无休息，常用于拮抗肌或同肌群        |
+| DS          | Drop Set                         | 递减组     | 力竭后立即降低重量继续做，增加训练容量和代谢压力       |
+| GS          | Giant Set                        | 巨人组     | 3-4个动作连续完成，几乎无休息，强化泵感和耐力       |
+| RP          | Rest-Pause                       | 休息暂停    | 在力竭后短休（10-30秒），继续完成额外次数        |
+| Pyramid     | Pyramid Training                 | 金字塔组    | 逐渐加重量/减次数，或逐渐减重量/加次数，形成金字塔负荷曲线 |
+| Forced Reps | Forced Repetitions               | 强迫次数    | 伙伴辅助下完成超出极限的额外次数               |
+| AMRAP       | As Many Reps As Possible         | 极限重复    | 在设定重量下尽可能多完成次数，用于耐力或极限测试       |
+| EMOM        | Every Minute On the Minute       | 每分钟一组   | 每分钟开始时完成规定动作，剩余时间休息            |
+| HIIT        | High-Intensity Interval Training | 高强度间歇训练 | 高强度短时间运动与低强度休息交替，提升心肺和燃脂效率     |
+| LISS        | Low-Intensity Steady State       | 低强度有氧   | 匀速、低强度的有氧运动，如快走或慢跑，常用于减脂       |
+
+---
+
+## 📅 训练计划 & 周期
+
+| 英文缩写                 | 英文全称                             | 中文     | 中文解释                         |
+| -------------------- | -------------------------------- | ------ | ---------------------------- |
+| Progressive Overload | Progressive Overload             | 渐进超负荷  | 逐步增加重量、次数或总训练量，持续给予身体适应性刺激   |
+| Deload               | Deload Week                      | 减载周    | 主动降低训练强度或容量，用于恢复神经和肌肉，防止过度训练 |
+| Volume               | Training Volume                  | 训练量    | 总训练负荷量，计算方式=重量×次数×组数         |
+| Intensity            | Training Intensity               | 强度     | 训练负荷相对于1RM的百分比               |
+| Split                | Training Split                   | 分化训练   | 把不同部位分配到不同日程训练的方式            |
+| PPL                  | Push / Pull / Legs               | 推拉腿分化  | 第一天推（胸肩三头），第二天拉（背二头），第三天腿部   |
+| Upper/Lower          | Upper / Lower Split              | 上下身分化  | 上半身和下半身交替训练                  |
+| PR                   | Personal Record                  | 个人纪录   | 单个动作的历史最好成绩                  |
+
+---
+
+## 🥗 饮食 & 身材
+
+| 英文缩写               | 英文全称                  | 中文    | 中文解释                  |
+| ------------------ | --------------------- | ----- | --------------------- |
+| Bulking            | Bulking               | 增肌期   | 热量盈余，促进肌肉合成，同时体脂可能增加  |
+| Cutting            | Cutting               | 减脂期   | 热量赤字，降低体脂，同时尽可能保持肌肉   |
+| Maintenance        | Maintenance           | 维持期   | 热量收支平衡，保持当前体型与体重      |
+| Carb Cycling       | Carb Cycling          | 碳循环   | 训练日高碳，休息日低碳，平衡能量和脂肪控制 |
+| Caloric Deficit    | Caloric Deficit       | 热量赤字  | 摄入热量小于消耗热量，用于减脂       |
+| Refeed / Carb Load | Refeed / Carb Loading | 爆碳/补碳 | 短期大量增加碳水，提高糖原储备与激素水平  |
+| Clean Eating       | Clean Eating          | 清洁饮食  | 少油少盐、少加工，主要以天然食物为主    |
+| Macros             | Macronutrients        | 三大营养素 | 蛋白质、碳水化合物、脂肪三大营养比例    |
+| IF                 | Intermittent Fasting  | 间歇性断食 | 限定进食时间的饮食法，如16:8模式    |
+
+---
+
+## 🏋️ 健身房日常 & 圈子用语
+
+| 英文缩写         | 英文全称         | 中文    | 中文解释                    |
+| ------------ | ------------ | ----- | ----------------------- |
+| Bro Split    | Bro Split    | 五分化   | 将胸/肩/背/腿/手臂分成五天分别训练     |
+| Spotter      | Spotter      | 保护者   | 在大重量训练中保护与协助完成动作的人      |
+| Natty        | Natural      | 天然党   | 指自然训练者，不使用药物或激素辅助       |
+| Noob Gains   | Noob Gains   | 菜鸟红利  | 新手因神经适应和训练刺激快，短期内进步明显   |
+| Pump         | Pump         | 泵感    | 血液充盈肌肉，产生紧绷和膨胀感         |
+| Overtraining | Overtraining | 过度训练  | 训练超出恢复能力，表现下降、疲劳和受伤风险增加 |
+| Gym Rat      | Gym Rat      | 健身房老鼠 | 高频率出现在健身房、热衷训练的人        |
+
+---
+。">
+<meta property="og:title" content="🏋️ 健身黑话词典">
+<meta property="og:description" content="# 🏋️ 健身黑话词典
+
+---
+
+## 🎯 训练目标
+
+| 英文缩写                   | 英文全称                     | 中文      | 中文解释                          |
+| ---------------------- | ------------------------ | ------- | ----------------------------- |
+| Hypertrophy            | Hypertrophy              | 肌肥大     | 通过阻力训练使肌纤维横截面积增大，表现为肌肉围度和体积增加 |
+| Strength               | Strength                 | 力量      | 肌肉或神经-肌肉系统在单次收缩中能够输出的最大力量     |
+| Endurance              | Muscular Endurance       | 肌肉耐力    | 肌肉在长时间或多次数收缩中维持力量输出的能力        |
+| Power                  | Power = Force × Velocity | 爆发力     | 单位时间内产生最大力量的能力，结合了力量和速度       |
+| Flexibility / Mobility | Flexibility / Mobility   | 灵活度/活动度 | 关节可活动的最大范围及对动作的控制能力           |
+| Cardio                 | Cardiovascular Fitness   | 心肺功能    | 心脏、肺和循环系统高效供氧与支持运动的能力         |
+
+---
+
+## 🔧 训练技术 & 要领
+
+| 英文缩写       | 英文全称                          | 中文      | 中文解释                         |
+| ---------- | ----------------------------- | ------- | ---------------------------- |
+| Concentric | Concentric Contraction        | 向心收缩    | 肌肉缩短同时产生张力的收缩方式，如举起杠铃        |
+| Eccentric  | Eccentric Contraction         | 离心收缩    | 肌肉被拉长同时产生张力的收缩方式，如放下杠铃       |
+| Isometric  | Isometric Contraction         | 等长收缩    | 肌肉产生张力但长度不变，如平板支撑或静力推墙       |
+| ROM        | Range of Motion               | 动作幅度    | 从起始到结束的关节和肌肉运动范围             |
+| TUT        | Time Under Tension            | 受力时间    | 肌肉在一组动作中持续受张力的时间，是刺激肥大的关键变量  |
+| RM         | Repetition Maximum            | 最大重复次数  | 在保证标准动作的情况下，某重量下可完成的最大次数     |
+| RPE        | Rate of Perceived Exertion    | 主观用力程度  | 用主观评分（1-10）衡量训练强度，10表示极限     |
+| RIR        | Reps In Reserve               | 剩余可完成次数 | 当前组结束后理论上还能多完成的次数，帮助调节强度     |
+| DOMS       | Delayed Onset Muscle Soreness | 延迟性肌肉酸痛 | 训练后24-72小时出现的酸胀与酸痛，由微损伤和炎症引起 |
+| Failure    | Failure                       | 力竭      | 在保持正确动作前提下，无法完成下一次重复         |
+
+---
+
+## 🔄 训练方法 & 特殊组法
+
+| 英文缩写        | 英文全称                             | 中文      | 中文解释                           |
+| ----------- | -------------------------------- | ------- | ------------------------------ |
+| SS          | Superset                         | 超级组     | 两个动作连续完成，无休息，常用于拮抗肌或同肌群        |
+| DS          | Drop Set                         | 递减组     | 力竭后立即降低重量继续做，增加训练容量和代谢压力       |
+| GS          | Giant Set                        | 巨人组     | 3-4个动作连续完成，几乎无休息，强化泵感和耐力       |
+| RP          | Rest-Pause                       | 休息暂停    | 在力竭后短休（10-30秒），继续完成额外次数        |
+| Pyramid     | Pyramid Training                 | 金字塔组    | 逐渐加重量/减次数，或逐渐减重量/加次数，形成金字塔负荷曲线 |
+| Forced Reps | Forced Repetitions               | 强迫次数    | 伙伴辅助下完成超出极限的额外次数               |
+| AMRAP       | As Many Reps As Possible         | 极限重复    | 在设定重量下尽可能多完成次数，用于耐力或极限测试       |
+| EMOM        | Every Minute On the Minute       | 每分钟一组   | 每分钟开始时完成规定动作，剩余时间休息            |
+| HIIT        | High-Intensity Interval Training | 高强度间歇训练 | 高强度短时间运动与低强度休息交替，提升心肺和燃脂效率     |
+| LISS        | Low-Intensity Steady State       | 低强度有氧   | 匀速、低强度的有氧运动，如快走或慢跑，常用于减脂       |
+
+---
+
+## 📅 训练计划 & 周期
+
+| 英文缩写                 | 英文全称                             | 中文     | 中文解释                         |
+| -------------------- | -------------------------------- | ------ | ---------------------------- |
+| Progressive Overload | Progressive Overload             | 渐进超负荷  | 逐步增加重量、次数或总训练量，持续给予身体适应性刺激   |
+| Deload               | Deload Week                      | 减载周    | 主动降低训练强度或容量，用于恢复神经和肌肉，防止过度训练 |
+| Volume               | Training Volume                  | 训练量    | 总训练负荷量，计算方式=重量×次数×组数         |
+| Intensity            | Training Intensity               | 强度     | 训练负荷相对于1RM的百分比               |
+| Split                | Training Split                   | 分化训练   | 把不同部位分配到不同日程训练的方式            |
+| PPL                  | Push / Pull / Legs               | 推拉腿分化  | 第一天推（胸肩三头），第二天拉（背二头），第三天腿部   |
+| Upper/Lower          | Upper / Lower Split              | 上下身分化  | 上半身和下半身交替训练                  |
+| PR                   | Personal Record                  | 个人纪录   | 单个动作的历史最好成绩                  |
+
+---
+
+## 🥗 饮食 & 身材
+
+| 英文缩写               | 英文全称                  | 中文    | 中文解释                  |
+| ------------------ | --------------------- | ----- | --------------------- |
+| Bulking            | Bulking               | 增肌期   | 热量盈余，促进肌肉合成，同时体脂可能增加  |
+| Cutting            | Cutting               | 减脂期   | 热量赤字，降低体脂，同时尽可能保持肌肉   |
+| Maintenance        | Maintenance           | 维持期   | 热量收支平衡，保持当前体型与体重      |
+| Carb Cycling       | Carb Cycling          | 碳循环   | 训练日高碳，休息日低碳，平衡能量和脂肪控制 |
+| Caloric Deficit    | Caloric Deficit       | 热量赤字  | 摄入热量小于消耗热量，用于减脂       |
+| Refeed / Carb Load | Refeed / Carb Loading | 爆碳/补碳 | 短期大量增加碳水，提高糖原储备与激素水平  |
+| Clean Eating       | Clean Eating          | 清洁饮食  | 少油少盐、少加工，主要以天然食物为主    |
+| Macros             | Macronutrients        | 三大营养素 | 蛋白质、碳水化合物、脂肪三大营养比例    |
+| IF                 | Intermittent Fasting  | 间歇性断食 | 限定进食时间的饮食法，如16:8模式    |
+
+---
+
+## 🏋️ 健身房日常 & 圈子用语
+
+| 英文缩写         | 英文全称         | 中文    | 中文解释                    |
+| ------------ | ------------ | ----- | ----------------------- |
+| Bro Split    | Bro Split    | 五分化   | 将胸/肩/背/腿/手臂分成五天分别训练     |
+| Spotter      | Spotter      | 保护者   | 在大重量训练中保护与协助完成动作的人      |
+| Natty        | Natural      | 天然党   | 指自然训练者，不使用药物或激素辅助       |
+| Noob Gains   | Noob Gains   | 菜鸟红利  | 新手因神经适应和训练刺激快，短期内进步明显   |
+| Pump         | Pump         | 泵感    | 血液充盈肌肉，产生紧绷和膨胀感         |
+| Overtraining | Overtraining | 过度训练  | 训练超出恢复能力，表现下降、疲劳和受伤风险增加 |
+| Gym Rat      | Gym Rat      | 健身房老鼠 | 高频率出现在健身房、热衷训练的人        |
+
+---
+。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://H1DDENADM1N.github.io/post/%F0%9F%8F%8B%EF%B8%8F%20-jian-shen-hei-hua-ci-dian.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/65646535?v=4">
+<title>🏋️ 健身黑话词典</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">🏋️ 健身黑话词典</h1>
+<div class="title-right">
+    <a href="https://H1DDENADM1N.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/H1DDENADM1N/H1DDENADM1N.github.io/issues/12" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>🏋️ 健身黑话词典</h1>
+<hr>
+<h2>🎯 训练目标</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>英文缩写</th>
+<th>英文全称</th>
+<th>中文</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hypertrophy</td>
+<td>Hypertrophy</td>
+<td>肌肥大</td>
+<td>通过阻力训练使肌纤维横截面积增大，表现为肌肉围度和体积增加</td>
+</tr>
+<tr>
+<td>Strength</td>
+<td>Strength</td>
+<td>力量</td>
+<td>肌肉或神经-肌肉系统在单次收缩中能够输出的最大力量</td>
+</tr>
+<tr>
+<td>Endurance</td>
+<td>Muscular Endurance</td>
+<td>肌肉耐力</td>
+<td>肌肉在长时间或多次数收缩中维持力量输出的能力</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>Power = Force × Velocity</td>
+<td>爆发力</td>
+<td>单位时间内产生最大力量的能力，结合了力量和速度</td>
+</tr>
+<tr>
+<td>Flexibility / Mobility</td>
+<td>Flexibility / Mobility</td>
+<td>灵活度/活动度</td>
+<td>关节可活动的最大范围及对动作的控制能力</td>
+</tr>
+<tr>
+<td>Cardio</td>
+<td>Cardiovascular Fitness</td>
+<td>心肺功能</td>
+<td>心脏、肺和循环系统高效供氧与支持运动的能力</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>🔧 训练技术 &amp; 要领</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>英文缩写</th>
+<th>英文全称</th>
+<th>中文</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Concentric</td>
+<td>Concentric Contraction</td>
+<td>向心收缩</td>
+<td>肌肉缩短同时产生张力的收缩方式，如举起杠铃</td>
+</tr>
+<tr>
+<td>Eccentric</td>
+<td>Eccentric Contraction</td>
+<td>离心收缩</td>
+<td>肌肉被拉长同时产生张力的收缩方式，如放下杠铃</td>
+</tr>
+<tr>
+<td>Isometric</td>
+<td>Isometric Contraction</td>
+<td>等长收缩</td>
+<td>肌肉产生张力但长度不变，如平板支撑或静力推墙</td>
+</tr>
+<tr>
+<td>ROM</td>
+<td>Range of Motion</td>
+<td>动作幅度</td>
+<td>从起始到结束的关节和肌肉运动范围</td>
+</tr>
+<tr>
+<td>TUT</td>
+<td>Time Under Tension</td>
+<td>受力时间</td>
+<td>肌肉在一组动作中持续受张力的时间，是刺激肥大的关键变量</td>
+</tr>
+<tr>
+<td>RM</td>
+<td>Repetition Maximum</td>
+<td>最大重复次数</td>
+<td>在保证标准动作的情况下，某重量下可完成的最大次数</td>
+</tr>
+<tr>
+<td>RPE</td>
+<td>Rate of Perceived Exertion</td>
+<td>主观用力程度</td>
+<td>用主观评分（1-10）衡量训练强度，10表示极限</td>
+</tr>
+<tr>
+<td>RIR</td>
+<td>Reps In Reserve</td>
+<td>剩余可完成次数</td>
+<td>当前组结束后理论上还能多完成的次数，帮助调节强度</td>
+</tr>
+<tr>
+<td>DOMS</td>
+<td>Delayed Onset Muscle Soreness</td>
+<td>延迟性肌肉酸痛</td>
+<td>训练后24-72小时出现的酸胀与酸痛，由微损伤和炎症引起</td>
+</tr>
+<tr>
+<td>Failure</td>
+<td>Failure</td>
+<td>力竭</td>
+<td>在保持正确动作前提下，无法完成下一次重复</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>🔄 训练方法 &amp; 特殊组法</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>英文缩写</th>
+<th>英文全称</th>
+<th>中文</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SS</td>
+<td>Superset</td>
+<td>超级组</td>
+<td>两个动作连续完成，无休息，常用于拮抗肌或同肌群</td>
+</tr>
+<tr>
+<td>DS</td>
+<td>Drop Set</td>
+<td>递减组</td>
+<td>力竭后立即降低重量继续做，增加训练容量和代谢压力</td>
+</tr>
+<tr>
+<td>GS</td>
+<td>Giant Set</td>
+<td>巨人组</td>
+<td>3-4个动作连续完成，几乎无休息，强化泵感和耐力</td>
+</tr>
+<tr>
+<td>RP</td>
+<td>Rest-Pause</td>
+<td>休息暂停</td>
+<td>在力竭后短休（10-30秒），继续完成额外次数</td>
+</tr>
+<tr>
+<td>Pyramid</td>
+<td>Pyramid Training</td>
+<td>金字塔组</td>
+<td>逐渐加重量/减次数，或逐渐减重量/加次数，形成金字塔负荷曲线</td>
+</tr>
+<tr>
+<td>Forced Reps</td>
+<td>Forced Repetitions</td>
+<td>强迫次数</td>
+<td>伙伴辅助下完成超出极限的额外次数</td>
+</tr>
+<tr>
+<td>AMRAP</td>
+<td>As Many Reps As Possible</td>
+<td>极限重复</td>
+<td>在设定重量下尽可能多完成次数，用于耐力或极限测试</td>
+</tr>
+<tr>
+<td>EMOM</td>
+<td>Every Minute On the Minute</td>
+<td>每分钟一组</td>
+<td>每分钟开始时完成规定动作，剩余时间休息</td>
+</tr>
+<tr>
+<td>HIIT</td>
+<td>High-Intensity Interval Training</td>
+<td>高强度间歇训练</td>
+<td>高强度短时间运动与低强度休息交替，提升心肺和燃脂效率</td>
+</tr>
+<tr>
+<td>LISS</td>
+<td>Low-Intensity Steady State</td>
+<td>低强度有氧</td>
+<td>匀速、低强度的有氧运动，如快走或慢跑，常用于减脂</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>📅 训练计划 &amp; 周期</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>英文缩写</th>
+<th>英文全称</th>
+<th>中文</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Progressive Overload</td>
+<td>Progressive Overload</td>
+<td>渐进超负荷</td>
+<td>逐步增加重量、次数或总训练量，持续给予身体适应性刺激</td>
+</tr>
+<tr>
+<td>Deload</td>
+<td>Deload Week</td>
+<td>减载周</td>
+<td>主动降低训练强度或容量，用于恢复神经和肌肉，防止过度训练</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>Training Volume</td>
+<td>训练量</td>
+<td>总训练负荷量，计算方式=重量×次数×组数</td>
+</tr>
+<tr>
+<td>Intensity</td>
+<td>Training Intensity</td>
+<td>强度</td>
+<td>训练负荷相对于1RM的百分比</td>
+</tr>
+<tr>
+<td>Split</td>
+<td>Training Split</td>
+<td>分化训练</td>
+<td>把不同部位分配到不同日程训练的方式</td>
+</tr>
+<tr>
+<td>PPL</td>
+<td>Push / Pull / Legs</td>
+<td>推拉腿分化</td>
+<td>第一天推（胸肩三头），第二天拉（背二头），第三天腿部</td>
+</tr>
+<tr>
+<td>Upper/Lower</td>
+<td>Upper / Lower Split</td>
+<td>上下身分化</td>
+<td>上半身和下半身交替训练</td>
+</tr>
+<tr>
+<td>PR</td>
+<td>Personal Record</td>
+<td>个人纪录</td>
+<td>单个动作的历史最好成绩</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>🥗 饮食 &amp; 身材</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>英文缩写</th>
+<th>英文全称</th>
+<th>中文</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bulking</td>
+<td>Bulking</td>
+<td>增肌期</td>
+<td>热量盈余，促进肌肉合成，同时体脂可能增加</td>
+</tr>
+<tr>
+<td>Cutting</td>
+<td>Cutting</td>
+<td>减脂期</td>
+<td>热量赤字，降低体脂，同时尽可能保持肌肉</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Maintenance</td>
+<td>维持期</td>
+<td>热量收支平衡，保持当前体型与体重</td>
+</tr>
+<tr>
+<td>Carb Cycling</td>
+<td>Carb Cycling</td>
+<td>碳循环</td>
+<td>训练日高碳，休息日低碳，平衡能量和脂肪控制</td>
+</tr>
+<tr>
+<td>Caloric Deficit</td>
+<td>Caloric Deficit</td>
+<td>热量赤字</td>
+<td>摄入热量小于消耗热量，用于减脂</td>
+</tr>
+<tr>
+<td>Refeed / Carb Load</td>
+<td>Refeed / Carb Loading</td>
+<td>爆碳/补碳</td>
+<td>短期大量增加碳水，提高糖原储备与激素水平</td>
+</tr>
+<tr>
+<td>Clean Eating</td>
+<td>Clean Eating</td>
+<td>清洁饮食</td>
+<td>少油少盐、少加工，主要以天然食物为主</td>
+</tr>
+<tr>
+<td>Macros</td>
+<td>Macronutrients</td>
+<td>三大营养素</td>
+<td>蛋白质、碳水化合物、脂肪三大营养比例</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>Intermittent Fasting</td>
+<td>间歇性断食</td>
+<td>限定进食时间的饮食法，如16:8模式</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<h2>🏋️ 健身房日常 &amp; 圈子用语</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>英文缩写</th>
+<th>英文全称</th>
+<th>中文</th>
+<th>中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bro Split</td>
+<td>Bro Split</td>
+<td>五分化</td>
+<td>将胸/肩/背/腿/手臂分成五天分别训练</td>
+</tr>
+<tr>
+<td>Spotter</td>
+<td>Spotter</td>
+<td>保护者</td>
+<td>在大重量训练中保护与协助完成动作的人</td>
+</tr>
+<tr>
+<td>Natty</td>
+<td>Natural</td>
+<td>天然党</td>
+<td>指自然训练者，不使用药物或激素辅助</td>
+</tr>
+<tr>
+<td>Noob Gains</td>
+<td>Noob Gains</td>
+<td>菜鸟红利</td>
+<td>新手因神经适应和训练刺激快，短期内进步明显</td>
+</tr>
+<tr>
+<td>Pump</td>
+<td>Pump</td>
+<td>泵感</td>
+<td>血液充盈肌肉，产生紧绷和膨胀感</td>
+</tr>
+<tr>
+<td>Overtraining</td>
+<td>Overtraining</td>
+<td>过度训练</td>
+<td>训练超出恢复能力，表现下降、疲劳和受伤风险增加</td>
+</tr>
+<tr>
+<td>Gym Rat</td>
+<td>Gym Rat</td>
+<td>健身房老鼠</td>
+<td>高频率出现在健身房、热衷训练的人</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://H1DDENADM1N.github.io">Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","H1DDENADM1N/H1DDENADM1N.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
