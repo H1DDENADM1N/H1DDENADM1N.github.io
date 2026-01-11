@@ -1,5 +1,67 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog</title><link>https://H1DDENADM1N.github.io</link><description>https://H1DDENADM1N.github.io</description><copyright>Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/65646535?v=4</url><title>avatar</title><link>https://H1DDENADM1N.github.io</link></image><lastBuildDate>Sun, 31 Aug 2025 11:12:36 +0000</lastBuildDate><managingEditor>Blog</managingEditor><ttl>60</ttl><webMaster>Blog</webMaster><item><title>🏋️ 健身黑话词典</title><link>https://H1DDENADM1N.github.io/post/%F0%9F%8F%8B%EF%B8%8F%20-jian-shen-hei-hua-ci-dian.html</link><description># 🏋️ 健身黑话词典
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog</title><link>https://H1DDENADM1N.github.io</link><description>https://H1DDENADM1N.github.io</description><copyright>Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/65646535?v=4</url><title>avatar</title><link>https://H1DDENADM1N.github.io</link></image><lastBuildDate>Sun, 11 Jan 2026 02:22:21 +0000</lastBuildDate><managingEditor>Blog</managingEditor><ttl>60</ttl><webMaster>Blog</webMaster><item><title>AdGuardHome 配置笔记</title><link>https://H1DDENADM1N.github.io/post/AdGuardHome%20-pei-zhi-bi-ji.html</link><description># AdGuardHome 配置笔记
+## 1. 创建配置目录并运行
+```bash
+mkdir -p /etc/AdGuardHome
+/usr/bin/AdGuardHome -w /etc/AdGuardHome -s run
+```
+## 2. Web管理界面访问
+```
+http://192.168.3.1:3000
+```
+### 2.1 网络配置
+| 项目 | 配置值 |
+|------|--------|
+| 路由器IP | 192.168.3.1 |
+| DHCP起始地址 | 192.168.3.100 |
+| DHCP结束地址 | 192.168.3.200 |
+| 子网掩码 | 255.255.255.0 |
+| DHCP租约时间 | 86400 秒 |
+| IPv6网关 | 2001::1 |
+### 2.2 上游DNS服务器配置
+### DoH (DNS over HTTPS)
+```
+https://dns.alidns.com/dns-query
+https://dns.pub/dns-query
+https://sm2.doh.pub/dns-query
+https://doh-pure.onedns.net/dns-query
+https://public.adguardprivate.com/dns-query
+tls://dns.alidns.com
+tls://dot.pub
+quic://dns.alidns.com:853
+```
+### 2.3 广告过滤规则
+```
+https://gcore.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockdns.txt
+```
+### 2.4 完成初始配置后 Ctrl + C 退出前台运行
+## 3. 确认配置文件存在
+```bash
+ls -l /etc/AdGuardHome/AdGuardHome.yaml
+```
+## 4. 启动服务
+```bash
+/etc/init.d/AdGuardHome start
+```
+
+---
+
+# 故障排查
+## 1. 查看日志
+```bash
+logread | grep AdGuard
+```
+## 2. 检查运行状态
+```bash
+# 检查DNS端口(53)监听
+netstat -antp | grep :53
+# 检查进程
+ps | grep AdGuardHome
+```
+## 3. 修复启动脚本
+```bash
+sed -i 's/procd_set_param command \$cmd\$cmd_args/procd_set_param command $cmd $cmd_args/g' /etc/init.d/AdGuardHome
+```。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/AdGuardHome%20-pei-zhi-bi-ji.html</guid><pubDate>Sun, 11 Jan 2026 02:20:57 +0000</pubDate></item><item><title>🏋️ 健身黑话词典</title><link>https://H1DDENADM1N.github.io/post/%F0%9F%8F%8B%EF%B8%8F%20-jian-shen-hei-hua-ci-dian.html</link><description># 🏋️ 健身黑话词典
 
 ---
 
