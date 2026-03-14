@@ -141,7 +141,7 @@ sed -i 's/procd_set_param command \$cmd\$cmd_args/procd_set_param command $cmd $
 <meta property="og:url" content="https://H1DDENADM1N.github.io/post/AdGuardHome%20-pei-zhi-bi-ji.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/65646535?v=4">
 <title>AdGuardHome 配置笔记</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 
 </head>
@@ -209,8 +209,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><h1>AdGuardHome 配置笔记</h1>
 <h2>1. 创建配置目录并运行</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir -p /etc/AdGuardHome
-/usr/bin/AdGuardHome -w /etc/AdGuardHome -s run</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">mkdir -p /etc/AdGuardHome
+/usr/bin/AdGuardHome -w /etc/AdGuardHome -s run
+</code></pre>
 <h2>2. Web管理界面访问</h2>
 <pre class="notranslate"><code class="notranslate">http://192.168.3.1:3000
 </code></pre>
@@ -265,20 +266,25 @@ quic://dns.alidns.com:853
 </code></pre>
 <h3>2.4 完成初始配置后 Ctrl + C 退出前台运行</h3>
 <h2>3. 确认配置文件存在</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">ls -l /etc/AdGuardHome/AdGuardHome.yaml</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">ls -l /etc/AdGuardHome/AdGuardHome.yaml
+</code></pre>
 <h2>4. 启动服务</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">/etc/init.d/AdGuardHome start</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">/etc/init.d/AdGuardHome start
+</code></pre>
 <hr>
 <h1>故障排查</h1>
 <h2>1. 查看日志</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">logread <span class="pl-k">|</span> grep AdGuard</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">logread | grep AdGuard
+</code></pre>
 <h2>2. 检查运行状态</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 检查DNS端口(53)监听</span>
-netstat -antp <span class="pl-k">|</span> grep :53
-<span class="pl-c"><span class="pl-c">#</span> 检查进程</span>
-ps <span class="pl-k">|</span> grep AdGuardHome</pre></div>
+<pre lang="bash" class="notranslate"><code class="notranslate"># 检查DNS端口(53)监听
+netstat -antp | grep :53
+# 检查进程
+ps | grep AdGuardHome
+</code></pre>
 <h2>3. 修复启动脚本</h2>
-<div class="highlight highlight-source-shell"><pre class="notranslate">sed -i <span class="pl-s"><span class="pl-pds">'</span>s/procd_set_param command \$cmd\$cmd_args/procd_set_param command $cmd $cmd_args/g<span class="pl-pds">'</span></span> /etc/init.d/AdGuardHome</pre></div></div>
+<pre lang="bash" class="notranslate"><code class="notranslate">sed -i 's/procd_set_param command \$cmd\$cmd_args/procd_set_param command $cmd $cmd_args/g' /etc/init.d/AdGuardHome
+</code></pre></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
