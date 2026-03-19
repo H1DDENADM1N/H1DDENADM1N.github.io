@@ -409,7 +409,7 @@ gnome-tweaks
 <meta property="og:url" content="https://H1DDENADM1N.github.io/post/Rocky%20Linux%20-zhe-teng-bi-ji.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/65646535?v=4">
 <title>Rocky Linux 折腾笔记</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -480,57 +480,50 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <summary>👶基础环境</summary>
 <h3>🧰 使能 sudo</h3>
 <h4>执行</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">su # 切换到 root 用户
-nano /etc/sudoers # 编辑 sudoers 文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">su <span class="pl-c"><span class="pl-c">#</span> 切换到 root 用户</span>
+nano /etc/sudoers <span class="pl-c"><span class="pl-c">#</span> 编辑 sudoers 文件</span></pre></div>
 <p>在 <code class="notranslate">root ALL=(ALL) ALL</code> 下面添加一行:</p>
 <blockquote>
 <p><code class="notranslate">😀USERNAME😀</code>    ALL=(ALL)       ALL</p>
 </blockquote>
 <p>保存并退出 nano: <code class="notranslate">Ctrl + X -&gt; Y -&gt; Enter</code></p>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">su $(whoami) # 切换回普通用户
-sudo whoami # 验证是否成功使能 sudo
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">su <span class="pl-s"><span class="pl-pds">$(</span>whoami<span class="pl-pds">)</span></span> <span class="pl-c"><span class="pl-c">#</span> 切换回普通用户</span>
+sudo whoami <span class="pl-c"><span class="pl-c">#</span> 验证是否成功使能 sudo</span></pre></div>
 <h3>🖥️更改主机名</h3>
 <h4>执行</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate"> sudo hostnamectl set-hostname `🖥️HOSTNAME🖥️` # 设置主机名
- sudo nano /etc/hosts # 编辑 hosts 文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"> sudo hostnamectl set-hostname <span class="pl-s"><span class="pl-pds">`</span>🖥️HOSTNAME🖥️<span class="pl-pds">`</span></span> <span class="pl-c"><span class="pl-c">#</span> 设置主机名</span>
+ sudo nano /etc/hosts <span class="pl-c"><span class="pl-c">#</span> 编辑 hosts 文件</span></pre></div>
 <p>在 <code class="notranslate">127.0.0.1 localhost</code> 下面添加一行:</p>
 <blockquote>
 <p>127.0.0.1       <code class="notranslate">🖥️HOSTNAME🖥️</code></p>
 </blockquote>
 <p>保存并退出 nano: <code class="notranslate">Ctrl + X -&gt; Y -&gt; Enter</code></p>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate"> hostnamectl # 验证主机名是否成功更改
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"> hostnamectl <span class="pl-c"><span class="pl-c">#</span> 验证主机名是否成功更改</span></pre></div>
 <h3>🌏dnf包管理器换源</h3>
 <h4>执行</h4>
 <p>参考<a href="https://mirrors.rockylinux.org/mirrormanager/mirrors" rel="nofollow">第三方镜像源列表</a>，选择合适的cn镜像源，例如<a href="https://mirrors.ustc.edu.cn/help/rocky.html#_5" rel="nofollow">USTC 中科大</a></p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
-    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/rocky|g' \
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo sed -e <span class="pl-s"><span class="pl-pds">'</span>s|^mirrorlist=|#mirrorlist=|g<span class="pl-pds">'</span></span> \
+    -e <span class="pl-s"><span class="pl-pds">'</span>s|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/rocky|g<span class="pl-pds">'</span></span> \
     -i.bak \
     /etc/yum.repos.d/rocky-extras.repo \
     /etc/yum.repos.d/rocky.repo
     
-sudo dnf makecache # 清理并重建缓存
-</code></pre>
+sudo dnf makecache <span class="pl-c"><span class="pl-c">#</span> 清理并重建缓存</span></pre></div>
 <h3>🔄更新</h3>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y upgrade dnf # 更新 dnf 包管理器
-sudo dnf -y update # 更新系统软件包
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y upgrade dnf <span class="pl-c"><span class="pl-c">#</span> 更新 dnf 包管理器</span>
+sudo dnf -y update <span class="pl-c"><span class="pl-c">#</span> 更新系统软件包</span></pre></div>
 <h3>☁️Samba</h3>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install samba samba-common samba-client # 安装 samba
-sudo mkdir -p /home/samba-share # 创建共享目录
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install samba samba-common samba-client <span class="pl-c"><span class="pl-c">#</span> 安装 samba</span>
+sudo mkdir -p /home/samba-share <span class="pl-c"><span class="pl-c">#</span> 创建共享目录</span>
 
-sudo chmod -R 755 /home/samba-share # 设置共享目录权限
-sudo chown -R  nobody:nobody /home/samba-share # 设置共享目录所有者
-sudo chcon -t samba_share_t /home/samba-share # 设置共享目录标签
+sudo chmod -R 755 /home/samba-share <span class="pl-c"><span class="pl-c">#</span> 设置共享目录权限</span>
+sudo chown -R  nobody:nobody /home/samba-share <span class="pl-c"><span class="pl-c">#</span> 设置共享目录所有者</span>
+sudo chcon -t samba_share_t /home/samba-share <span class="pl-c"><span class="pl-c">#</span> 设置共享目录标签</span>
 
-sudo nano /etc/samba/smb.conf # 编辑 smb 配置文件
-</code></pre>
+sudo nano /etc/samba/smb.conf <span class="pl-c"><span class="pl-c">#</span> 编辑 smb 配置文件</span></pre></div>
 <p>在文件中添加以下内容：</p>
 <blockquote>
 <pre lang="conf" class="notranslate"><code class="notranslate"># See smb.conf.example for a more detailed config file or
@@ -589,81 +582,73 @@ sudo nano /etc/samba/smb.conf # 编辑 smb 配置文件
         force directory mode = 777
 </code></pre>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo systemctl start smb nmb # 启动 samba 服务
-sudo systemctl enable smb nmb # 开机自启 samba 服务
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl start smb nmb <span class="pl-c"><span class="pl-c">#</span> 启动 samba 服务</span>
+sudo systemctl <span class="pl-c1">enable</span> smb nmb <span class="pl-c"><span class="pl-c">#</span> 开机自启 samba 服务</span>
 
-systemctl status smb nmb # 查看 samba 服务状态
+systemctl status smb nmb <span class="pl-c"><span class="pl-c">#</span> 查看 samba 服务状态</span>
 
-sudo firewall-cmd --permanent --add-service=samba # 开放 samba 服务
-sudo firewall-cmd --reload # 重载防火墙规则
-sudo firewall-cmd --list-services # 查看开放的服务
+sudo firewall-cmd --permanent --add-service=samba <span class="pl-c"><span class="pl-c">#</span> 开放 samba 服务</span>
+sudo firewall-cmd --reload <span class="pl-c"><span class="pl-c">#</span> 重载防火墙规则</span>
+sudo firewall-cmd --list-services <span class="pl-c"><span class="pl-c">#</span> 查看开放的服务</span>
 
-sudo smbpasswd -a $(whoami) # 设置 samba 用户密码
-sudo systemctl restart smb nmb --now # 重启 samba 服务
-</code></pre>
+sudo smbpasswd -a <span class="pl-s"><span class="pl-pds">$(</span>whoami<span class="pl-pds">)</span></span> <span class="pl-c"><span class="pl-c">#</span> 设置 samba 用户密码</span>
+sudo systemctl restart smb nmb --now <span class="pl-c"><span class="pl-c">#</span> 重启 samba 服务</span></pre></div>
 <h4>远程访问共享文件夹</h4>
 <p>Win+R -&gt; smb://<code class="notranslate">🖥️IP🖥️</code>/Shared -&gt; 输入密码</p>
 <h3>💻RDP 远程桌面</h3>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install epel-release # 安装 epel 源
-sudo dnf makecache # 清理并重建缓存
-sudo dnf -y install xrdp # 安装 xrdp
-sudo systemctl start xrdp # 启动 xrdp 服务
-sudo systemctl enable xrdp # 开机自启 xrdp 服务
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install epel-release <span class="pl-c"><span class="pl-c">#</span> 安装 epel 源</span>
+sudo dnf makecache <span class="pl-c"><span class="pl-c">#</span> 清理并重建缓存</span>
+sudo dnf -y install xrdp <span class="pl-c"><span class="pl-c">#</span> 安装 xrdp</span>
+sudo systemctl start xrdp <span class="pl-c"><span class="pl-c">#</span> 启动 xrdp 服务</span>
+sudo systemctl <span class="pl-c1">enable</span> xrdp <span class="pl-c"><span class="pl-c">#</span> 开机自启 xrdp 服务</span>
 
-systemctl status xrdp # 查看 xrdp 服务状态
+systemctl status xrdp <span class="pl-c"><span class="pl-c">#</span> 查看 xrdp 服务状态</span>
 
-sudo firewall-cmd --permanent --add-port=3389/tcp # 开放 3389 端口
-sudo firewall-cmd --reload # 重载防火墙规则
+sudo firewall-cmd --permanent --add-port=3389/tcp <span class="pl-c"><span class="pl-c">#</span> 开放 3389 端口</span>
+sudo firewall-cmd --reload <span class="pl-c"><span class="pl-c">#</span> 重载防火墙规则</span>
 
-sudo firewall-cmd --list-ports # 查看开放的端口
-</code></pre>
+sudo firewall-cmd --list-ports <span class="pl-c"><span class="pl-c">#</span> 查看开放的端口</span></pre></div>
 <h4>远程连接</h4>
 <p>Win+R -&gt; mstsc -&gt; <code class="notranslate">🖥️IP🖥️</code></p>
 <h3>添加标题栏最小化最大化按钮</h3>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install gnome-tweaks
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install gnome-tweaks
 
-gnome-tweaks
-</code></pre>
+gnome-tweaks</pre></div>
 <p>在 gnome-tweaks 中启用 “Window Title Buttons” 选项。</p>
 <h3>GitHub 加速</h3>
 <p><a href="https://steampp.net/download" rel="nofollow">Watt Toolkit / Steam++</a>是一个包含多种 Steam 工具功能的工具箱，其中包含 GitHub 加速器。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">curl -sSL https://steampp.net/Install/Linux.sh | bash # 安装 Watt Toolkit
+<div class="highlight highlight-source-shell"><pre class="notranslate">curl -sSL https://steampp.net/Install/Linux.sh <span class="pl-k">|</span> bash <span class="pl-c"><span class="pl-c">#</span> 安装 Watt Toolkit</span>
 
-sudo cp /home/a/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer /etc/pki/ca-trust/source/anchors/ # 复制证书到系统信任库
+sudo cp /home/a/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer /etc/pki/ca-trust/source/anchors/ <span class="pl-c"><span class="pl-c">#</span> 复制证书到系统信任库</span>
 
-sudo update-ca-trust extract # 刷新系统信任库
-sudo systemctl restart NetworkManager # 重启网络管理器
+sudo update-ca-trust extract <span class="pl-c"><span class="pl-c">#</span> 刷新系统信任库</span>
+sudo systemctl restart NetworkManager <span class="pl-c"><span class="pl-c">#</span> 重启网络管理器</span>
 
-openssl x509 -in /etc/pki/ca-trust/source/anchors/SteamTools.Certificate.cer -text -noout # 验证证书
-</code></pre>
+openssl x509 -in /etc/pki/ca-trust/source/anchors/SteamTools.Certificate.cer -text -noout <span class="pl-c"><span class="pl-c">#</span> 验证证书</span></pre></div>
 <h4>Firefox 导入证书</h4>
 <p>设置-&gt;隐私与安全-&gt;安全-&gt;查看证书-&gt;导入<br>
 /home/<code class="notranslate">😀USERNAME😀</code>/.local/share/Steam++/Plugins/Accelerator</p>
 <h3>Homebrew</h3>
 <p><a href="https://brew.sh/" rel="nofollow">Homebrew</a>是一个开源的包管理器，可以帮助你安装命令行软件。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # 安装 Homebrew
-(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') &gt;&gt; /home/`😀USERNAME😀`/.zshrc # 配置环境变量
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # 刷新环境变量
-sudo dnf -y groupinstall 'Development Tools' # 安装开发工具
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">/bin/bash -c <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 安装 Homebrew</span>
+(echo<span class="pl-k">;</span> <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"<span class="pl-pds">'</span></span>) <span class="pl-k">&gt;&gt;</span> /home/<span class="pl-s"><span class="pl-pds">`</span>😀USERNAME😀<span class="pl-pds">`</span></span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 配置环境变量</span>
+<span class="pl-c1">eval</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>/home/linuxbrew/.linuxbrew/bin/brew shellenv<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 刷新环境变量</span>
+sudo dnf -y groupinstall <span class="pl-s"><span class="pl-pds">'</span>Development Tools<span class="pl-pds">'</span></span> <span class="pl-c"><span class="pl-c">#</span> 安装开发工具</span></pre></div>
 <h3>🐧fastfetch</h3>
 <p><a href="https://github.com/fastfetch-cli/fastfetch">fastfetch</a>是类似于neofetch，但更快，因为主要是用C编写的。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install fastfetch
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install fastfetch</pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">fastfetch
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">fastfetch</pre></div>
 <h3>💪oh-my-zsh <del>bash</del></h3>
 <p><a href="https://ohmyz.sh/#install" rel="nofollow">oh-my-zsh</a>是一个令人愉快的，开源的，社区驱动的框架，用于管理您的Zsh配置。它捆绑了数千个有用的功能，帮助程序，插件，主题和一些让你大喊的东西。</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # 安装 oh-my-zsh
+<div class="highlight highlight-source-shell"><pre class="notranslate">sh -c <span class="pl-s"><span class="pl-pds">"</span><span class="pl-s"><span class="pl-pds">$(</span>wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span> <span class="pl-c"><span class="pl-c">#</span> 安装 oh-my-zsh</span>
 
-nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>参考<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Settings">Settings</a>配置，例如：</p>
 <blockquote>
 <p>ZSH_THEME="darkblood"</p>
@@ -700,306 +685,242 @@ Alt+C：fzf + 改变工作路径</p>
 <h3>✏micro <del>nano</del></h3>
 <p><a href="https://github.com/zyedidia/micro">micro</a>是一款基于终端的文本编辑器，旨在易于使用和直观，同时还利用了现代终端的功能。它是一个单一的、包含电池的静态二进制文件，没有依赖关系;您可以立即下载并使用它！</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate"> cd /usr/bin
+<div class="highlight highlight-source-shell"><pre class="notranslate"> <span class="pl-c1">cd</span> /usr/bin
 
-sudo curl https://getmic.ro | bash
+sudo curl https://getmic.ro <span class="pl-k">|</span> bash
 
-/usr/bin/micro --version
-</code></pre>
+/usr/bin/micro --version</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias nano='/usr/bin/micro'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 验证 nano 命令是否成功映射到 micro
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 验证 nano 命令是否成功映射到 micro</span></pre></div>
 <h3>FNM</h3>
 <p><a href="https://github.com/Schniz/fnm">FNM</a>是快速简单的Node.js版本管理器，Rust编写。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">brew install fnm
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">brew install fnm</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>eval "$(fnm env --use-on-cd)"</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">fnm --version
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">fnm --version</pre></div>
 <h3>🫥Node.js</h3>
 <p><a href="https://nodejs.org/docs/latest/api/" rel="nofollow">Node.js</a>是一个免费的、开源的、跨平台的JavaScript运行时环境，允许开发人员创建服务器、Web应用程序、命令行工具和脚本。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">fnm use --install-if-missing 22
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">fnm use --install-if-missing 22</pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">node -v
-npm -v
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">node -v
+npm -v</pre></div>
 <h3>pm2</h3>
 <p><a href="https://pm2.keymetrics.io/docs/usage/quick-start/" rel="nofollow">pm2</a>是一个守护进程管理器，可帮助您管理和保持应用程序全天候在线。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">npm install pm2 -g
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">npm install pm2 -g</pre></div>
 <h3>🐍Python</h3>
 <p><a href="https://docs.conda.io/en/latest/miniconda.html" rel="nofollow">miniconda</a>是一个免费的conda最小安装程序。它是Anaconda的一个小型引导版本，只包含conda、Python、它们所依赖的包，以及少量其他有用的包（如pip、zlib等）。如果你需要更多的软件包，使用 conda install 命令从Anaconda的公共仓库中默认提供的数千个软件包中安装，或者从其他渠道安装，如conda-forge或bioconda。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh # 下载安装脚本
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3 # 运行安装脚本
-rm -rf ~/miniconda3/miniconda.sh
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir -p <span class="pl-k">~</span>/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O <span class="pl-k">~</span>/miniconda3/miniconda.sh <span class="pl-c"><span class="pl-c">#</span> 下载安装脚本</span>
+bash <span class="pl-k">~</span>/miniconda3/miniconda.sh -b -u -p <span class="pl-k">~</span>/miniconda3 <span class="pl-c"><span class="pl-c">#</span> 运行安装脚本</span>
+rm -rf <span class="pl-k">~</span>/miniconda3/miniconda.sh
 
-~/miniconda3/bin/conda init bash # 配置 conda 环境
-~/miniconda3/bin/conda init zsh # 配置 conda 环境
-
-</code></pre>
+<span class="pl-k">~</span>/miniconda3/bin/conda init bash <span class="pl-c"><span class="pl-c">#</span> 配置 conda 环境</span>
+<span class="pl-k">~</span>/miniconda3/bin/conda init zsh <span class="pl-c"><span class="pl-c">#</span> 配置 conda 环境</span>
+</pre></div>
 <h4>验证</h4>
 <p>重新连接ssh</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">conda info --envs
+<div class="highlight highlight-source-shell"><pre class="notranslate">conda info --envs
 conda activate base
-python --version
-</code></pre>
+python --version</pre></div>
 <h3>🤡thefuck</h3>
 <p><a href="https://github.com/nvbn/thefuck">thefuck</a>是一个用于自动纠正命令行的工具，它可以帮助你避免敲错命令，并帮助你修复它们。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">brew install thefuck
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">brew install thefuck</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>eval "$(thefuck --alias)"</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">git bach
-fuck
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">git bach
+fuck</pre></div>
 <h3>🧐bottom <del>top</del></h3>
 <p><a href="https://github.com/ClementTsang/bottom">bottom</a>一个可定制的跨平台的图形化进程/系统监视器的终端。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf copr enable atim/bottom -y &amp;&amp; sudo dnf -y install bottom
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf copr <span class="pl-c1">enable</span> atim/bottom -y <span class="pl-k">&amp;&amp;</span> sudo dnf -y install bottom</pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">bottom
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">bottom</pre></div>
 <h3>📘tldr <del>man</del></h3>
 <p><a href="https://github.com/tldr-pages/tldr">tldr</a>是一个由社区维护的命令行工具帮助页面的集合，旨在成为传统手册页的一个更简单、更易于访问的补充。</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">brew install tlrc
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">brew install tlrc</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias man='tldr'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">man docker
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">man docker</pre></div>
 <h3>📃eza <del>ls</del></h3>
 <p><a href="https://github.com/eza-community/eza">eza</a>是一个现代化的，维护的替代ls。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install eza
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install eza</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias ls='eza --color=always --long --git --no-filesize --icons=always --notime --no-user --no-permissions'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">ls
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ls</pre></div>
 <h3>🚶‍♂️zoxide <del>cd</del></h3>
 <p><a href="https://github.com/ajeetdsouza/zoxide">zoxide</a>是更聪明的cd命令，它能记住你最常用的目录，因此你只需敲几下键盘就能 "跳转 "到它们。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install zoxide
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install zoxide</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>eval "$(zoxide init --cmd cd zsh)"</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h3>🚮trash-cli <del>rm rmdir</del></h3>
 <p><a href="https://github.com/andreafrancia/trash-cli">trash-cli</a>是一个命令行工具，它可以从命令行中删除文件或目录，并将它们放入回收站，而不是直接删除。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install trash-cli
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install trash-cli</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加:</p>
 <blockquote>
 <p>alias rm='trash-put'<br>
 alias rmdir='trash-put'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h3>😽bat <del>cat</del></h3>
 <p><a href="https://github.com/sharkdp/bat">bat</a>是类似 cat，但带有 git 集成和语法高亮。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install bat
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install bat</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias cat='bat'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h3>toolong</h3>
 <p><a href="https://github.com/Textualize/toolong">toolong</a>是查看、跟踪、合并和搜索日志文件的终端应用程序（加上JSONL）。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">pipx install toolong
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">pipx install toolong</pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">tl --help
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">tl --help</pre></div>
 <h3>🔍fd <del>find</del></h3>
 <h4>安装</h4>
 <p><a href="https://github.com/sharkdp/fd">fd</a>是一个快速且用户友好的文件搜索工具。</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install fd-find
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install fd-find</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias find='fd -HI'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">find passwd
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">find passwd</pre></div>
 <h3>🫳ripgrep <del>grep</del></h3>
 <p><a href="https://github.com/BurntSushi/ripgrep">ripgrep</a>是递归地搜索目录中的正则表达式模式，同时尊重你的gitignore。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install ripgrep
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install ripgrep</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias grep='rg'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">grep passwd
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">grep passwd</pre></div>
 <h3>🏓gping <del>ping</del></h3>
 <p><a href="https://github.com/orf/gping">gping</a>是图表化的ping工具。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf copr enable atim/gping -y &amp;&amp; sudo dnf install gping
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf copr <span class="pl-c1">enable</span> atim/gping -y <span class="pl-k">&amp;&amp;</span> sudo dnf install gping</pre></div>
 <h4>zshrc 配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias ping='gping'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">ping 127.0.0.1
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">ping 127.0.0.1</pre></div>
 <h3>🐳 Docker</h3>
 <p><a href="https://dockerdocs.cn/engine/install/" rel="nofollow">中文手册</a></p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo # 添加 Docker 仓库
-sudo dnf -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin # 安装 Docker
-sudo systemctl --now enable docker # 启动 Docker 服务
-sudo usermod -a -G docker $(whoami) # 允许普通用户使用 Docker
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo <span class="pl-c"><span class="pl-c">#</span> 添加 Docker 仓库</span>
+sudo dnf -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin <span class="pl-c"><span class="pl-c">#</span> 安装 Docker</span>
+sudo systemctl --now <span class="pl-c1">enable</span> docker <span class="pl-c"><span class="pl-c">#</span> 启动 Docker 服务</span>
+sudo usermod -a -G docker <span class="pl-s"><span class="pl-pds">$(</span>whoami<span class="pl-pds">)</span></span> <span class="pl-c"><span class="pl-c">#</span> 允许普通用户使用 Docker</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker --version
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker --version
 docker run hello-world
-docker ps -a
-</code></pre>
+docker ps -a</pre></div>
 <h3>LazyDocker</h3>
 <p><a href="https://github.com/jesseduffield/lazydocker#installation">LazyDocker</a>是一个用于管理 Docker 容器的终端 UI 工具。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker run --rm -it -v \
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker run --rm -it -v \
 /var/run/docker.sock:/var/run/docker.sock \
 -v /etc/lazydocker:/.config/jesseduffield/lazydocker \
-lazyteam/lazydocker
-</code></pre>
+lazyteam/lazydocker</pre></div>
 <h4>zshrc 配置</h4>
 <p>使用 lzdocker 命令代替 lazydocker 命令</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias lzdocker='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /etc/lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">lzdocker
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lzdocker</pre></div>
 <h3>Lazygit</h3>
 <p><a href="https://github.com/jesseduffield/lazygit#installation">Lazygit</a>是一个用于管理 Git 仓库的终端 UI 工具。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">brew install jesseduffield/lazygit/lazygit
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">brew install jesseduffield/lazygit/lazygit</pre></div>
 <h4>zshrc 配置</h4>
 <p>使用 lzgit 命令代替 lazygit 命令</p>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.zshrc # 编辑 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 编辑 zsh 配置文件</span></pre></div>
 <p>在文件中添加一行:</p>
 <blockquote>
 <p>alias lzgit='lazygit'</p>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">source ~/.zshrc # 重新加载 zsh 配置文件
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">source</span> <span class="pl-k">~</span>/.zshrc <span class="pl-c"><span class="pl-c">#</span> 重新加载 zsh 配置文件</span></pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">lzgit -v
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">lzgit -v</pre></div>
 <h3>☁️Seafile</h3>
 <p><a href="https://www.seafile.com/en/download/" rel="nofollow">Seafile</a>是一个开源的网盘软件，支持多种存储方式，包括本地硬盘、NAS、S3、Ceph、OSS等。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y install seafile-server
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y install seafile-server</pre></div>
 <h4>配置</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo seahub-setup
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo seahub-setup</pre></div>
 <h4>验证</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo systemctl start seafile
-sudo systemctl enable seafile
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl start seafile
+sudo systemctl <span class="pl-c1">enable</span> seafile</pre></div>
 <h3>☁️Alist <del>smb ftp</del></h3>
 <p><a href="https://alist.nn.ci/zh/guide/install/docker.html" rel="nofollow">Alist</a>是一个支持多种存储的文件列表程序，使用 Gin 和 Solidjs。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name="alist" xhofe/alist:latest # 安装 Alist
-sudo docker exec -it alist ./alist admin set 🔑ALISTPASSWORD🔑 # 设置 Alist 密码
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d --restart=unless-stopped -v /etc/alist:/opt/alist/data -p 5244:5244 -e PUID=0 -e PGID=0 -e UMASK=022 --name=<span class="pl-s"><span class="pl-pds">"</span>alist<span class="pl-pds">"</span></span> xhofe/alist:latest <span class="pl-c"><span class="pl-c">#</span> 安装 Alist</span>
+sudo docker <span class="pl-c1">exec</span> -it alist ./alist admin <span class="pl-c1">set</span> 🔑ALISTPASSWORD🔑 <span class="pl-c"><span class="pl-c">#</span> 设置 Alist 密码</span>
 
-sudo mkdir /etc/alist/alist-share # 创建共享目录
-</code></pre>
+sudo mkdir /etc/alist/alist-share <span class="pl-c"><span class="pl-c">#</span> 创建共享目录</span></pre></div>
 <h4>远程访问 Alist</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:5244</p>
 </details>
@@ -1009,98 +930,92 @@ sudo mkdir /etc/alist/alist-share # 创建共享目录
 <h3>sun-pannel</h3>
 <p><a href="https://doc.sun-panel.top/zh_cn/usage/quick_deploy.html" rel="nofollow">sun-pannel</a>是一个服务器、NAS导航面板、Homepage、浏览器首页。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -d --restart unless-stopped -p 3002:3002 \
--v ~/docker_data/sun-panel/conf:/app/conf \
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d --restart unless-stopped -p 3002:3002 \
+-v <span class="pl-k">~</span>/docker_data/sun-panel/conf:/app/conf \
 -v /var/run/docker.sock:/var/run/docker.sock \
 --name sun-panel \
-hslr/sun-panel:beta
-</code></pre>
+hslr/sun-panel:beta</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:3002/</p>
 <h3>1Panel</h3>
 <p><a href="https://1panel.cn/docs/" rel="nofollow">1Panel</a>是新一代的 Linux 服务器运维管理面板。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh &amp;&amp; sudo bash quick_start.sh
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh <span class="pl-k">&amp;&amp;</span> sudo bash quick_start.sh</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:<code class="notranslate">ℹ️PORTℹ️</code></p>
 <h3>ONLYOFFICE</h3>
 <p><a href="https://helpcenter.onlyoffice.com/installation/docs-community-install-docker.aspx" rel="nofollow">ONLYOFFICE</a>是一款基于文档的协作办公套件，支持多种文件格式、多种协作模式。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -i -t -d -p 8081:80 --restart unless-stopped -e JWT_SECRET=my_jwt_secret onlyoffice/documentserver
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -i -t -d -p 8081:80 --restart unless-stopped -e JWT_SECRET=my_jwt_secret onlyoffice/documentserver</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:8081/example/</p>
 <h3>Etherpad</h3>
 <p><a href="https://github.com/ether/etherpad-lite">Etherpad</a>是一个实时的网络协作编辑器。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkdir -p /docker/etherpad
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /docker/etherpad
 sudo chmod -R 777 /docker/etherpad
-cd /docker/etherpad
-code docker-compose.yaml
-</code></pre>
+<span class="pl-c1">cd</span> /docker/etherpad
+code docker-compose.yaml</pre></div>
 <p>在 docker-compose.yaml 文件中添加以下内容:</p>
 <blockquote>
-<pre lang="yaml" class="notranslate"><code class="notranslate">services:
-  app:
-    user: "0:0"
-    image: etherpad/etherpad:latest
-    tty: true
-    stdin_open: true
-    volumes:
-      - plugins:/opt/etherpad-lite/src/plugin_packages
-      - etherpad-var:/opt/etherpad-lite/var
-    depends_on:
-      - postgres
-    environment:
-      NODE_ENV: production
-      ADMIN_PASSWORD: ${DOCKER_COMPOSE_APP_ADMIN_PASSWORD:-admin}
-      DB_CHARSET: ${DOCKER_COMPOSE_APP_DB_CHARSET:-utf8mb4}
-      DB_HOST: postgres
-      DB_NAME: ${DOCKER_COMPOSE_POSTGRES_DATABASE:-etherpad}
-      DB_PASS: ${DOCKER_COMPOSE_POSTGRES_PASSWORD:-admin}
-      DB_PORT: ${DOCKER_COMPOSE_POSTGRES_PORT:-5432}
-      DB_TYPE: "postgres"
-      DB_USER: ${DOCKER_COMPOSE_POSTGRES_USER:-admin}
-      # For now, the env var DEFAULT_PAD_TEXT cannot be unset or empty; it seems to be mandatory in the latest version of etherpad
-      DEFAULT_PAD_TEXT: ${DOCKER_COMPOSE_APP_DEFAULT_PAD_TEXT:- }
-      DISABLE_IP_LOGGING: ${DOCKER_COMPOSE_APP_DISABLE_IP_LOGGING:-false}
-      SOFFICE: ${DOCKER_COMPOSE_APP_SOFFICE:-null}
-      TRUST_PROXY: ${DOCKER_COMPOSE_APP_TRUST_PROXY:-true}
-    restart: always
-    ports:
-      - "${DOCKER_COMPOSE_APP_PORT_PUBLISHED:-9001}:${DOCKER_COMPOSE_APP_PORT_TARGET:-9001}"
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">services</span>:
+  <span class="pl-ent">app</span>:
+    <span class="pl-ent">user</span>: <span class="pl-s"><span class="pl-pds">"</span>0:0<span class="pl-pds">"</span></span>
+    <span class="pl-ent">image</span>: <span class="pl-s">etherpad/etherpad:latest</span>
+    <span class="pl-ent">tty</span>: <span class="pl-c1">true</span>
+    <span class="pl-ent">stdin_open</span>: <span class="pl-c1">true</span>
+    <span class="pl-ent">volumes</span>:
+      - <span class="pl-s">plugins:/opt/etherpad-lite/src/plugin_packages</span>
+      - <span class="pl-s">etherpad-var:/opt/etherpad-lite/var</span>
+    <span class="pl-ent">depends_on</span>:
+      - <span class="pl-s">postgres</span>
+    <span class="pl-ent">environment</span>:
+      <span class="pl-ent">NODE_ENV</span>: <span class="pl-s">production</span>
+      <span class="pl-ent">ADMIN_PASSWORD</span>: <span class="pl-s">${DOCKER_COMPOSE_APP_ADMIN_PASSWORD:-admin}</span>
+      <span class="pl-ent">DB_CHARSET</span>: <span class="pl-s">${DOCKER_COMPOSE_APP_DB_CHARSET:-utf8mb4}</span>
+      <span class="pl-ent">DB_HOST</span>: <span class="pl-s">postgres</span>
+      <span class="pl-ent">DB_NAME</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_DATABASE:-etherpad}</span>
+      <span class="pl-ent">DB_PASS</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_PASSWORD:-admin}</span>
+      <span class="pl-ent">DB_PORT</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_PORT:-5432}</span>
+      <span class="pl-ent">DB_TYPE</span>: <span class="pl-s"><span class="pl-pds">"</span>postgres<span class="pl-pds">"</span></span>
+      <span class="pl-ent">DB_USER</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_USER:-admin}</span>
+      <span class="pl-c"><span class="pl-c">#</span> For now, the env var DEFAULT_PAD_TEXT cannot be unset or empty; it seems to be mandatory in the latest version of etherpad</span>
+      <span class="pl-ent">DEFAULT_PAD_TEXT</span>: <span class="pl-s">${DOCKER_COMPOSE_APP_DEFAULT_PAD_TEXT:- }</span>
+      <span class="pl-ent">DISABLE_IP_LOGGING</span>: <span class="pl-s">${DOCKER_COMPOSE_APP_DISABLE_IP_LOGGING:-false}</span>
+      <span class="pl-ent">SOFFICE</span>: <span class="pl-s">${DOCKER_COMPOSE_APP_SOFFICE:-null}</span>
+      <span class="pl-ent">TRUST_PROXY</span>: <span class="pl-s">${DOCKER_COMPOSE_APP_TRUST_PROXY:-true}</span>
+    <span class="pl-ent">restart</span>: <span class="pl-s">always</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-s"><span class="pl-pds">"</span>${DOCKER_COMPOSE_APP_PORT_PUBLISHED:-9001}:${DOCKER_COMPOSE_APP_PORT_TARGET:-9001}<span class="pl-pds">"</span></span>
 
-  postgres:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_DB: ${DOCKER_COMPOSE_POSTGRES_DATABASE:-etherpad}
-      POSTGRES_PASSWORD: ${DOCKER_COMPOSE_POSTGRES_PASSWORD:-admin}
-      POSTGRES_PORT: ${DOCKER_COMPOSE_POSTGRES_PORT:-5432}
-      POSTGRES_USER: ${DOCKER_COMPOSE_POSTGRES_USER:-admin}
-      PGDATA: /var/lib/postgresql/data/pgdata
-    restart: always
-    # Exposing the port is not needed unless you want to access this database instance from the host.
-    # Be careful when other postgres docker container are running on the same port
-    # ports:
-    #   - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/pgdata
+  <span class="pl-ent">postgres</span>:
+    <span class="pl-ent">image</span>: <span class="pl-s">postgres:15-alpine</span>
+    <span class="pl-ent">environment</span>:
+      <span class="pl-ent">POSTGRES_DB</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_DATABASE:-etherpad}</span>
+      <span class="pl-ent">POSTGRES_PASSWORD</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_PASSWORD:-admin}</span>
+      <span class="pl-ent">POSTGRES_PORT</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_PORT:-5432}</span>
+      <span class="pl-ent">POSTGRES_USER</span>: <span class="pl-s">${DOCKER_COMPOSE_POSTGRES_USER:-admin}</span>
+      <span class="pl-ent">PGDATA</span>: <span class="pl-s">/var/lib/postgresql/data/pgdata</span>
+    <span class="pl-ent">restart</span>: <span class="pl-s">always</span>
+    <span class="pl-c"><span class="pl-c">#</span> Exposing the port is not needed unless you want to access this database instance from the host.</span>
+    <span class="pl-c"><span class="pl-c">#</span> Be careful when other postgres docker container are running on the same port</span>
+    <span class="pl-c"><span class="pl-c">#</span> ports:</span>
+    <span class="pl-c"><span class="pl-c">#</span>   - "5432:5432"</span>
+    <span class="pl-ent">volumes</span>:
+      - <span class="pl-s">postgres_data:/var/lib/postgresql/data/pgdata</span>
 
-volumes:
-  postgres_data:
-  plugins:
-  etherpad-var:
-</code></pre>
+<span class="pl-ent">volumes</span>:
+  <span class="pl-ent">postgres_data</span>:
+  <span class="pl-ent">plugins</span>:
+  <span class="pl-ent">etherpad-var</span>:</pre></div>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker compose -f docker-compose.yaml up -d
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose -f docker-compose.yaml up -d</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:9001</p>
 <h3>🃏Docsify</h3>
 <p><a href="https://docsify.js.org/#/quickstart" rel="nofollow">Docsify</a>是将一个或多个Markdown文件转换为网站，无需构建过程。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">npm i docsify-cli -g
+<div class="highlight highlight-source-shell"><pre class="notranslate">npm i docsify-cli -g
 sudo mkdir /usr/share/docsify-docs
 sudo chmod -R 777 /usr/share/docsify-docs
 docsify init /usr/share/docsify-docs
@@ -1109,15 +1024,14 @@ sudo firewall-cmd --permanent --add-port=3000/tcp
 sudo firewall-cmd --reload
 sudo firewall-cmd --list-ports
 
-pm2 start `which docsify` -- serve /usr/share/docsify-docs
+pm2 start <span class="pl-s"><span class="pl-pds">`</span>which docsify<span class="pl-pds">`</span></span> -- serve /usr/share/docsify-docs
 pm2 save
-pm2 startup
-</code></pre>
+pm2 startup</pre></div>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:3000/</p>
 <h3>Stirling-PDF</h3>
 <p><a href="https://github.com/Stirling-Tools/Stirling-PDF">Stirling-PDF</a>是一个强大的，本地托管的基于Web的PDF操作工具，使用Docker。它使您能够对PDF文件进行各种操作，包括拆分，合并，转换，重组，添加图像，旋转，压缩等。这个本地托管的Web应用程序已经发展到包含一套全面的功能，满足您的所有PDF要求。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -d \
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d \
   --restart=unless-stopped \
   -p 8080:8080 \
   -v /location/of/trainingData:/usr/share/tessdata \
@@ -1127,104 +1041,93 @@ pm2 startup
   -e INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false \
   -e LANGS=en_GB \
   --name stirling-pdf \
-  frooodle/s-pdf:latest
-</code></pre>
+  frooodle/s-pdf:latest</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:8080/</p>
 <h3>draw.io</h3>
 <p><a href="https://github.com/jgraph/docker-drawio">draw.io</a>是一个白板/绘图软件应用程序，支持多种图表类型，包括流程图、UML图、组织结构图、ER图等。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -d -it --name="draw" --restart unless-stopped -p 8442:8080 jgraph/drawio
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d -it --name=<span class="pl-s"><span class="pl-pds">"</span>draw<span class="pl-pds">"</span></span> --restart unless-stopped -p 8442:8080 jgraph/drawio</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:8442/</p>
 <h3>Excalidraw</h3>
 <p><a href="https://docs.excalidraw.com/docs/introduction/development#self-hosting" rel="nofollow">Excalidraw</a>是一个开源的虚拟手绘风格的白板。协作和端到端加密。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run --restart unless-stopped -dit --name excalidraw -p 8443:80 excalidraw/excalidraw:latest
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run --restart unless-stopped -dit --name excalidraw -p 8443:80 excalidraw/excalidraw:latest</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:8443/</p>
 <h3>it-tools</h3>
 <p><a href="https://github.com/CorentinTh/it-tools">it-tools</a>是开发人员和IT工作人员的有用工具集合。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -d --name it-tools --restart unless-stopped -p 8765:80 corentinth/it-tools:latest
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d --name it-tools --restart unless-stopped -p 8765:80 corentinth/it-tools:latest</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:8765/</p>
 <h3>libretranslate</h3>
 <p><a href="https://github.com/LibreTranslate/LibreTranslate">libretranslate</a>是一个开源的机器翻译API，支持多种语言。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">mkdir -p ~/libretranslate
-wget --no-check-certificate https://raw.githubusercontent.com/LibreTranslate/LibreTranslate/main/run.sh -O ~/libretranslate/run.sh
-cd ~/libretranslate
+<div class="highlight highlight-source-shell"><pre class="notranslate">mkdir -p <span class="pl-k">~</span>/libretranslate
+wget --no-check-certificate https://raw.githubusercontent.com/LibreTranslate/LibreTranslate/main/run.sh -O <span class="pl-k">~</span>/libretranslate/run.sh
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/libretranslate
 chmod +x run.sh
-./run.sh # 测试运行
+./run.sh <span class="pl-c"><span class="pl-c">#</span> 测试运行</span>
 
 docker ps
-docker stop `CONTAINER ID`
+docker stop <span class="pl-s"><span class="pl-pds">`</span>CONTAINER ID<span class="pl-pds">`</span></span>
 
-sudo docker run -d --restart=unless-stopped -ti -p 5000:5000 -v lt-local:/home/libretranslate/.local libretranslate/libretranslate
-</code></pre>
+sudo docker run -d --restart=unless-stopped -ti -p 5000:5000 -v lt-local:/home/libretranslate/.local libretranslate/libretranslate</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:5000/?source=auto&amp;target=zh&amp;q=</p>
 <h3>memos</h3>
 <p><a href="https://github.com/usememos/memos">memos</a>是一个开源的、轻量级的笔记服务。轻松捕捉和分享您的好主意。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -d --restart=unless-stopped --name memos -p 5230:5230 -v ~/.memos/:/var/opt/memos neosmemo/memos:stable
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d --restart=unless-stopped --name memos -p 5230:5230 -v <span class="pl-k">~</span>/.memos/:/var/opt/memos neosmemo/memos:stable</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:5230/</p>
 <h3>wekan</h3>
 <p><a href="https://github.com/wekan/wekan">wekan</a>是一个基于Web的看板应用，支持多种看板类型，包括看板、任务列表、日历、Kanban、组织结构图等。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo docker run -d --restart=always --name wekan-db mongo:5
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo docker run -d --restart=always --name wekan-db mongo:5
 
-sudo docker run -d --restart=always --name wekan --link "wekan-db:db" -e "WITH_API=true" -e "MONGO_URL=mongodb://wekan-db:27017/wekan" -e "ROOT_URL=http://192.168.3.248:2000" -p 2000:8080 wekanteam/wekan:latest
-</code></pre>
+sudo docker run -d --restart=always --name wekan --link <span class="pl-s"><span class="pl-pds">"</span>wekan-db:db<span class="pl-pds">"</span></span> -e <span class="pl-s"><span class="pl-pds">"</span>WITH_API=true<span class="pl-pds">"</span></span> -e <span class="pl-s"><span class="pl-pds">"</span>MONGO_URL=mongodb://wekan-db:27017/wekan<span class="pl-pds">"</span></span> -e <span class="pl-s"><span class="pl-pds">"</span>ROOT_URL=http://192.168.3.248:2000<span class="pl-pds">"</span></span> -p 2000:8080 wekanteam/wekan:latest</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:2000/</p>
 <h3>snapdrop</h3>
 <p><a href="https://github.com/RobinLinus/snapdrop/blob/master/docs/local-dev.md">snapdrop</a>是一个基于Web的跨平台文件共享应用程序，支持多种文件格式。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker run --restart unless-stopped -d -p 8444:80 linuxserver/snapdrop
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker run --restart unless-stopped -d -p 8444:80 linuxserver/snapdrop</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:8444/</p>
 <h3>next-terminal</h3>
 <p><a href="https://github.com/dushixiang/next-terminal">next-terminal</a>是一个简单好用安全的开源交互审计系统，支持RDP、SSH、VNC、Telnet、Kubernetes协议。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo mkdir -p /docker/next-terminal/data
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo mkdir -p /docker/next-terminal/data
 sudo chmod -R 777 /docker/next-terminal/
-cd /docker/next-terminal
-code docker-compose.yaml
-</code></pre>
+<span class="pl-c1">cd</span> /docker/next-terminal
+code docker-compose.yaml</pre></div>
 <blockquote>
-<pre lang="yaml" class="notranslate"><code class="notranslate">version: '3.3'
-services:
-    guacd:
-       image: dushixiang/guacd:latest
-       volumes:
-         - ./data:/usr/local/next-terminal/data
-       restart:
-             always
-     next-terminal:
-       image: dushixiang/next-terminal:latest
-    environment:
-      DB: sqlite
-      GUACD_HOSTNAME: guacd
-      GUACD_PORT: 4822
-    ports:
-      - "8088:8088"
-    volumes:
-      - /etc/localtime:/etc/localtime
-      - ./data:/usr/local/next-terminal/data
-    restart:
-      always
-</code></pre>
+<div class="highlight highlight-source-yaml"><pre class="notranslate"><span class="pl-ent">version</span>: <span class="pl-s"><span class="pl-pds">'</span>3.3<span class="pl-pds">'</span></span>
+<span class="pl-ent">services</span>:
+    <span class="pl-ent">guacd</span>:
+       <span class="pl-ent">image</span>: <span class="pl-s">dushixiang/guacd:latest</span>
+       <span class="pl-ent">volumes</span>:
+         - <span class="pl-s">./data:/usr/local/next-terminal/data</span>
+       <span class="pl-ent">restart</span>:
+             <span class="pl-s">always</span>
+     <span class="pl-ent">next-terminal</span>:
+       <span class="pl-ent">image</span>: <span class="pl-s">dushixiang/next-terminal:latest</span>
+    <span class="pl-ent">environment</span>:
+      <span class="pl-ent">DB</span>: <span class="pl-s">sqlite</span>
+      <span class="pl-ent">GUACD_HOSTNAME</span>: <span class="pl-s">guacd</span>
+      <span class="pl-ent">GUACD_PORT</span>: <span class="pl-c1">4822</span>
+    <span class="pl-ent">ports</span>:
+      - <span class="pl-s"><span class="pl-pds">"</span>8088:8088<span class="pl-pds">"</span></span>
+    <span class="pl-ent">volumes</span>:
+      - <span class="pl-s">/etc/localtime:/etc/localtime</span>
+      - <span class="pl-s">./data:/usr/local/next-terminal/data</span>
+    <span class="pl-ent">restart</span>:
+      <span class="pl-s">always</span></pre></div>
 </blockquote>
-<pre lang="bash" class="notranslate"><code class="notranslate">docker compose -f docker-compose.yaml up -d
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">docker compose -f docker-compose.yaml up -d</pre></div>
 <h4>使用</h4>
 <p>http://<code class="notranslate">ℹ️IPADDRESSℹ️</code>:8088/</p>
 </details>
@@ -1234,29 +1137,25 @@ services:
 <h3>VSCode</h3>
 <p><a href="https://code.visualstudio.com/docs/setup/linux" rel="nofollow">VSCode</a>是微软推出的开源编辑器，支持多种编程语言。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" &gt; /etc/yum.repos.d/vscode.repo'
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c <span class="pl-s"><span class="pl-pds">'</span>echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" &gt; /etc/yum.repos.d/vscode.repo<span class="pl-pds">'</span></span>
 sudo dnf check-update
-sudo dnf -y install code
-</code></pre>
+sudo dnf -y install code</pre></div>
 <h4>使用</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">code .
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">code <span class="pl-c1">.</span></pre></div>
 <h3>Firefox</h3>
 <p><a href="https://www.mozilla.org/zh-CN/firefox/all/#product-desktop-developer" rel="nofollow">Firefox</a>是一款开源的网页浏览器。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">sudo dnf -y remove firefox # 卸载旧版本
+<div class="highlight highlight-source-shell"><pre class="notranslate">sudo dnf -y remove firefox <span class="pl-c"><span class="pl-c">#</span> 卸载旧版本</span>
 
-cd ~/下载
-wget -O firefox-latest.tar.bz2 "https://download.mozilla.org/?product=firefox-latest-ssl&amp;os=linux64&amp;lang=zh-CN" 
+<span class="pl-c1">cd</span> <span class="pl-k">~</span>/下载
+wget -O firefox-latest.tar.bz2 <span class="pl-s"><span class="pl-pds">"</span>https://download.mozilla.org/?product=firefox-latest-ssl&amp;os=linux64&amp;lang=zh-CN<span class="pl-pds">"</span></span> 
 sudo tar xvjf firefox-latest.tar.bz2 -C /usr/local
 sudo ln -s /usr/local/firefox/firefox /usr/bin/firefox
 
-firefox &amp;
-</code></pre>
+firefox <span class="pl-k">&amp;</span></pre></div>
 <h4>添加图标</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">nano ~/.local/share/applications/firefox.desktop
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">nano <span class="pl-k">~</span>/.local/share/applications/firefox.desktop</pre></div>
 <blockquote>
 <pre class="notranslate"><code class="notranslate">[Desktop Entry]
 Name=Firefox
@@ -1273,9 +1172,8 @@ Categories=Network;WebBrowser;
 <h3>QQ</h3>
 <p><a href="https://im.qq.com/linuxqq/index.shtml" rel="nofollow">QQ</a>是一款跨平台的即时通信工具。</p>
 <h4>安装</h4>
-<pre lang="bash" class="notranslate"><code class="notranslate">cd ~/下载
-sudo dnf -y install ./QQ_x.x.x_xxxxxx_x86_64.rpm
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-k">~</span>/下载
+sudo dnf -y install ./QQ_x.x.x_xxxxxx_x86_64.rpm</pre></div>
 </details></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
