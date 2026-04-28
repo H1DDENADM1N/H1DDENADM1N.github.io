@@ -1,2 +1,516 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog</title><link>https://H1DDENADM1N.github.io</link><description>https://H1DDENADM1N.github.io</description><copyright>Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/65646535?v=4</url><title>avatar</title><link>https://H1DDENADM1N.github.io</link></image><lastBuildDate>Mon, 27 Apr 2026 17:14:47 +0000</lastBuildDate><managingEditor>Blog</managingEditor><ttl>60</ttl><webMaster>Blog</webMaster></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Blog</title><link>https://H1DDENADM1N.github.io</link><description>https://H1DDENADM1N.github.io</description><copyright>Blog</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/65646535?v=4</url><title>avatar</title><link>https://H1DDENADM1N.github.io</link></image><lastBuildDate>Tue, 28 Apr 2026 17:40:34 +0000</lastBuildDate><managingEditor>Blog</managingEditor><ttl>60</ttl><webMaster>Blog</webMaster><item><title>AdGuardHome 配置笔记</title><link>https://H1DDENADM1N.github.io/post/AdGuardHome%20-pei-zhi-bi-ji.html</link><description># AdGuardHome 配置笔记
+## 1. 创建配置目录并运行
+```bash
+mkdir -p /etc/AdGuardHome
+/usr/bin/AdGuardHome -w /etc/AdGuardHome -s run
+```
+## 2. Web管理界面访问
+```
+http://192.168.3.1:3000
+```
+### 2.1 网络配置
+| 项目 | 配置值 |
+|------|--------|
+| 路由器IP | 192.168.3.1 |
+| DHCP起始地址 | 192.168.3.100 |
+| DHCP结束地址 | 192.168.3.200 |
+| 子网掩码 | 255.255.255.0 |
+| DHCP租约时间 | 86400 秒 |
+| IPv6网关 | 2001::1 |
+### 2.2 上游DNS服务器配置
+### DoH (DNS over HTTPS)
+```
+https://dns.alidns.com/dns-query
+https://dns.pub/dns-query
+https://sm2.doh.pub/dns-query
+https://doh-pure.onedns.net/dns-query
+https://public.adguardprivate.com/dns-query
+tls://dns.alidns.com
+tls://dot.pub
+quic://dns.alidns.com:853
+```
+### 2.3 广告过滤规则
+```
+https://gcore.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockdns.txt
+```
+### 2.4 完成初始配置后 Ctrl + C 退出前台运行
+## 3. 确认配置文件存在
+```bash
+ls -l /etc/AdGuardHome/AdGuardHome.yaml
+```
+## 4. 启动服务
+```bash
+/etc/init.d/AdGuardHome start
+```
+
+---
+
+# 故障排查
+## 1. 查看日志
+```bash
+logread | grep AdGuard
+```
+## 2. 检查运行状态
+```bash
+# 检查DNS端口(53)监听
+netstat -antp | grep :53
+# 检查进程
+ps | grep AdGuardHome
+```
+## 3. 修复启动脚本
+```bash
+sed -i 's/procd_set_param command \$cmd\$cmd_args/procd_set_param command $cmd $cmd_args/g' /etc/init.d/AdGuardHome
+```。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/AdGuardHome%20-pei-zhi-bi-ji.html</guid><pubDate>Sun, 11 Jan 2026 02:20:57 +0000</pubDate></item><item><title>🏋️ 健身黑话词典</title><link>https://H1DDENADM1N.github.io/post/%F0%9F%8F%8B%EF%B8%8F%20-jian-shen-hei-hua-ci-dian.html</link><description># 🏋️ 健身黑话词典
+
+---
+
+## 🎯 训练目标
+
+| 英文缩写                   | 英文全称                     | 中文      | 中文解释                          |
+| ---------------------- | ------------------------ | ------- | ----------------------------- |
+| Hypertrophy            | Hypertrophy              | 肌肥大     | 通过阻力训练使肌纤维横截面积增大，表现为肌肉围度和体积增加 |
+| Strength               | Strength                 | 力量      | 肌肉或神经-肌肉系统在单次收缩中能够输出的最大力量     |
+| Endurance              | Muscular Endurance       | 肌肉耐力    | 肌肉在长时间或多次数收缩中维持力量输出的能力        |
+| Power                  | Power = Force × Velocity | 爆发力     | 单位时间内产生最大力量的能力，结合了力量和速度       |
+| Flexibility / Mobility | Flexibility / Mobility   | 灵活度/活动度 | 关节可活动的最大范围及对动作的控制能力           |
+| Cardio                 | Cardiovascular Fitness   | 心肺功能    | 心脏、肺和循环系统高效供氧与支持运动的能力         |
+
+---
+
+## 🔧 训练技术 &amp; 要领
+
+| 英文缩写       | 英文全称                          | 中文      | 中文解释                         |
+| ---------- | ----------------------------- | ------- | ---------------------------- |
+| Concentric | Concentric Contraction        | 向心收缩    | 肌肉缩短同时产生张力的收缩方式，如举起杠铃        |
+| Eccentric  | Eccentric Contraction         | 离心收缩    | 肌肉被拉长同时产生张力的收缩方式，如放下杠铃       |
+| Isometric  | Isometric Contraction         | 等长收缩    | 肌肉产生张力但长度不变，如平板支撑或静力推墙       |
+| ROM        | Range of Motion               | 动作幅度    | 从起始到结束的关节和肌肉运动范围             |
+| TUT        | Time Under Tension            | 受力时间    | 肌肉在一组动作中持续受张力的时间，是刺激肥大的关键变量  |
+| RM         | Repetition Maximum            | 最大重复次数  | 在保证标准动作的情况下，某重量下可完成的最大次数     |
+| RPE        | Rate of Perceived Exertion    | 主观用力程度  | 用主观评分（1-10）衡量训练强度，10表示极限     |
+| RIR        | Reps In Reserve               | 剩余可完成次数 | 当前组结束后理论上还能多完成的次数，帮助调节强度     |
+| DOMS       | Delayed Onset Muscle Soreness | 延迟性肌肉酸痛 | 训练后24-72小时出现的酸胀与酸痛，由微损伤和炎症引起 |
+| Failure    | Failure                       | 力竭      | 在保持正确动作前提下，无法完成下一次重复         |
+
+---
+
+## 🔄 训练方法 &amp; 特殊组法
+
+| 英文缩写        | 英文全称                             | 中文      | 中文解释                           |
+| ----------- | -------------------------------- | ------- | ------------------------------ |
+| SS          | Superset                         | 超级组     | 两个动作连续完成，无休息，常用于拮抗肌或同肌群        |
+| DS          | Drop Set                         | 递减组     | 力竭后立即降低重量继续做，增加训练容量和代谢压力       |
+| GS          | Giant Set                        | 巨人组     | 3-4个动作连续完成，几乎无休息，强化泵感和耐力       |
+| RP          | Rest-Pause                       | 休息暂停    | 在力竭后短休（10-30秒），继续完成额外次数        |
+| Pyramid     | Pyramid Training                 | 金字塔组    | 逐渐加重量/减次数，或逐渐减重量/加次数，形成金字塔负荷曲线 |
+| Forced Reps | Forced Repetitions               | 强迫次数    | 伙伴辅助下完成超出极限的额外次数               |
+| AMRAP       | As Many Reps As Possible         | 极限重复    | 在设定重量下尽可能多完成次数，用于耐力或极限测试       |
+| EMOM        | Every Minute On the Minute       | 每分钟一组   | 每分钟开始时完成规定动作，剩余时间休息            |
+| HIIT        | High-Intensity Interval Training | 高强度间歇训练 | 高强度短时间运动与低强度休息交替，提升心肺和燃脂效率     |
+| LISS        | Low-Intensity Steady State       | 低强度有氧   | 匀速、低强度的有氧运动，如快走或慢跑，常用于减脂       |
+
+---
+
+## 📅 训练计划 &amp; 周期
+
+| 英文缩写                 | 英文全称                             | 中文     | 中文解释                         |
+| -------------------- | -------------------------------- | ------ | ---------------------------- |
+| Progressive Overload | Progressive Overload             | 渐进超负荷  | 逐步增加重量、次数或总训练量，持续给予身体适应性刺激   |
+| Deload               | Deload Week                      | 减载周    | 主动降低训练强度或容量，用于恢复神经和肌肉，防止过度训练 |
+| Volume               | Training Volume                  | 训练量    | 总训练负荷量，计算方式=重量×次数×组数         |
+| Intensity            | Training Intensity               | 强度     | 训练负荷相对于1RM的百分比               |
+| Split                | Training Split                   | 分化训练   | 把不同部位分配到不同日程训练的方式            |
+| PPL                  | Push / Pull / Legs               | 推拉腿分化  | 第一天推（胸肩三头），第二天拉（背二头），第三天腿部   |
+| Upper/Lower          | Upper / Lower Split              | 上下身分化  | 上半身和下半身交替训练                  |
+| PR                   | Personal Record                  | 个人纪录   | 单个动作的历史最好成绩                  |
+
+---
+
+## 🥗 饮食 &amp; 身材
+
+| 英文缩写               | 英文全称                  | 中文    | 中文解释                  |
+| ------------------ | --------------------- | ----- | --------------------- |
+| Bulking            | Bulking               | 增肌期   | 热量盈余，促进肌肉合成，同时体脂可能增加  |
+| Cutting            | Cutting               | 减脂期   | 热量赤字，降低体脂，同时尽可能保持肌肉   |
+| Maintenance        | Maintenance           | 维持期   | 热量收支平衡，保持当前体型与体重      |
+| Carb Cycling       | Carb Cycling          | 碳循环   | 训练日高碳，休息日低碳，平衡能量和脂肪控制 |
+| Caloric Deficit    | Caloric Deficit       | 热量赤字  | 摄入热量小于消耗热量，用于减脂       |
+| Refeed / Carb Load | Refeed / Carb Loading | 爆碳/补碳 | 短期大量增加碳水，提高糖原储备与激素水平  |
+| Clean Eating       | Clean Eating          | 清洁饮食  | 少油少盐、少加工，主要以天然食物为主    |
+| Macros             | Macronutrients        | 三大营养素 | 蛋白质、碳水化合物、脂肪三大营养比例    |
+| IF                 | Intermittent Fasting  | 间歇性断食 | 限定进食时间的饮食法，如16:8模式    |
+
+---
+
+## 🏋️ 健身房日常 &amp; 圈子用语
+
+| 英文缩写         | 英文全称         | 中文    | 中文解释                    |
+| ------------ | ------------ | ----- | ----------------------- |
+| Bro Split    | Bro Split    | 五分化   | 将胸/肩/背/腿/手臂分成五天分别训练     |
+| Spotter      | Spotter      | 保护者   | 在大重量训练中保护与协助完成动作的人      |
+| Natty        | Natural      | 天然党   | 指自然训练者，不使用药物或激素辅助       |
+| Noob Gains   | Noob Gains   | 菜鸟红利  | 新手因神经适应和训练刺激快，短期内进步明显   |
+| Pump         | Pump         | 泵感    | 血液充盈肌肉，产生紧绷和膨胀感         |
+| Overtraining | Overtraining | 过度训练  | 训练超出恢复能力，表现下降、疲劳和受伤风险增加 |
+| Gym Rat      | Gym Rat      | 健身房老鼠 | 高频率出现在健身房、热衷训练的人        |
+
+---
+。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/%F0%9F%8F%8B%EF%B8%8F%20-jian-shen-hei-hua-ci-dian.html</guid><pubDate>Sun, 31 Aug 2025 10:04:02 +0000</pubDate></item><item><title>新讯 刷 ImmortalWrt 后对 LED 调整优化</title><link>https://H1DDENADM1N.github.io/post/xin-xun-%20-shua-%20ImmortalWrt%20-hou-dui-%20LED%20-diao-zheng-you-hua.html</link><description># 新讯 刷 ImmortalWrt 后对 LED 调整优化
+
+## 背景
+
+默认状态 红色 led 闪烁，蓝色 led 常亮，不明所以。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/xin-xun-%20-shua-%20ImmortalWrt%20-hou-dui-%20LED%20-diao-zheng-you-hua.html</guid><pubDate>Sun, 30 Mar 2025 06:19:36 +0000</pubDate></item><item><title>L70CB 禁用开机时自动打开 Wi-Fi</title><link>https://H1DDENADM1N.github.io/post/L70CB%20-jin-yong-kai-ji-shi-zi-dong-da-kai-%20Wi-Fi.html</link><description># L70CB 禁用开机时自动打开 Wi-Fi
+
+## 背景
+
+CPE 放在阳台 5G 信号好的地方，用网线连接到了室内的路由器，不需要用到 CPE 的 Wi-Fi ，而且我这儿 Wi-Fi 多，担心干扰。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/L70CB%20-jin-yong-kai-ji-shi-zi-dong-da-kai-%20Wi-Fi.html</guid><pubDate>Sat, 15 Mar 2025 04:29:59 +0000</pubDate></item><item><title>时间复杂度-中文版图片</title><link>https://H1DDENADM1N.github.io/post/shi-jian-fu-za-du---zhong-wen-ban-tu-pian.html</link><description>https://www.bigocheatsheet.com/&#13;
+&#13;
+![时间复杂度](https://github.com/user-attachments/assets/0eba9e92-3785-424b-b022-85096b15a86a)&#13;
+。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/shi-jian-fu-za-du---zhong-wen-ban-tu-pian.html</guid><pubDate>Thu, 08 Aug 2024 03:10:25 +0000</pubDate></item><item><title>Add Windows Terminal for Win10 LTSC</title><link>https://H1DDENADM1N.github.io/post/Add%20Windows%20Terminal%20for%20Win10%20LTSC.html</link><description># 1. 下载&#13;
+下载并解压 [Windows Terminal](https://github.com/microsoft/terminal/releases) zip到`C:\SSS\terminal\`。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/Add%20Windows%20Terminal%20for%20Win10%20LTSC.html</guid><pubDate>Sun, 28 Jul 2024 18:46:45 +0000</pubDate></item><item><title>简述 enum.Enum、dataclasses.dataclass(frozen=True)、pydantic.BaseModel 使用场景区别，并举例说明</title><link>https://H1DDENADM1N.github.io/post/jian-shu-%20enum.Enum%E3%80%81dataclasses.dataclass%28frozen%3DTrue%29%E3%80%81pydantic.BaseModel%20-shi-yong-chang-jing-qu-bie-%EF%BC%8C-bing-ju-li-shuo-ming.html</link><description>```python&#13;
+import datetime&#13;
+from dataclasses import dataclass&#13;
+from datetime import datetime&#13;
+from enum import Enum&#13;
+&#13;
+from pydantic import BaseModel&#13;
+&#13;
+&#13;
+# enum.Enum&#13;
+# 使用场景：&#13;
+#     当你需要定义一组具有唯一性的命名常量时，例如状态码、选项值或具有特定意义的符号。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/jian-shu-%20enum.Enum%E3%80%81dataclasses.dataclass%28frozen%3DTrue%29%E3%80%81pydantic.BaseModel%20-shi-yong-chang-jing-qu-bie-%EF%BC%8C-bing-ju-li-shuo-ming.html</guid><pubDate>Mon, 22 Jul 2024 17:16:07 +0000</pubDate></item><item><title>Python 四舍五入</title><link>https://H1DDENADM1N.github.io/post/Python%20-si-she-wu-ru.html</link><description>分享已知的五种四舍五入方法；真正解决四舍五入不准确的问题&#13;
+&#13;
+## 四舍五入方法一&#13;
+&#13;
+```python&#13;
+def 四舍五入_法一(float_num: float, ndigits: int = 0) -&gt; float:&#13;
+    '''&#13;
+    四舍五入_法一: 不准确，例1.035 ❌&#13;
+    :param float_num: 待四舍五入的浮点数&#13;
+    :param ndigits: 保留的小数位数&#13;
+    :return: 四舍五入后的浮点数&#13;
+    '''&#13;
+    multiplier = 10**ndigits&#13;
+    return int(float_num * multiplier + 0.5) / multiplier&#13;
+```&#13;
+&#13;
+## 四舍五入方法二&#13;
+&#13;
+```python&#13;
+def 四舍五入_法二(float_num: float, ndigits: int = 0) -&gt; float:&#13;
+    '''&#13;
+    四舍五入_法二: 不准确，例1.035 ❌&#13;
+    :param float_num: 待四舍五入的浮点数&#13;
+    :param ndigits: 保留的小数位数&#13;
+    :return: 四舍五入后的浮点数&#13;
+    '''&#13;
+    return round(float_num, ndigits)&#13;
+```&#13;
+&#13;
+## 四舍五入方法三&#13;
+&#13;
+```python&#13;
+def 四舍五入_法三(float_num: float, ndigits: int = 0) -&gt; float:&#13;
+    '''&#13;
+    四舍五入_法三: 不准确，例1.035 ❌&#13;
+    :param float_num: 待四舍五入的浮点数&#13;
+    :param ndigits: 保留的小数位数&#13;
+    :return: 四舍五入后的浮点数&#13;
+    '''&#13;
+    return f'{float_num:.{ndigits}f}'&#13;
+```&#13;
+&#13;
+## 四舍五入方法四&#13;
+&#13;
+```python&#13;
+def 四舍五入_法四(float_num: float, ndigits: int = 0) -&gt; float:&#13;
+    '''&#13;
+    四舍五入_法四: 准确 ✅&#13;
+    :param float_num: 待四舍五入的浮点数&#13;
+    :param ndigits: 保留的小数位数&#13;
+    :return: 四舍五入后的浮点数&#13;
+    '''&#13;
+    import decimal&#13;
+&#13;
+    decimal.getcontext().rounding = decimal.ROUND_HALF_UP&#13;
+    return round(decimal.Decimal(str(float_num)), ndigits)&#13;
+```&#13;
+&#13;
+## 四舍五入方法五&#13;
+&#13;
+```python&#13;
+def 四舍五入_法五(float_num: float, ndigits: int = 0) -&gt; float:&#13;
+    '''&#13;
+    四舍五入_法五: 准确 ✅&#13;
+    :param float_num: 待四舍五入的浮点数&#13;
+    :param ndigits: 保留的小数位数&#13;
+    :return: 四舍五入后的浮点数&#13;
+    '''&#13;
+    import decimal&#13;
+&#13;
+    quantize_exp = decimal.Decimal((0, (1,), -ndigits))&#13;
+    return decimal.Decimal(str(float_num)).quantize(&#13;
+        quantize_exp, rounding=decimal.ROUND_HALF_UP&#13;
+    )&#13;
+```&#13;
+&#13;
+---&#13;
+&#13;
+## 四舍五入测试一&#13;
+&#13;
+```python&#13;
+def 四舍五入_测试一() -&gt; None:&#13;
+    '''&#13;
+    四舍五入_测试一&#13;
+    :return: None&#13;
+    '''&#13;
+    a = 1.125&#13;
+    print(f'{a:.20f}')&#13;
+    print(四舍五入_法一(a, 2))  # 1.13 ✅&#13;
+    print(四舍五入_法二(a, 2))  # 1.12 ❌&#13;
+    print(四舍五入_法三(a, 2))  # 1.12 ❌&#13;
+    print(四舍五入_法四(a, 2))  # 1.13 ✅&#13;
+    print(四舍五入_法五(a, 2))  # 1.13 ✅&#13;
+&#13;
+    a = 1.035&#13;
+    print(f'{a:.20f}')&#13;
+    print(四舍五入_法一(a, 2))  # 1.03 ❌&#13;
+    print(四舍五入_法二(a, 2))  # 1.03 ❌&#13;
+    print(四舍五入_法三(a, 2))  # 1.03 ❌&#13;
+    print(四舍五入_法四(a, 2))  # 1.04 ✅&#13;
+    print(四舍五入_法五(a, 2))  # 1.04 ✅&#13;
+&#13;
+    print()&#13;
+&#13;
+    for j in range(1, 3):&#13;
+        for i in range(1, 10**j):&#13;
+            s = f'1.{i:0{j}}4'&#13;
+            a = float(s)&#13;
+            print(&#13;
+                f's={s}, a={a:.20f}, 四舍五入_法四={四舍五入_法四(a, j)}, 四舍五入_法五={四舍五入_法五(a, j)}'&#13;
+            )&#13;
+&#13;
+    print()&#13;
+&#13;
+    for j in range(1, 3):&#13;
+        for i in range(1, 10**j):&#13;
+            s = f'1.{i:0{j}}5'&#13;
+            a = float(s)&#13;
+            print(&#13;
+                f's={s}, a={a:.20f}, 四舍五入_法四={四舍五入_法四(a, j)}, 四舍五入_法五={四舍五入_法五(a, j)}'&#13;
+            )&#13;
+&#13;
+    print()&#13;
+&#13;
+    for j in range(1, 3):&#13;
+        for i in range(1, 10**j):&#13;
+            s = f'1.{i:0{j}}6'&#13;
+            a = float(s)&#13;
+            print(&#13;
+                f's={s}, a={a:.20f}, 四舍五入_法四={四舍五入_法四(a, j)}, 四舍五入_法五={四舍五入_法五(a, j)}'&#13;
+            )&#13;
+```。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/Python%20-si-she-wu-ru.html</guid><pubDate>Fri, 12 Jul 2024 01:55:29 +0000</pubDate></item><item><title>Rocky Linux 折腾笔记</title><link>https://H1DDENADM1N.github.io/post/Rocky%20Linux%20-zhe-teng-bi-ji.html</link><description># Rocky Linux Notes&#13;
+&#13;
+&lt;details&gt;&#13;
+&lt;summary&gt;&lt;h2'&gt;👶基础环境&lt;/h2&gt;&lt;/summary&gt;&#13;
+&#13;
+### 🧰 使能 sudo&#13;
+&#13;
+#### 执行&#13;
+&#13;
+```bash&#13;
+su # 切换到 root 用户&#13;
+nano /etc/sudoers # 编辑 sudoers 文件&#13;
+```&#13;
+&#13;
+在 `root ALL=(ALL) ALL` 下面添加一行:&#13;
+&#13;
+&gt; `😀USERNAME😀`    ALL=(ALL)       ALL&#13;
+&#13;
+保存并退出 nano: `Ctrl + X -&gt; Y -&gt; Enter`&#13;
+&#13;
+#### 验证&#13;
+&#13;
+```bash&#13;
+su $(whoami) # 切换回普通用户&#13;
+sudo whoami # 验证是否成功使能 sudo&#13;
+```&#13;
+&#13;
+### 🖥️更改主机名&#13;
+&#13;
+#### 执行&#13;
+```bash&#13;
+ sudo hostnamectl set-hostname `🖥️HOSTNAME🖥️` # 设置主机名&#13;
+ sudo nano /etc/hosts # 编辑 hosts 文件&#13;
+```&#13;
+&#13;
+在 `127.0.0.1 localhost` 下面添加一行:&#13;
+&#13;
+&gt; 127.0.0.1       `🖥️HOSTNAME🖥️`&#13;
+&#13;
+保存并退出 nano: `Ctrl + X -&gt; Y -&gt; Enter`&#13;
+&#13;
+#### 验证&#13;
+&#13;
+```bash&#13;
+ hostnamectl # 验证主机名是否成功更改&#13;
+```&#13;
+&#13;
+### 🌏dnf包管理器换源&#13;
+&#13;
+#### 执行&#13;
+&#13;
+参考[第三方镜像源列表](https://mirrors.rockylinux.org/mirrormanager/mirrors)，选择合适的cn镜像源，例如[USTC 中科大](https://mirrors.ustc.edu.cn/help/rocky.html#_5)&#13;
+&#13;
+```bash&#13;
+sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \&#13;
+    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/rocky|g' \&#13;
+    -i.bak \&#13;
+    /etc/yum.repos.d/rocky-extras.repo \&#13;
+    /etc/yum.repos.d/rocky.repo&#13;
+    &#13;
+sudo dnf makecache # 清理并重建缓存&#13;
+```&#13;
+&#13;
+### 🔄更新&#13;
+&#13;
+```bash&#13;
+sudo dnf -y upgrade dnf # 更新 dnf 包管理器&#13;
+sudo dnf -y update # 更新系统软件包&#13;
+```&#13;
+&#13;
+### ☁️Samba&#13;
+&#13;
+#### 安装&#13;
+&#13;
+```bash&#13;
+sudo dnf -y install samba samba-common samba-client # 安装 samba&#13;
+sudo mkdir -p /home/samba-share # 创建共享目录&#13;
+&#13;
+sudo chmod -R 755 /home/samba-share # 设置共享目录权限&#13;
+sudo chown -R  nobody:nobody /home/samba-share # 设置共享目录所有者&#13;
+sudo chcon -t samba_share_t /home/samba-share # 设置共享目录标签&#13;
+&#13;
+sudo nano /etc/samba/smb.conf # 编辑 smb 配置文件&#13;
+```&#13;
+&#13;
+在文件中添加以下内容：&#13;
+&#13;
+&gt; ```conf&#13;
+&gt; # See smb.conf.example for a more detailed config file or&#13;
+&gt; # read the smb.conf manpage.&#13;
+&gt; # Run 'testparm' to verify the config is correct after&#13;
+&gt; # you modified it.&#13;
+&gt; #&#13;
+&gt; # Note:&#13;
+&gt; # SMB1 is disabled by default. This means clients without support for SMB2 or&#13;
+&gt; # SMB3 are no longer able to connect to smbd (by default).&#13;
+&gt; &#13;
+&gt; [global]&#13;
+&gt;         workgroup = WORKGROUP&#13;
+&gt;         server string = Samba Server %v&#13;
+&gt;         netbios name = rocky-9&#13;
+&gt;         security = user&#13;
+&gt;         map to guest = bad user&#13;
+&gt;         passdb backend = tdbsam&#13;
+&gt;         ntlm auth = true&#13;
+&gt;         printing = cups&#13;
+&gt;         printcap name = cups&#13;
+&gt;         load printers = yes&#13;
+&gt;         cups options = raw&#13;
+&gt;         unix chardeet = UTF-8&#13;
+&gt; &#13;
+&gt; [homes]&#13;
+&gt;         comment = Home Directories&#13;
+&gt;         valid users = %S, %D%w%S&#13;
+&gt;         browseable = No&#13;
+&gt;         read only = No&#13;
+&gt;         inherit acls = Yes&#13;
+&gt; &#13;
+&gt; [printers]&#13;
+&gt;         comment = All Printers&#13;
+&gt;         path = /var/tmp&#13;
+&gt;         printable = Yes&#13;
+&gt;         create mask = 0600&#13;
+&gt;         browseable = No&#13;
+&gt; &#13;
+&gt; [print$]&#13;
+&gt;         comment = Printer Drivers&#13;
+&gt;         path = /var/lib/samba/drivers&#13;
+&gt;         write list = @printadmin root&#13;
+&gt;         force group = @printadmin&#13;
+&gt;         create mask = 0664&#13;
+&gt;         directory mask = 0775&#13;
+&gt; &#13;
+&gt; [Shared]&#13;
+&gt;         path = /home/samba-share&#13;
+&gt;         browsable = yes&#13;
+&gt;         writable = yes&#13;
+&gt;         valid users = 😀USERNAME😀&#13;
+&gt;         guest ok = yes&#13;
+&gt;         guest only = yes&#13;
+&gt;         force create mode = 777&#13;
+&gt;         force directory mode = 777&#13;
+&gt; ```&#13;
+&gt;&#13;
+&#13;
+```bash&#13;
+sudo systemctl start smb nmb # 启动 samba 服务&#13;
+sudo systemctl enable smb nmb # 开机自启 samba 服务&#13;
+&#13;
+systemctl status smb nmb # 查看 samba 服务状态&#13;
+&#13;
+sudo firewall-cmd --permanent --add-service=samba # 开放 samba 服务&#13;
+sudo firewall-cmd --reload # 重载防火墙规则&#13;
+sudo firewall-cmd --list-services # 查看开放的服务&#13;
+&#13;
+sudo smbpasswd -a $(whoami) # 设置 samba 用户密码&#13;
+sudo systemctl restart smb nmb --now # 重启 samba 服务&#13;
+```&#13;
+&#13;
+#### 远程访问共享文件夹&#13;
+&#13;
+Win+R -&gt; smb://`🖥️IP🖥️`/Shared -&gt; 输入密码&#13;
+&#13;
+### 💻RDP 远程桌面&#13;
+&#13;
+#### 安装&#13;
+&#13;
+```bash&#13;
+sudo dnf -y install epel-release # 安装 epel 源&#13;
+sudo dnf makecache # 清理并重建缓存&#13;
+sudo dnf -y install xrdp # 安装 xrdp&#13;
+sudo systemctl start xrdp # 启动 xrdp 服务&#13;
+sudo systemctl enable xrdp # 开机自启 xrdp 服务&#13;
+&#13;
+systemctl status xrdp # 查看 xrdp 服务状态&#13;
+&#13;
+sudo firewall-cmd --permanent --add-port=3389/tcp # 开放 3389 端口&#13;
+sudo firewall-cmd --reload # 重载防火墙规则&#13;
+&#13;
+sudo firewall-cmd --list-ports # 查看开放的端口&#13;
+```&#13;
+&#13;
+#### 远程连接&#13;
+&#13;
+Win+R -&gt; mstsc -&gt; `🖥️IP🖥️`&#13;
+&#13;
+###  添加标题栏最小化最大化按钮&#13;
+&#13;
+#### 安装&#13;
+&#13;
+```bash&#13;
+sudo dnf -y install gnome-tweaks&#13;
+&#13;
+gnome-tweaks&#13;
+```&#13;
+&#13;
+在 gnome-tweaks 中启用 “Window Title Buttons” 选项。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/Rocky%20Linux%20-zhe-teng-bi-ji.html</guid><pubDate>Tue, 25 Jun 2024 01:29:21 +0000</pubDate></item><item><title>常见配置文件格式</title><link>https://H1DDENADM1N.github.io/post/chang-jian-pei-zhi-wen-jian-ge-shi.html</link><description>&lt;details&gt;&#13;
+&lt;summary&gt;&lt;h2 style='opacity: 0.5;'&gt;.py&lt;/h2&gt;&lt;/summary&gt;&#13;
+&#13;
+直接使用python存储配置信息，通常使用**字典**数据类型。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/chang-jian-pei-zhi-wen-jian-ge-shi.html</guid><pubDate>Tue, 25 Jun 2024 01:00:44 +0000</pubDate></item><item><title>英耀篇</title><link>https://H1DDENADM1N.github.io/post/ying-yao-pian.html</link><description># 简介&#13;
+&#13;
+江湖四大秘本是中国传统文化中与江湖术数相关的四部经典文献，主要流传于民间相士、算命先生之间，用于揣摩人心、观察人情、行骗获利等目的。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/ying-yao-pian.html</guid><pubDate>Sun, 23 Jun 2024 09:56:00 +0000</pubDate></item><item><title>Python 项目结构中的命名空间包，__init__.py 配合相对引用，绝对引用，以及 sys.path</title><link>https://H1DDENADM1N.github.io/post/Python%20-xiang-mu-jie-gou-zhong-de-ming-ming-kong-jian-bao-%EF%BC%8C__init__.py%20-pei-he-xiang-dui-yin-yong-%EF%BC%8C-jue-dui-yin-yong-%EF%BC%8C-yi-ji-%20sys.path.html</link><description>在Python项目中，src目录通常是放置源代码的地方。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/Python%20-xiang-mu-jie-gou-zhong-de-ming-ming-kong-jian-bao-%EF%BC%8C__init__.py%20-pei-he-xiang-dui-yin-yong-%EF%BC%8C-jue-dui-yin-yong-%EF%BC%8C-yi-ji-%20sys.path.html</guid><pubDate>Sat, 22 Jun 2024 15:11:40 +0000</pubDate></item><item><title>Hello World</title><link>https://H1DDENADM1N.github.io/post/Hello%20World.html</link><description># [Gmeek](https://github.com/Meekdai/Gmeek)&#13;
+&#13;
+一个博客框架，超轻量级个人博客模板。</description><guid isPermaLink="true">https://H1DDENADM1N.github.io/post/Hello%20World.html</guid><pubDate>Wed, 19 Jun 2024 21:50:47 +0000</pubDate></item></channel></rss>
