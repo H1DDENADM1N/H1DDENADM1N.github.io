@@ -526,61 +526,60 @@ sudo chcon -t samba_share_t /home/samba-share <span class="pl-c"><span class="pl
 sudo nano /etc/samba/smb.conf <span class="pl-c"><span class="pl-c">#</span> 编辑 smb 配置文件</span></pre></div>
 <p>在文件中添加以下内容：</p>
 <blockquote>
-<pre lang="conf" class="notranslate"><code class="notranslate"># See smb.conf.example for a more detailed config file or
-# read the smb.conf manpage.
-# Run 'testparm' to verify the config is correct after
-# you modified it.
-#
-# Note:
-# SMB1 is disabled by default. This means clients without support for SMB2 or
-# SMB3 are no longer able to connect to smbd (by default).
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> See smb.conf.example for a more detailed config file or</span>
+<span class="pl-c"><span class="pl-c">#</span> read the smb.conf manpage.</span>
+<span class="pl-c"><span class="pl-c">#</span> Run 'testparm' to verify the config is correct after</span>
+<span class="pl-c"><span class="pl-c">#</span> you modified it.</span>
+<span class="pl-c"><span class="pl-c">#</span></span>
+<span class="pl-c"><span class="pl-c">#</span> Note:</span>
+<span class="pl-c"><span class="pl-c">#</span> SMB1 is disabled by default. This means clients without support for SMB2 or</span>
+<span class="pl-c"><span class="pl-c">#</span> SMB3 are no longer able to connect to smbd (by default).</span>
 
-[global]
-        workgroup = WORKGROUP
-        server string = Samba Server %v
-        netbios name = rocky-9
-        security = user
-        map to guest = bad user
-        passdb backend = tdbsam
-        ntlm auth = true
-        printing = cups
-        printcap name = cups
-        load printers = yes
-        cups options = raw
-        unix chardeet = UTF-8
+<span class="pl-en">[global]</span>
+        <span class="pl-k">workgroup</span> = WORKGROUP
+        server <span class="pl-k">string</span> = Samba Server %v
+        netbios <span class="pl-k">name</span> = rocky-9
+        <span class="pl-k">security</span> = user
+        map to <span class="pl-k">guest</span> = bad user
+        passdb <span class="pl-k">backend</span> = tdbsam
+        ntlm <span class="pl-k">auth</span> = true
+        <span class="pl-k">printing</span> = cups
+        printcap <span class="pl-k">name</span> = cups
+        load <span class="pl-k">printers</span> = yes
+        cups <span class="pl-k">options</span> = raw
+        unix <span class="pl-k">chardeet</span> = UTF-8
 
-[homes]
-        comment = Home Directories
-        valid users = %S, %D%w%S
-        browseable = No
-        read only = No
-        inherit acls = Yes
+<span class="pl-en">[homes]</span>
+        <span class="pl-k">comment</span> = Home Directories
+        valid <span class="pl-k">users</span> = %S, %D%w%S
+        <span class="pl-k">browseable</span> = No
+        read <span class="pl-k">only</span> = No
+        inherit <span class="pl-k">acls</span> = Yes
 
-[printers]
-        comment = All Printers
-        path = /var/tmp
-        printable = Yes
-        create mask = 0600
-        browseable = No
+<span class="pl-en">[printers]</span>
+        <span class="pl-k">comment</span> = All Printers
+        <span class="pl-k">path</span> = /var/tmp
+        <span class="pl-k">printable</span> = Yes
+        create <span class="pl-k">mask</span> = 0600
+        <span class="pl-k">browseable</span> = No
 
-[print$]
-        comment = Printer Drivers
-        path = /var/lib/samba/drivers
-        write list = @printadmin root
-        force group = @printadmin
-        create mask = 0664
-        directory mask = 0775
+<span class="pl-en">[print$]</span>
+        <span class="pl-k">comment</span> = Printer Drivers
+        <span class="pl-k">path</span> = /var/lib/samba/drivers
+        write <span class="pl-k">list</span> = @printadmin root
+        force <span class="pl-k">group</span> = @printadmin
+        create <span class="pl-k">mask</span> = 0664
+        directory <span class="pl-k">mask</span> = 0775
 
-[Shared]
-        path = /home/samba-share
-        browsable = yes
-        writable = yes
-        valid users = 😀USERNAME😀
-        guest ok = yes
-        guest only = yes
-        force create mode = 777
-        force directory mode = 777
-</code></pre>
+<span class="pl-en">[Shared]</span>
+        <span class="pl-k">path</span> = /home/samba-share
+        <span class="pl-k">browsable</span> = yes
+        <span class="pl-k">writable</span> = yes
+        valid <span class="pl-k">users</span> = 😀USERNAME😀
+        guest <span class="pl-k">ok</span> = yes
+        guest <span class="pl-k">only</span> = yes
+        force create <span class="pl-k">mode</span> = 777
+        force directory <span class="pl-k">mode</span> = 777</pre></div>
 </blockquote>
 <div class="highlight highlight-source-shell"><pre class="notranslate">sudo systemctl start smb nmb <span class="pl-c"><span class="pl-c">#</span> 启动 samba 服务</span>
 sudo systemctl <span class="pl-c1">enable</span> smb nmb <span class="pl-c"><span class="pl-c">#</span> 开机自启 samba 服务</span>
